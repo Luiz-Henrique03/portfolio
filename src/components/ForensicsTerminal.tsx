@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { sound } from "@/utils/sound";
-import { Terminal as TerminalIcon, Play, RefreshCw, Copy, Check } from "lucide-react";
 import confetti from "canvas-confetti";
 
 interface LogEntry {
@@ -16,11 +15,11 @@ export default function ForensicsTerminal() {
   const [history, setHistory] = useState<LogEntry[]>([
     {
       type: "system",
-      text: "LUIZ HENRIQUE // FORENSIC SHELL v2.6.4 [Axiom + NestJS Telemetry Stream]",
+      text: "LUIZ HENRIQUE // FORENSIC SHELL v2.6.4 [Axiom Telemetry & Test Replay]",
     },
     {
       type: "system",
-      text: "Digite um comando ou selecione um dos atalhos abaixo para inspecionar producao.",
+      text: "Digite um comando ou selecione um atalho para inspecionar métricas e auditorias de produção.",
     },
     {
       type: "input",
@@ -35,8 +34,8 @@ HOSTNAME                    EVENT                              COUNT   BUILD STA
 prod-app-monolith-7c4a1b    agenda-fiscais.agendamento_cron    154     VIVA [Grade 20min]
 prod-app-legacy-3f8d9e      agenda-fiscais.agendamento_cron    562     ZUMBI [Grade 30min] (BANCO DIVERGENTE)
 -----------------------------------------------------------------------------------------
-DIAGNOSTICO: Build antiga sem cleanup gerava 562 eventos orfaos no Microsoft Teams.
-ACAO EXECUTADA: Script sequencial com backoff de 180ms por delete. 100% dos orfaos eliminados. Zero falhas.`,
+DIAGNÓSTICO: Build antiga sem cleanup gerava 562 eventos órfãos no Microsoft Teams.
+AÇÃO EXECUTADA: Script sequencial com backoff de 180ms por delete. 100% dos órfãos eliminados. Zero falhas.`,
     },
   ]);
 
@@ -52,7 +51,6 @@ ACAO EXECUTADA: Script sequencial com backoff de 180ms por delete. 100% dos orfa
     if (!clean) return;
 
     const newHistory: LogEntry[] = [...history, { type: "input", text: clean }];
-
     const lower = clean.toLowerCase();
 
     if (lower === "clear" || lower === "cls") {
@@ -61,7 +59,16 @@ ACAO EXECUTADA: Script sequencial com backoff de 180ms por delete. 100% dos orfa
       return;
     }
 
-    if (lower.includes("axiom") || lower.includes("hostname") || lower.includes("zombie")) {
+    if (lower.includes("vision") || lower.includes("positivo") || lower.includes("r15m")) {
+      newHistory.push({
+        type: "output",
+        text: `[POSITIVO VISION R15M - ESPECIFICAÇÃO DE BAIXO NÍVEL]
+- Hardware: Display secundário LCD integrado no notebook Positivo Vision R15M.
+- Stack: C#, C++ (.NET) com P/Invoke Win32 API e comunicação serial RS-232/UART.
+- Telemetria: Coleta de métricas térmicas, bateria e CPU sem sobrecarga de clock.
+- Distribuição: Homologação e assinatura de código na Microsoft Store para imagem de fábrica OEM.`,
+      });
+    } else if (lower.includes("axiom") || lower.includes("hostname") || lower.includes("zombie")) {
       newHistory.push({
         type: "output",
         text: `[FORENSE AXIOM APL] Query executada com sucesso:
@@ -102,16 +109,10 @@ Status:      TODOS OS GATES DE QUALIDADE VERDES`,
       newHistory.push({
         type: "output",
         text: `CORE STACK & ARQUITETURA:
-- Backend: NestJS, Bun, Node.js, C#, .NET, C++, Python, PHP
-- Bancos de Dados: PostgreSQL, Drizzle ORM, PGlite (WASM), SQL Server, MariaDB, MySQL, MongoDB
-- DevOps & CI/CD: Jenkins, Docker, Linux, GitHub Actions, RabbitMQ
-- Observabilidade: Axiom APL, Pino Structured Logging, Cardinality Vacuuming
-- Frontend: Next.js 14, React, Tailwind CSS, TypeScript, Web Audio API`,
-      });
-    } else if (lower.includes("manifesto") || lower.includes("cat")) {
-      newHistory.push({
-        type: "output",
-        text: `"Engenharia nao e seguir receitas prontas. E ter a disciplina de investigar a causa raiz, nao mascarar erro com retry cego, provar que o teste falha sem o fix e garantir que o monolito seja verdadeiramente modular. Menos hype, mais resultado em producao."`,
+- Baixo Nível & Desktop: C#, C++, .NET, Windows UWP, Win32 API, Serial UART
+- Backend & Monolito: NestJS, Bun, Node.js, TypeScript, Python, PHP
+- Bancos de Dados: PostgreSQL, Drizzle ORM, PGlite (WASM), SQL Server, MariaDB, MySQL
+- DevOps & Observabilidade: Jenkins, Docker, Linux, Axiom APL, Pino Logging, RabbitMQ`,
       });
     } else if (lower.includes("cv") || lower.includes("download")) {
       sound.playSuccess();
@@ -130,11 +131,11 @@ Link: /cv.pdf`,
       newHistory.push({
         type: "system",
         text: `Comandos disponiveis:
+- vision: Inspeciona arquitetura da minitela do notebook Positivo Vision R15M
 - axiom: Replay da investigacao forense dos 562 containers zumbis
 - test: Executa suite de 714 testes reais em PGlite WASM
-- whoami: Exibe biografia e credenciais
+- whoami: Exibe credenciais e formacao academica
 - stack: Exibe matriz de tecnologias dominadas
-- cat manifesto.txt: Exibe manifesto de engenharia
 - cv: Abre / baixa curriculo em PDF
 - clear: Limpa o terminal`,
       });
@@ -159,65 +160,58 @@ Link: /cv.pdf`,
   };
 
   return (
-    <section id="terminal" className="py-20 bg-[#050508] border-b border-white/5 relative">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+    <section id="terminal" className="py-20 bg-[#050508] border-b border-white/10 relative font-mono text-left">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="space-y-2 mb-8">
-          <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-brand-cyan uppercase">
-            <TerminalIcon className="w-4 h-4" />
-            <span>// AUDITORIA FORENSE INTERATIVA</span>
+          <div className="text-xs font-bold tracking-widest text-brand-cyan uppercase">
+            [TERMINAL FORENSE DE PRODUÇÃO] // SHELL INTERATIVO
           </div>
           <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight">
-            TERMINAL DE TELEMETRIA EM TEMPO REAL
+            CONSOLE DE TELEMETRIA & REPLAY DE COMANDOS
           </h2>
-          <p className="text-sm sm:text-base text-slate-400">
-            Experimente comandos reais usados para desvendar anomalias de produção e validar centenas de testes automatizados.
+          <p className="text-sm sm:text-base text-slate-300 font-sans">
+            Comandos funcionais para inspecionar o caso Positivo Vision R15M, consultas APL no Axiom e execução de testes reais.
           </p>
         </div>
 
-        {/* Shortcut buttons */}
-        <div className="flex flex-wrap items-center gap-2 mb-4">
-          <span className="text-xs font-mono text-slate-500 mr-2">ATALHOS:</span>
+        {/* Shortcut buttons without icons */}
+        <div className="flex flex-wrap items-center gap-2 mb-4 text-xs">
+          <span className="text-slate-500 mr-1">[ATALHOS]:</span>
+          <button
+            onClick={() => executeCmd("vision")}
+            className="px-2.5 py-1 rounded bg-surface border border-white/10 hover:border-brand-lime text-brand-lime"
+          >
+            $ inspect --vision-r15m
+          </button>
           <button
             onClick={() => executeCmd("axiom")}
-            onMouseEnter={() => sound.playHover()}
-            className="px-2.5 py-1 rounded bg-surface border border-white/10 hover:border-brand-lime text-[11px] font-mono text-brand-lime"
+            className="px-2.5 py-1 rounded bg-surface border border-white/10 hover:border-brand-cyan text-brand-cyan"
           >
             $ axiom --forensics
           </button>
           <button
             onClick={() => executeCmd("test")}
-            onMouseEnter={() => sound.playHover()}
-            className="px-2.5 py-1 rounded bg-surface border border-white/10 hover:border-brand-cyan text-[11px] font-mono text-brand-cyan"
+            className="px-2.5 py-1 rounded bg-surface border border-white/10 hover:border-white text-slate-300"
           >
             $ test --pglite-wasm
           </button>
           <button
-            onClick={() => executeCmd("whoami")}
-            onMouseEnter={() => sound.playHover()}
-            className="px-2.5 py-1 rounded bg-surface border border-white/10 hover:border-white text-[11px] font-mono text-slate-300"
+            onClick={() => executeCmd("stack")}
+            className="px-2.5 py-1 rounded bg-surface border border-white/10 hover:border-white text-slate-300"
           >
-            $ whoami
-          </button>
-          <button
-            onClick={() => executeCmd("cat manifesto.txt")}
-            onMouseEnter={() => sound.playHover()}
-            className="px-2.5 py-1 rounded bg-surface border border-white/10 hover:border-white text-[11px] font-mono text-slate-300"
-          >
-            $ cat manifesto.txt
+            $ stack
           </button>
           <button
             onClick={() => executeCmd("cv")}
-            onMouseEnter={() => sound.playHover()}
-            className="px-2.5 py-1 rounded bg-surface border border-brand-lime/30 text-[11px] font-mono text-brand-lime bg-brand-lime/10"
+            className="px-2.5 py-1 rounded bg-brand-lime text-black font-bold"
           >
             $ download-cv
           </button>
           <button
             onClick={() => executeCmd("clear")}
-            onMouseEnter={() => sound.playHover()}
-            className="px-2.5 py-1 rounded bg-surface border border-white/10 text-[11px] font-mono text-slate-500 hover:text-slate-300"
+            className="px-2.5 py-1 rounded bg-surface border border-white/10 text-slate-500 hover:text-slate-300"
           >
             $ clear
           </button>
@@ -226,28 +220,22 @@ Link: /cv.pdf`,
         {/* Terminal Window */}
         <div className="rounded-xl terminal-window overflow-hidden border border-white/15 shadow-2xl">
           {/* Top Window Bar */}
-          <div className="bg-[#0e1017] px-4 py-2.5 flex items-center justify-between border-b border-white/10">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-500/80" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
-              <div className="w-3 h-3 rounded-full bg-green-500/80" />
-              <span className="text-xs font-mono text-slate-400 ml-2">
-                luiz@lyx-monolith: ~ (production telemetry)
-              </span>
+          <div className="bg-[#0e1017] px-4 py-2 flex items-center justify-between border-b border-white/10 text-xs">
+            <div className="flex items-center gap-2 text-slate-400">
+              <span className="text-brand-lime font-bold">[SHELL]</span>
+              <span>luiz@lyx-monolith:~ (telemetry stream)</span>
             </div>
 
             <button
               onClick={copySnippet}
-              className="flex items-center gap-1 text-[11px] font-mono text-slate-400 hover:text-white"
-              title="Copiar query forense"
+              className="text-[11px] text-slate-400 hover:text-white"
             >
-              {copied ? <Check className="w-3.5 h-3.5 text-brand-lime" /> : <Copy className="w-3.5 h-3.5" />}
-              <span>{copied ? "Copiada" : "Copiar APL"}</span>
+              {copied ? "[COPIADO]" : "[COPIAR APL QUERY]"}
             </button>
           </div>
 
           {/* Terminal Body */}
-          <div className="p-4 sm:p-6 font-mono text-xs sm:text-[13px] leading-relaxed max-h-[420px] overflow-y-auto space-y-3 bg-[#08090f]">
+          <div className="p-4 sm:p-6 text-xs sm:text-[13px] leading-relaxed max-h-[400px] overflow-y-auto space-y-3 bg-[#08090f]">
             {history.map((h, i) => (
               <div key={i} className="space-y-1">
                 {h.type === "input" && (
@@ -278,21 +266,21 @@ Link: /cv.pdf`,
               e.preventDefault();
               executeCmd(inputVal);
             }}
-            className="bg-[#0b0d14] px-4 py-3 border-t border-white/10 flex items-center gap-2 font-mono text-xs sm:text-sm"
+            className="bg-[#0b0d14] px-4 py-2.5 border-t border-white/10 flex items-center gap-2 text-xs sm:text-sm"
           >
             <span className="text-brand-lime font-bold shrink-0">guest@prod:~$</span>
             <input
               type="text"
               value={inputVal}
               onChange={(e) => setInputVal(e.target.value)}
-              placeholder="Digite um comando (ex: axiom, test, whoami, stack, cv)..."
+              placeholder="Digite: vision, axiom, test, stack, cv..."
               className="w-full bg-transparent text-white focus:outline-none placeholder:text-slate-600 font-mono"
             />
             <button
               type="submit"
-              className="p-1.5 rounded bg-brand-lime/20 text-brand-lime hover:bg-brand-lime hover:text-black transition-colors"
+              className="px-3 py-1 rounded bg-brand-lime text-black font-bold text-xs"
             >
-              <Play className="w-3.5 h-3.5" />
+              [ENVIAR]
             </button>
           </form>
         </div>

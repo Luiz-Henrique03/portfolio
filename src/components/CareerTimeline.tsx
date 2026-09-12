@@ -2,25 +2,22 @@
 
 import React from "react";
 import { CAREER_JOURNEY, EDUCATION_HONORS } from "@/data/portfolioData";
-import { sound } from "@/utils/sound";
-import { Briefcase, GraduationCap, Award, Calendar, CheckCircle2 } from "lucide-react";
 
 export default function CareerTimeline() {
   return (
-    <section id="journey" className="py-24 bg-[#07070a] border-b border-white/5 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+    <section id="journey" className="py-24 bg-[#07070a] border-b border-white/10 relative text-left font-mono">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="space-y-3 mb-16">
-          <div className="inline-flex items-center gap-2 text-xs font-mono font-bold tracking-widest text-brand-lime uppercase">
-            <span>// TRAJETÓRIA & ACADEMIA</span>
-            <span className="w-12 h-[1px] bg-brand-lime/40" />
+          <div className="text-xs font-bold tracking-widest text-brand-lime uppercase">
+            [TRAJETÓRIA PROFISSIONAL & ACADÊMICA] // EXPERIÊNCIA
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
             DO CÓDIGO EMBARCADO AOS MONOLITOS DISTRIBUÍDOS
           </h2>
-          <p className="text-sm sm:text-base text-slate-400 max-w-2xl">
-            Uma formação disciplinada desde a fábrica da Volkswagen e laboratórios de pesquisa até a liderança de módulos em produção.
+          <p className="text-sm sm:text-base text-slate-300 max-w-2xl font-sans">
+            Evolução prática desde chão de fábrica automotivo na Volkswagen até projetos OEM de hardware na Positivo Tecnologia e arquitetura core na LYX Engenharia.
           </p>
         </div>
 
@@ -28,35 +25,31 @@ export default function CareerTimeline() {
           
           {/* Professional Experience (7 cols) */}
           <div className="lg:col-span-7 space-y-8">
-            <h3 className="text-lg font-mono font-bold text-white uppercase flex items-center gap-2">
-              <Briefcase className="w-4 h-4 text-brand-lime" />
-              Histórico Profissional
-            </h3>
+            <div className="text-sm font-bold text-white uppercase pb-2 border-b border-white/10 flex items-center justify-between">
+              <span>// EXPERIÊNCIA PROFISSIONAL</span>
+              <span className="text-xs text-brand-lime">[MERCADO]</span>
+            </div>
 
-            <div className="relative border-l border-white/10 ml-3 pl-6 space-y-8">
+            <div className="relative border-l border-white/10 ml-2 pl-6 space-y-8">
               {CAREER_JOURNEY.map((job, idx) => (
-                <div
-                  key={idx}
-                  onMouseEnter={() => sound.playHover()}
-                  className="relative group space-y-2"
-                >
-                  {/* Pin icon on line */}
-                  <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-[#07070a] border-2 border-brand-lime group-hover:scale-125 transition-transform" />
+                <div key={idx} className="relative space-y-2">
+                  {/* Pin point on line */}
+                  <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-brand-lime" />
 
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="text-base sm:text-lg font-bold text-white group-hover:text-brand-lime transition-colors">
+                    <span className="text-base font-bold text-white">
                       {job.role}
                     </span>
-                    <span className="text-xs font-mono text-slate-400 bg-surface px-2 py-0.5 rounded border border-white/5">
+                    <span className="text-xs text-slate-400 bg-surface px-2 py-0.5 rounded border border-white/10">
                       {job.period}
                     </span>
                   </div>
 
-                  <div className="text-xs font-mono text-brand-cyan">
-                    {job.company} • <span className="text-slate-500">{job.type}</span>
+                  <div className="text-xs text-brand-cyan">
+                    {job.company} // <span className="text-slate-500">{job.type}</span>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-slate-300 font-sans leading-relaxed">
                     {job.description}
                   </p>
 
@@ -64,9 +57,9 @@ export default function CareerTimeline() {
                     {job.tags.map((t, i) => (
                       <span
                         key={i}
-                        className="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-muted text-slate-400 border border-white/5"
+                        className="text-[10px] px-2 py-0.5 rounded bg-surface-muted text-slate-400 border border-white/5"
                       >
-                        {t}
+                        #{t}
                       </span>
                     ))}
                   </div>
@@ -77,38 +70,37 @@ export default function CareerTimeline() {
 
           {/* Education & Honors (5 cols) */}
           <div className="lg:col-span-5 space-y-8">
-            <h3 className="text-lg font-mono font-bold text-white uppercase flex items-center gap-2">
-              <GraduationCap className="w-4 h-4 text-brand-cyan" />
-              Formação & Honras
-            </h3>
+            <div className="text-sm font-bold text-white uppercase pb-2 border-b border-white/10 flex items-center justify-between">
+              <span>// FORMAÇÃO & CERTIFICAÇÕES</span>
+              <span className="text-xs text-brand-cyan">[ACADEMIA]</span>
+            </div>
 
             <div className="space-y-4">
               {EDUCATION_HONORS.map((edu, idx) => (
                 <div
                   key={idx}
-                  onMouseEnter={() => sound.playHover()}
-                  className="p-5 rounded-xl bg-surface/80 border border-white/10 hover:border-brand-cyan/40 transition-all space-y-2 relative group"
+                  className="p-5 rounded-xl bg-surface border border-white/10 space-y-2"
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-mono font-bold text-brand-cyan bg-brand-cyan/10 px-2 py-0.5 rounded border border-brand-cyan/20">
-                      {edu.badge}
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-[10px] font-bold text-brand-cyan bg-brand-cyan/10 px-2 py-0.5 rounded border border-brand-cyan/20 uppercase">
+                      [{edu.badge}]
                     </span>
-                    <span className="text-xs font-mono text-slate-500">{edu.period}</span>
+                    <span className="text-slate-500">{edu.period}</span>
                   </div>
 
-                  <h4 className="text-sm sm:text-base font-bold text-white group-hover:text-brand-cyan transition-colors">
+                  <h4 className="text-sm font-bold text-white">
                     {edu.title}
                   </h4>
 
-                  <div className="text-xs font-mono text-brand-lime font-semibold">
+                  <div className="text-xs text-brand-lime font-bold">
                     {edu.highlight}
                   </div>
 
-                  <div className="text-xs text-slate-400 font-mono">
+                  <div className="text-xs text-slate-400">
                     {edu.institution}
                   </div>
 
-                  <p className="text-xs text-slate-300 leading-relaxed pt-1">
+                  <p className="text-xs text-slate-300 font-sans leading-relaxed pt-1">
                     {edu.description}
                   </p>
                 </div>

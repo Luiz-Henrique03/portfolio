@@ -1,120 +1,131 @@
 "use client";
 
 import React from "react";
-import { sound } from "@/utils/sound";
-import { Check, X, ShieldAlert, Cpu, Award, Zap } from "lucide-react";
 
 export default function ManifestoSection() {
-  const pillars = [
+  const proofs = [
     {
-      badge: "PILAR 01",
-      title: "Forense de Produção vs Tentativa e Erro",
-      amateur: "Reinicia o container, coloca console.log e torce pro bug fantasma não reaparecer.",
-      luizApproach:
-        "Analisa logs estruturados no Axiom com query APL, identifica container concorrente pela duração do evento (30min vs 20min) e limpa 562 órfãos sem derrubar a API do Microsoft Graph.",
-      tag: "Observabilidade Autorizada",
+      stack: "C# / C++ / .NET // BAIXO NÍVEL & DRIVERS",
+      role: "Positivo Tecnologia (Notebook Vision R15M)",
+      evidence:
+        "Implementação de interoperabilidade P/Invoke com Win32 API (kernel32), gerenciamento de buffers seriais para envio de frames gráficos a microcontrolador proprietário e ciclo de vida de processo em background no Windows UWP.",
+      impact:
+        "Minitela integrada ao chassi em produção de fábrica na linha Positivo Vision R15M, aprovada nas restrições de consumo de bateria e certificada oficialmente na Microsoft Store.",
+      tags: ["Win32 API", "Serial UART", "Buffers Binários", "MSIX", "Microsoft Store"],
     },
     {
-      badge: "PILAR 02",
-      title: "Monolito Modular vs Microserviços Prematuros",
-      amateur: "Separa 10 serviços com sagas complexas, consistência eventual quebrada e falhas de rede em cascata.",
-      luizApproach:
-        "Desenvolve 33 bounded contexts em 1 processo e 1 banco com transações ACID reais, enforçando fronteiras com dependency-cruiser no CI (zero imports de tabelas vizinhas).",
-      tag: "Arquitetura Pragmática",
+      stack: "NESTJS / BUN / TYPESCRIPT // MONOLITO MODULAR",
+      role: "LYX Engenharia (lyx-monolith)",
+      evidence:
+        "Estruturação de 33 bounded contexts em 1 processo e 1 banco com transações ACID completas. Enforçamento de fronteiras arquiteturais via dependency-cruiser no CI configurado como erro (zero imports de tabelas vizinhas ou internals).",
+      impact:
+        "410 commits e 86 PRs mergeadas em 5 meses, entregando 4 produtos de missão crítica do zero com custo marginal zero de infraestrutura e zero acoplamento indevido.",
+      tags: ["33 Módulos", "dependency-cruiser", "Trunk-based", "Injeção de Service"],
     },
     {
-      badge: "PILAR 03",
-      title: "Testes com Banco Real vs Mocks Ilusórios",
-      amateur: "Mocka o ORM, mocka a autenticação, mocka o banco. Os testes ficam verdes, mas a migration quebra no deploy.",
-      luizApproach:
-        "714 testes de integração rodando contra Postgres compilado em WebAssembly (PGlite) e Better Auth real. O volume de teste supera o código de produção.",
-      tag: "Confiabilidade Extrema",
+      stack: "POSTGRESQL / DRIZZLE ORM // BANCO & CONCORRÊNCIA",
+      role: "LYX Engenharia (Deploy & Migrations)",
+      evidence:
+        "Execução de migrations no boot do container novo antes de expor a porta HTTP, utilizando advisory locks do Postgres em conexão dedicada (pool max: 1) para prevenir condições de corrida entre réplicas simultâneas.",
+      impact:
+        "Eliminação total de deadlocks e inconsistências de schema em deploys start-first, com evolução de banco pelo padrão expand-contract (duas PRs com backfill para alterações destrutivas).",
+      tags: ["Advisory Locks", "Drizzle Kit", "Expand-Contract", "Transações ACID"],
     },
     {
-      badge: "PILAR 04",
-      title: "Do Baixo Nível ao Domínio Corporativo",
-      amateur: "Preso à bolha de frameworks web e assustado quando precisa tocar em hardware ou arquivos binários.",
-      luizApproach:
-        "Programa em C# e C++ para displays embarcados em notebooks Positivo, escreve parser de arquivos .mpp do MS Project em TS nativo (250ms p/ 2.490 tarefas) e fala a língua do negócio.",
-      tag: "Engenharia Integral",
+      stack: "PGLITE WASM // TESTES DE INTEGRAÇÃO REAIS",
+      role: "LYX Engenharia (Garantia de Qualidade)",
+      evidence:
+        "Configuração de esteira de testes rodando contra instância real do PostgreSQL compilada em WebAssembly (PGlite) e Better Auth real, banindo mocks de banco de dados e mocks de autenticação em services e controllers.",
+      impact:
+        "714 testes automatizados verdes bloqueantes no CI (volume de linhas de teste superior ao de código de produção na maioria dos módulos), com replay de motor contra dados reais de produção antes do merge.",
+      tags: ["714 Testes", "PGlite WASM", "Zero Mocks", "Better Auth Real"],
+    },
+    {
+      stack: "AXIOM APL & PINO // OBSERVABILIDADE & FORENSE",
+      role: "LYX Engenharia (Auditoria de Produção)",
+      evidence:
+        "Logs estruturados contendo hostname, evento canônico e IDs de domínio. Investigação de anomalias no agendamento através de query APL 'summarize count() by hostname, event' correlacionando a duração do evento (30min vs 20min) como assinatura técnica.",
+      impact:
+        "Identificação de container zumbi com build antiga apontando para banco divergente e erradicação sequencial com backoff de 562 eventos órfãos no Microsoft Teams sem interrupção de serviço.",
+      tags: ["Axiom APL", "Pino JSON", "Cardinalidade 257 colunas", "Backoff Seguro"],
+    },
+    {
+      stack: "PYTHON & LINUX // AUTOMAÇÃO DE REDE",
+      role: "FiscalTech / Caixa Econômica Federal",
+      evidence:
+        "Desenvolvimento de daemons Linux e rotinas de rede com sockets UDP para montagem e transmissão de pacotes mágicos Wake-On-LAN (WOL) para inicialização e controle remoto de estações de trabalho bancárias.",
+      impact:
+        "Operação remota de parque corporativo distribuído em rede heterogênea sem necessidade de intervenção física de técnicos nos locais.",
+      tags: ["Sockets UDP", "Wake-On-LAN", "Linux Daemons", "REST APIs"],
     },
   ];
 
   return (
-    <section className="py-24 bg-[#050508] relative overflow-hidden border-b border-white/5">
+    <section className="py-24 bg-[#06070a] border-b border-white/10 relative text-left font-mono">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Editorial Eyebrow & Title */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-gold/10 border border-brand-gold/30 text-brand-gold text-xs font-mono font-bold tracking-widest uppercase">
-            <Award className="w-3.5 h-3.5" />
-            <span>O CASO LUIZ HENRIQUE // POR QUE ELE?</span>
+        {/* Header */}
+        <div className="space-y-3 mb-14">
+          <div className="text-xs font-bold tracking-widest text-brand-lime uppercase">
+            [COMPROVAÇÕES DE DOMÍNIO TÉCNICO] // EVIDÊNCIAS DE ENGENHARIA
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight leading-tight">
-            A DIFERENÇA ENTRE QUEM CRIA CÓDIGO E QUEM <span className="text-brand-lime">RESOLVE O PROBLEMA</span>.
+          <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
+            PROVAS REAIS DE COMPETÊNCIA TÉCNICA
           </h2>
-          <p className="text-sm sm:text-base text-slate-400">
-            Em tempos onde qualquer um copia e cola templates gerados por IA, o diferencial real de um engenheiro está na capacidade de diagnosticar, blindar e arquitetar sistemas que sobrevivem à vida real.
+          <p className="text-sm sm:text-base text-slate-300 max-w-3xl">
+            Demonstração prática das linguagens, frameworks e bancos de dados dominados, acompanhados da implementação exata e do impacto mensurado em produção.
           </p>
         </div>
 
-        {/* Pillars Comparison Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-          {pillars.map((pillar, idx) => (
+        {/* 2-column Grid of Technical Proofs without icons */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {proofs.map((item, idx) => (
             <div
               key={idx}
-              onMouseEnter={() => sound.playHover()}
-              className="p-6 sm:p-7 rounded-2xl bg-surface/70 border border-white/10 hover:border-brand-lime/40 transition-all flex flex-col justify-between relative group"
+              className="p-6 rounded-xl bg-surface border border-white/10 hover:border-brand-lime/40 transition-all flex flex-col justify-between space-y-4"
             >
-              <div className="space-y-4">
-                {/* Header */}
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-black text-brand-lime bg-brand-lime/10 px-2 py-0.5 rounded border border-brand-lime/20">
-                    {pillar.badge}
+              <div className="space-y-3">
+                <div className="flex items-center justify-between pb-2 border-b border-white/10 text-xs">
+                  <span className="font-bold text-brand-lime">
+                    [{String(idx + 1).padStart(2, "0")}] {item.stack}
                   </span>
-                  <span className="text-[11px] font-mono text-slate-400 tracking-wider">
-                    {pillar.tag}
+                  <span className="text-slate-400 text-[11px]">{item.role}</span>
+                </div>
+
+                <div className="space-y-2 text-xs leading-relaxed">
+                  <div>
+                    <span className="text-slate-500 uppercase block text-[10px]">
+                      // Implementação & Mecanismo:
+                    </span>
+                    <p className="text-slate-300 font-sans text-xs sm:text-sm pt-0.5">
+                      {item.evidence}
+                    </p>
+                  </div>
+
+                  <div className="pt-2 border-t border-white/5">
+                    <span className="text-brand-cyan uppercase block text-[10px] font-bold">
+                      // Impacto Mensurado:
+                    </span>
+                    <p className="text-slate-200 font-sans text-xs sm:text-sm pt-0.5">
+                      {item.impact}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/10">
+                {item.tags.map((t, i) => (
+                  <span
+                    key={i}
+                    className="text-[10px] px-2 py-0.5 rounded bg-black/40 text-slate-400 border border-white/5"
+                  >
+                    #{t}
                   </span>
-                </div>
-
-                <h3 className="text-lg sm:text-xl font-black text-white">
-                  {pillar.title}
-                </h3>
-
-                {/* The Ordinary Way */}
-                <div className="p-3.5 rounded-lg bg-red-950/20 border border-red-500/20 space-y-1">
-                  <div className="flex items-center gap-2 text-xs font-bold text-red-400 uppercase font-mono">
-                    <X className="w-3.5 h-3.5 shrink-0" />
-                    <span>O Desenvolvedor Comum</span>
-                  </div>
-                  <p className="text-xs text-slate-300 leading-relaxed pl-5">
-                    {pillar.amateur}
-                  </p>
-                </div>
-
-                {/* The Luiz Henrique Way */}
-                <div className="p-3.5 rounded-lg bg-brand-lime/5 border border-brand-lime/30 space-y-1">
-                  <div className="flex items-center gap-2 text-xs font-bold text-brand-lime uppercase font-mono">
-                    <Check className="w-3.5 h-3.5 shrink-0" />
-                    <span>O Padrão Luiz Henrique</span>
-                  </div>
-                  <p className="text-xs text-slate-200 leading-relaxed pl-5 font-medium">
-                    {pillar.luizApproach}
-                  </p>
-                </div>
+                ))}
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Closing Quote Banner */}
-        <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-surface-muted via-[#10131e] to-surface-muted border border-white/10 text-center max-w-4xl mx-auto">
-          <p className="text-base sm:text-lg font-mono text-slate-200 italic">
-            &ldquo;A regra é simples: se o teste não falhar antes do fix, você não provou nada. Se a migration puder travar o banco, o deploy é irresponsável. Engenharia é rigor.&rdquo;
-          </p>
-          <div className="mt-3 text-xs font-mono text-brand-lime font-bold uppercase">
-            — Filosofia de Trabalho de Luiz Henrique
-          </div>
         </div>
 
       </div>
