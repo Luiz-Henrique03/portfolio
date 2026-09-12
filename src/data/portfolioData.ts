@@ -59,48 +59,27 @@ export const BI_DASHBOARDS = [
   {
     id: "bi-fiscalizacao",
     title: "BI de Fiscalização de Obras",
-    architecture: "Star Schema (Data Warehouse) + Pipeline ETL Atômico",
-    stack: ["Next.js (App Router)", "PostgreSQL", "Drizzle ORM", "Vitest", "Star Schema", "Advisory Locks"],
-    overview:
-      "Dashboard analítico que consolida o ciclo de fiscalização de obras (FVS liberadas, vistorias realizadas, não conformidades e reagendamentos). Os dados são extraídos do banco operacional e normalizados em modelo estrela no banco do BI.",
-    dimensions: [
-      { name: "bi.dim_obra", detail: "Obras ativas e limites contratuais de não conformidades" },
-      { name: "bi.dim_fiscal", detail: "Fiscais de campo com histórico de alocação" },
-      { name: "bi.dim_servico", detail: "Tipos de serviços e etapas de engenharia" },
-      { name: "bi.dim_empreiteiro", detail: "Razão social das empreiteiras terceirizadas para cobrança" },
-    ],
-    facts: [
-      { name: "bi.fact_fvs", detail: "Entrada do funil de fiscalizações liberadas" },
-      { name: "bi.fact_fiscalizacao", detail: "Registros de visitas técnicas em campo" },
-      { name: "bi.fact_nc", detail: "Não conformidades apontadas por card" },
-      { name: "bi.fact_nc_apontamento", detail: "Grão fino de apontamentos por serviço (heatmaps)" },
-      { name: "bi.fact_reagendamento", detail: "Reagendamentos categorizados por motivo" },
-    ],
-    technicalHighlights: [
-      "Isolamento total: o dashboard nunca consulta o banco operacional, protegendo a aplicação de concorrência com queries analíticas pesadas.",
-      "Full reload atômico: cada execução do ETL roda dentro de uma transação BEGIN...COMMIT com TRUNCATE, garantindo que o usuário nunca visualize dados pela metade.",
-      "Controle de concorrência: advisory lock do Postgres (chave dedicada 427914) que responde 409 locked para execuções simultâneas.",
-      "Correção de regra de negócio: substituição do responsável que digitou a ocorrência (161 de 165 registros apontavam para a mesma pessoa) pela razão social real da empreiteira terceirizada, viabilizando cobrança contratual fidedigna.",
+    objective: "Consolidação analítica do ciclo de vistorias de qualidade, liberação de serviços e não conformidades em canteiros de obras.",
+    architecture: "Modelagem dimensional (Star Schema) com pipeline de ETL automatizado em Next.js e PostgreSQL, desacoplando o banco analítico do operacional.",
+    impact: "Visibilidade executiva em tempo real de indicadores de qualidade, conformidade técnica e métricas contratuais de empreiteiras parceiras.",
+    stack: ["Next.js (App Router)", "PostgreSQL", "Drizzle ORM", "Vitest", "Star Schema"],
+    highlights: [
+      "Isolamento entre banco analítico e operacional, garantindo consultas rápidas sem impacto nas aplicações de canteiro.",
+      "Pipeline de ETL com atualização atômica e controle de concorrência no PostgreSQL.",
+      "Ajuste em regras de negócio para atribuição precisa de ocorrências por razão social de empresas contratadas.",
     ],
   },
   {
     id: "bi-impedimentos",
     title: "Torre de Controle de Impedimentos de Obra",
-    architecture: "Dashboard Operacional + Next.js Server Actions + Agregações em Memória",
-    stack: ["Next.js (App Router)", "React Server Actions", "PostgreSQL (bytea)", "Vitest", "Zod", "Resend API"],
-    overview:
-      "Sistema de monitoramento e tratativa de paralisações em canteiros de obras. Os dados nascem diretamente na interface (Projeto, Material, Processo e Produto) e são agregados em tempo real com controle rigoroso de SLA.",
-    kpis: [
-      { label: "SLA Padrão", value: "48h", detail: "Meta unificada corrida para todas as áreas" },
-      { label: "Faixas de Envelhecimento", value: "4 faixas", detail: "0-2d (verde), 3-7d (amarelo), 8-15d (laranja), >15d (vermelho)" },
-      { label: "Modo TV / Mural", value: "Player URL", detail: "Transição automática de slides em telas de obras via URL state" },
-      { label: "Segurança Server Action", value: "WHERE clause", detail: "Autorização no banco (exigirAutorUserId) em vez de apenas if no handler" },
-    ],
-    technicalHighlights: [
-      "Escrita direta via Server Actions com validação de sessão e gate de permissões por sub-tela.",
-      "Otimização de imagens: fotos de canteiro são redimensionadas no navegador antes do upload (de 5MB para ~300KB) e gravadas em bytea com verificação estrita de tamanho e mime type no servidor.",
-      "Modo TV / Mural de canteiro: mecanismo de rotação automática de telas para TVs de parede que preserva a capacidade de rolagem manual caso um usuário interaja.",
-      "Agregações puras em TypeScript: cálculo de evolução de 8 semanas, rankings e heatmaps processados em memória para resposta instantânea.",
+    objective: "Painel operacional em tempo real para registro, triagem e resolução de paralisações em canteiros de obras.",
+    architecture: "Aplicação em Next.js App Router com Server Actions para tratativas ágeis, controle automatizado de SLA (48h) e modo mural para TVs corporativas.",
+    impact: "Agilidade na resolução de gargalos operacionais (Projetos, Suprimentos e Execução), redução no tempo de obras paradas e histórico centralizado de decisões.",
+    stack: ["Next.js (App Router)", "React Server Actions", "PostgreSQL", "Zod", "Vitest"],
+    highlights: [
+      "Fluxo de tratativas em tempo real com controle de SLA e faixas visuais de envelhecimento de demandas.",
+      "Server Actions com autorização direta no banco de dados para segurança em operações críticas.",
+      "Modo TV automatizado para exibição contínua em telas de monitoramento nas centrais de engenharia.",
     ],
   },
 ];

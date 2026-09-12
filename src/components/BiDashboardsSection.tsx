@@ -14,13 +14,13 @@ export default function BiDashboardsSection() {
         {/* Section Header */}
         <div className="space-y-3 mb-12">
           <div className="text-xs font-bold tracking-widest text-brand-cyan uppercase">
-            [BUSINESS INTELLIGENCE & DADOS] // CASOS DE ENGENHARIA ANALÍTICA
+            [BUSINESS INTELLIGENCE & DADOS] // ENGENHARIA ANALÍTICA
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
-            DASHBOARDS DE ENGENHARIA & STAR SCHEMA
+            DASHBOARDS DE ENGENHARIA & BI
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-sans">
-            Construção de soluções de Business Intelligence de ponta a ponta: pipelines de ETL atômico, modelagem dimensional em Star Schema e aplicações analíticas em Next.js App Router com banco analítico dedicado.
+            Soluções de Business Intelligence e engenharia de dados desenvolvidas para apoiar decisões operacionais e estratégicas em canteiros de obras.
           </p>
         </div>
 
@@ -36,25 +36,25 @@ export default function BiDashboardsSection() {
                   : "bg-surface border-white/10 text-slate-400 hover:text-white"
               }`}
             >
-              [MÓDULO {idx + 1}] {bi.title}
+              [PROJETO {idx + 1}] {bi.title}
             </button>
           ))}
         </div>
 
-        {/* Active BI Showcase Card */}
-        <div className="p-6 sm:p-8 rounded-2xl bg-surface border border-white/15 space-y-8 shadow-2xl">
+        {/* High-Level Showcase Card */}
+        <div className="p-6 sm:p-8 rounded-2xl bg-surface border border-white/15 space-y-6 shadow-2xl">
           
-          {/* Header row */}
+          {/* Header Row */}
           <div className="flex flex-wrap items-start justify-between gap-4 pb-6 border-b border-white/10">
             <div>
-              <div className="text-xs text-brand-lime font-bold uppercase mb-1">
-                ARQUITETURA: {current.architecture}
+              <div className="text-xs text-brand-cyan font-bold uppercase mb-1">
+                SOLUÇÃO DE BUSINESS INTELLIGENCE
               </div>
               <h3 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight">
                 {current.title}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 font-sans mt-2 max-w-3xl">
-                {current.overview}
+              <p className="text-xs sm:text-sm text-slate-300 font-sans mt-2 max-w-3xl leading-relaxed">
+                {current.objective}
               </p>
             </div>
 
@@ -71,73 +71,44 @@ export default function BiDashboardsSection() {
             </div>
           </div>
 
-          {/* Model Breakdown: Dimensions & Facts (for Fiscalização) OR KPIs (for Impedimentos) */}
-          {current.dimensions && current.facts && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {/* Dimensions */}
-              <div className="p-5 rounded-xl bg-black/40 border border-white/5 space-y-3">
-                <div className="text-xs text-brand-lime font-bold uppercase pb-1 border-b border-white/10">
-                  // TABELAS DIMENSÃO (STAR SCHEMA)
-                </div>
-                <div className="space-y-2">
-                  {current.dimensions.map((dim, idx) => (
-                    <div key={idx} className="flex flex-col text-xs">
-                      <span className="text-white font-bold">{dim.name}</span>
-                      <span className="text-slate-400 font-sans text-[11px]">{dim.detail}</span>
-                    </div>
-                  ))}
-                </div>
+          {/* High-Level Architecture & Impact Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 font-sans">
+            
+            {/* Technical Approach */}
+            <div className="p-5 rounded-xl bg-black/40 border border-white/5 space-y-2">
+              <div className="text-xs font-mono font-bold text-brand-lime uppercase tracking-wider">
+                [ABORDAGEM TÉCNICA]
               </div>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                {current.architecture}
+              </p>
+            </div>
 
-              {/* Facts */}
-              <div className="p-5 rounded-xl bg-black/40 border border-white/5 space-y-3">
-                <div className="text-xs text-brand-cyan font-bold uppercase pb-1 border-b border-white/10">
-                  // TABELAS FATO (STAR SCHEMA)
-                </div>
-                <div className="space-y-2">
-                  {current.facts.map((fact, idx) => (
-                    <div key={idx} className="flex flex-col text-xs">
-                      <span className="text-white font-bold">{fact.name}</span>
-                      <span className="text-slate-400 font-sans text-[11px]">{fact.detail}</span>
-                    </div>
-                  ))}
-                </div>
+            {/* Business Impact */}
+            <div className="p-5 rounded-xl bg-brand-cyan/5 border border-brand-cyan/20 space-y-2">
+              <div className="text-xs font-mono font-bold text-brand-cyan uppercase tracking-wider">
+                [IMPACTO NO NEGÓCIO & OPERAÇÃO]
               </div>
+              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
+                {current.impact}
+              </p>
             </div>
-          )}
 
-          {/* KPIs if available */}
-          {current.kpis && (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {current.kpis.map((kpi, idx) => (
-                <div key={idx} className="p-4 rounded-xl bg-black/40 border border-white/5 space-y-1">
-                  <div className="text-xl sm:text-2xl font-black text-brand-cyan">
-                    {kpi.value}
-                  </div>
-                  <div className="text-xs font-bold text-white uppercase">
-                    {kpi.label}
-                  </div>
-                  <div className="text-[10px] text-slate-400 font-sans">
-                    {kpi.detail}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+          </div>
 
-          {/* Technical highlights */}
-          <div className="space-y-3">
-            <div className="text-xs text-slate-400 font-bold uppercase tracking-wider">
-              // DESTAQUES DE IMPLEMENTAÇÃO TÉCNICA
+          {/* Key Engineering Highlights */}
+          <div className="space-y-3 pt-2">
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+              // PONTOS CHAVE DA ENTREGA
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {current.technicalHighlights.map((th, idx) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+              {current.highlights.map((item, idx) => (
                 <div
                   key={idx}
                   className="p-3.5 rounded-lg bg-surface-muted border border-white/5 text-xs text-slate-300 font-sans flex items-start gap-2"
                 >
                   <span className="font-mono text-brand-cyan font-bold shrink-0">[OK]</span>
-                  <span>{th}</span>
+                  <span>{item}</span>
                 </div>
               ))}
             </div>
