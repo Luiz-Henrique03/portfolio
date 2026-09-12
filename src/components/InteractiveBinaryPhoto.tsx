@@ -141,33 +141,13 @@ export default function InteractiveBinaryPhoto() {
 
   return (
     <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl mx-auto font-mono">
-      {/* 1980s Analog CRT Outer Bezel with chassis brackets */}
-      <div className="absolute -inset-3 rounded-2xl bg-[#090b12] border-2 border-white/10 shadow-[0_0_40px_rgba(204,255,0,0.1)] pointer-events-none" />
-
-      {/* Chassis Screws / Crosshair corners */}
-      <div className="absolute -top-1.5 -left-1.5 text-xs text-brand-lime font-mono z-30 font-bold select-none">[+]</div>
-      <div className="absolute -top-1.5 -right-1.5 text-xs text-brand-lime font-mono z-30 font-bold select-none">[+]</div>
-      <div className="absolute -bottom-1.5 -left-1.5 text-xs text-brand-lime font-mono z-30 font-bold select-none">[+]</div>
-      <div className="absolute -bottom-1.5 -right-1.5 text-xs text-brand-lime font-mono z-30 font-bold select-none">[+]</div>
-
-      {/* Top Telemetry Header Tag */}
-      <div className="absolute -top-4.5 left-6 z-30 bg-[#07080d] px-3 py-0.5 text-[10px] font-mono text-brand-lime uppercase font-bold border border-brand-lime/40 rounded flex items-center gap-2">
-        <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-        <span>REC ● CH-01 // ANALOG_CRT_1984</span>
-      </div>
-
-      {/* Top-Right Baud Rate Tag */}
-      <div className="absolute -top-4.5 right-6 z-30 bg-[#07080d] px-2.5 py-0.5 text-[10px] font-mono text-brand-cyan uppercase font-bold border border-brand-cyan/30 rounded hidden sm:block">
-        BAUD: {stats.baud} // SYNC: OK
-      </div>
-
       {/* Main Image Container with Canvas Overlay */}
       <div
         ref={containerRef}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         onMouseMove={handleMouseMove}
-        className="relative w-full h-[460px] sm:h-[540px] md:h-[600px] rounded-xl overflow-hidden bg-black border-2 border-brand-lime/30 cursor-crosshair box-phosphor-lime transition-all duration-300"
+        className="relative w-full h-[460px] sm:h-[540px] md:h-[600px] rounded-2xl overflow-hidden bg-black border border-white/15 hover:border-brand-lime/40 cursor-crosshair shadow-2xl transition-all duration-300"
       >
         {/* Real Profile Photo */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -181,11 +161,8 @@ export default function InteractiveBinaryPhoto() {
           }`}
         />
 
-        {/* 1980s CRT Horizontal Scanlines Overlay */}
-        <div className="absolute inset-0 crt-scanlines pointer-events-none opacity-50 z-10" />
-
-        {/* CRT Convex Vignette Overlay */}
-        <div className="absolute inset-0 crt-vignette pointer-events-none z-10" />
+        {/* CRT Horizontal Scanlines Overlay */}
+        <div className="absolute inset-0 crt-scanlines pointer-events-none opacity-40 z-10" />
 
         {/* Fluid Binary & Hex Particles Canvas */}
         <canvas
@@ -193,38 +170,13 @@ export default function InteractiveBinaryPhoto() {
           className="absolute inset-0 w-full h-full pointer-events-none z-20"
         />
 
-        {/* Bottom CRT Status HUD */}
-        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/85 to-transparent p-5 z-30 font-mono text-left border-t border-brand-lime/20">
+        {/* Bottom Status bar inside the photo */}
+        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/80 to-transparent p-4 z-30 font-mono text-left">
           <div className="flex items-center justify-between text-xs text-brand-lime font-bold">
-            <span className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-brand-lime animate-ping" />
-              LUIZ HENRIQUE // OPERADOR
-            </span>
+            <span>LUIZ HENRIQUE</span>
             <span className="text-brand-cyan tracking-wider">{stats.bytes}</span>
           </div>
-
-          <div className="text-[11px] text-slate-300 mt-1 flex items-center justify-between font-mono">
-            <span>REGISTRO: {stats.stream}</span>
-            <span className="text-slate-400 text-[10px] hidden sm:inline">MOUSE HOVER: DECODIFICAR</span>
-          </div>
         </div>
-
-        {/* Corner Reticles inside frame */}
-        <div className="absolute top-3 left-3 text-brand-lime/70 text-xs font-mono pointer-events-none z-20">┌</div>
-        <div className="absolute top-3 right-3 text-brand-lime/70 text-xs font-mono pointer-events-none z-20">┐</div>
-        <div className="absolute bottom-16 left-3 text-brand-lime/70 text-xs font-mono pointer-events-none z-20">└</div>
-        <div className="absolute bottom-16 right-3 text-brand-lime/70 text-xs font-mono pointer-events-none z-20">┘</div>
-      </div>
-
-      {/* Bottom Frame Monospace Data Tag */}
-      <div className="absolute -bottom-4 left-6 z-30 bg-[#07080d] px-3 py-0.5 text-[10px] font-mono text-slate-400 border border-white/10 rounded flex items-center gap-2">
-        <span className="text-brand-lime font-bold">MEM: 640K OK</span>
-        <span>•</span>
-        <span>V-SYNC: LOCKED</span>
-      </div>
-
-      <div className="absolute -bottom-4 right-6 z-30 bg-[#07080d] px-3 py-0.5 text-[10px] font-mono text-brand-amber border border-amber-500/30 rounded text-amber-400 font-bold">
-        DISPONÍVEL // REMOTO
       </div>
     </div>
   );
