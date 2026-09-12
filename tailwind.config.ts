@@ -27,6 +27,7 @@ const config: Config = {
         },
       },
       fontFamily: {
+        serif: ["var(--font-serif)", "Playfair Display", "Georgia", "Cambria", "Times New Roman", "serif"],
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },

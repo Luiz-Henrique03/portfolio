@@ -21,10 +21,9 @@ export default function CareerTimeline() {
           className="space-y-3 mb-16"
         >
           <div className="text-xs font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-lime animate-ping" />
             <span>[TRAJETÓRIA PROFISSIONAL & ACADÊMICA] // REGISTRO TEMPORAL 1984_V2</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white uppercase tracking-tight">
             DO CÓDIGO EMBARCADO AOS MONOLITOS DISTRIBUÍDOS
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl font-sans">
@@ -44,7 +43,6 @@ export default function CareerTimeline() {
           >
             <div className="text-sm font-bold text-white uppercase pb-2 border-b border-white/10 flex items-center justify-between">
               <span className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-lime" />
                 // EXPERIÊNCIA PROFISSIONAL
               </span>
               <span className="text-xs text-brand-lime font-mono">[MERCADO]</span>
@@ -98,7 +96,6 @@ export default function CareerTimeline() {
           >
             <div className="text-sm font-bold text-white uppercase pb-2 border-b border-white/10 flex items-center justify-between">
               <span className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan" />
                 // FORMAÇÃO & CERTIFICAÇÕES
               </span>
               <span className="text-xs text-brand-cyan font-mono">[ACADEMIA]</span>

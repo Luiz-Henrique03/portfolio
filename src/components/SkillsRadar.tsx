@@ -23,10 +23,9 @@ export default function SkillsRadar() {
           className="space-y-3 mb-12"
         >
           <div className="text-xs font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-lime animate-ping" />
             <span>[ARSENAL TÉCNICO] // DOMÍNIO DE STACK 1984_V2</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white uppercase tracking-tight">
             TECNOLOGIAS E NÍVEL DE PROFICIÊNCIA
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl font-sans">

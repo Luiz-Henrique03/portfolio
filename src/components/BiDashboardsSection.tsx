@@ -24,10 +24,9 @@ export default function BiDashboardsSection() {
           className="space-y-3 mb-12"
         >
           <div className="text-xs font-bold tracking-widest text-brand-cyan uppercase flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan animate-ping" />
             <span>[BUSINESS INTELLIGENCE & DADOS] // ENGENHARIA ANALÍTICA</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white uppercase tracking-tight">
             DASHBOARDS DE ENGENHARIA & BI
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-sans">
@@ -76,10 +75,9 @@ export default function BiDashboardsSection() {
           <div className="flex flex-wrap items-start justify-between gap-4 pb-6 border-b border-white/10">
             <div>
               <div className="text-xs text-brand-cyan font-bold uppercase mb-1 flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-cyan" />
                 <span>SOLUÇÃO DE BUSINESS INTELLIGENCE // STAR_SCHEMA</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight phosphor-cyan">
+              <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white uppercase tracking-tight phosphor-cyan">
                 {current.title}
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 font-sans mt-2 max-w-3xl leading-relaxed">

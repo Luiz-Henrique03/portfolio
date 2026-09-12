@@ -66,15 +66,9 @@ export default function Hero() {
               {/* Top CRT Scanlines */}
               <div className="absolute inset-0 crt-scanlines opacity-30 pointer-events-none" />
 
-              {/* Terminal Title Bar */}
-              <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10 text-xs">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 inline-block" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-brand-lime inline-block" />
-                </div>
-
-                {!isTypingComplete && (
+              {/* Terminal Header */}
+              {!isTypingComplete && (
+                <div className="flex justify-end pb-3 mb-3 border-b border-white/10 text-xs">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -84,14 +78,14 @@ export default function Hero() {
                   >
                     [PULAR DIGITAÇÃO ⚡]
                   </button>
-                )}
-              </div>
+                </div>
+              )}
 
               {/* Dynamic Typewriter Stream Display */}
-              <div className="relative font-mono text-xs sm:text-sm text-slate-200 leading-relaxed max-h-[500px] overflow-y-auto pr-1">
-                <pre className="whitespace-pre-wrap font-mono font-medium select-text">
+              <div className="relative font-serif font-bold text-sm sm:text-base md:text-lg text-slate-100 leading-relaxed max-h-[500px] overflow-y-auto pr-1">
+                <pre className="whitespace-pre-wrap font-serif font-bold select-text">
                   {displayedText}
-                  <span className="inline-block w-2.5 h-4 bg-brand-lime ml-1 align-middle animate-cursor-blink shadow-[0_0_8px_#ccff00]" />
+                  <span className="inline-block w-2 h-5 bg-brand-lime ml-1 align-middle animate-cursor-blink shadow-[0_0_8px_#ccff00]" />
                 </pre>
               </div>
 
@@ -162,8 +156,7 @@ export default function Hero() {
           href="#vision-r15m"
           className="group flex flex-col items-center gap-2 text-xs font-mono text-slate-400 hover:text-brand-lime transition-all"
         >
-          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-white/10 group-hover:border-brand-lime/50 text-[10px] uppercase tracking-widest text-slate-300 group-hover:text-brand-lime transition-all">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-lime animate-ping" />
+          <div className="flex items-center gap-2 px-3 py-1 rounded bg-surface border border-white/10 group-hover:border-brand-lime/50 text-[10px] uppercase tracking-widest text-slate-300 group-hover:text-brand-lime transition-all">
             <span>ROLE A PÁGINA PARA FORMAR OS SISTEMAS</span>
           </div>
           <div className="text-brand-lime font-bold text-sm animate-bounce">

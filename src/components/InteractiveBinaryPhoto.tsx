@@ -16,7 +16,7 @@ export default function InteractiveBinaryPhoto() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isHovered, setIsHovered] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [stats, setStats] = useState({ bytes: "0x4C55495A", stream: "01001100 01010101", baud: "115200" });
+  const [stats, setStats] = useState({ bytes: "01001100", stream: "01001100 01010101", baud: "115200" });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -47,7 +47,7 @@ export default function InteractiveBinaryPhoto() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       if (isHovered) {
-        // Spawn binary characters near mouse pointer
+        // Spawn strictly binary characters (0 and 1) near mouse pointer
         if (particles.length < maxParticles) {
           for (let i = 0; i < 4; i++) {
             const angle = Math.random() * Math.PI * 2;
@@ -55,10 +55,10 @@ export default function InteractiveBinaryPhoto() {
             particles.push({
               x: mousePos.x + Math.cos(angle) * dist,
               y: mousePos.y + Math.sin(angle) * dist,
-              char: Math.random() > 0.6 ? (Math.random() > 0.5 ? "1" : "0") : Math.floor(Math.random() * 16).toString(16).toUpperCase(),
+              char: Math.random() > 0.5 ? "1" : "0",
               speed: 45 + Math.random() * 95,
               alpha: 0.95,
-              size: 11 + Math.floor(Math.random() * 6),
+              size: 12 + Math.floor(Math.random() * 6),
             });
           }
         }
@@ -71,7 +71,7 @@ export default function InteractiveBinaryPhoto() {
         p.alpha -= 0.75 * delta;
 
         if (Math.random() < 0.1) {
-          p.char = Math.random() > 0.5 ? (p.char === "1" ? "0" : "1") : Math.floor(Math.random() * 16).toString(16).toUpperCase();
+          p.char = p.char === "1" ? "0" : "1";
         }
 
         if (p.alpha <= 0 || p.y > canvas.height) {
@@ -87,32 +87,23 @@ export default function InteractiveBinaryPhoto() {
         ctx.shadowBlur = 0;
       }
 
-      // If hovered, render retro 1980s HUD reticle with tracking crosshairs
+      // If hovered, render smooth targeting crosshair without numeric clutter
       if (isHovered) {
         // Outer targeting circle
-        ctx.strokeStyle = "rgba(204, 255, 0, 0.45)";
+        ctx.strokeStyle = "rgba(204, 255, 0, 0.4)";
         ctx.lineWidth = 1;
         ctx.beginPath();
-        ctx.arc(mousePos.x, mousePos.y, 48, 0, Math.PI * 2);
+        ctx.arc(mousePos.x, mousePos.y, 45, 0, Math.PI * 2);
         ctx.stroke();
 
         // Crosshairs
-        ctx.strokeStyle = "rgba(0, 240, 255, 0.6)";
+        ctx.strokeStyle = "rgba(0, 240, 255, 0.55)";
         ctx.beginPath();
-        ctx.moveTo(mousePos.x - 60, mousePos.y);
-        ctx.lineTo(mousePos.x + 60, mousePos.y);
-        ctx.moveTo(mousePos.x, mousePos.y - 60);
-        ctx.lineTo(mousePos.x, mousePos.y + 60);
+        ctx.moveTo(mousePos.x - 50, mousePos.y);
+        ctx.lineTo(mousePos.x + 50, mousePos.y);
+        ctx.moveTo(mousePos.x, mousePos.y - 50);
+        ctx.lineTo(mousePos.x, mousePos.y + 50);
         ctx.stroke();
-
-        // Telemetry coordinate badge
-        ctx.font = "10px ui-monospace, monospace";
-        ctx.fillStyle = "rgba(204, 255, 0, 0.9)";
-        ctx.fillText(
-          `[LOC: ${Math.round(mousePos.x)},${Math.round(mousePos.y)}]`,
-          mousePos.x + 14,
-          mousePos.y - 14
-        );
       }
 
       animationFrameId = requestAnimationFrame(render);
@@ -133,10 +124,8 @@ export default function InteractiveBinaryPhoto() {
     const y = e.clientY - rect.top;
     setMousePos({ x, y });
 
-    const bin1 = Math.floor(Math.random() * 256).toString(2).padStart(8, "0");
-    const bin2 = Math.floor(Math.random() * 256).toString(2).padStart(8, "0");
-    const hex = "0x" + Math.floor(Math.random() * 65535).toString(16).toUpperCase();
-    setStats({ bytes: hex, stream: `${bin1} ${bin2}`, baud: "115200" });
+    const b = Array.from({ length: 8 }, () => (Math.random() > 0.5 ? "1" : "0")).join("");
+    setStats({ bytes: b, stream: b, baud: "115200" });
   };
 
   return (

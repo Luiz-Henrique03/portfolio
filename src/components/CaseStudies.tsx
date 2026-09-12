@@ -23,10 +23,9 @@ export default function CaseStudies() {
           className="space-y-3 mb-12"
         >
           <div className="text-xs font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-lime animate-ping" />
             <span>[PORTFÓLIO DE PROJETOS] // MAINFRAME DE ENGENHARIA</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white uppercase tracking-tight">
             PROJETOS DE SOFTWARE DESENVOLVIDOS
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-sans">
@@ -92,7 +91,7 @@ export default function CaseStudies() {
                   {selectedProject.context} // {selectedProject.period}
                 </span>
               </div>
-              <h3 className="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight phosphor-lime">
+              <h3 className="text-2xl sm:text-4xl font-serif font-bold text-white uppercase tracking-tight phosphor-lime">
                 {selectedProject.title}
               </h3>
               <p className="text-sm text-slate-300 font-sans mt-2 max-w-3xl">

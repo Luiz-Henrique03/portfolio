@@ -47,11 +47,10 @@ export default function ContactCTA() {
           <div className="absolute bottom-2 right-2 text-[10px] text-brand-lime/40 select-none">[+]</div>
           
           <div className="text-xs font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-lime animate-ping" />
             <span>[CONTRATAÇÃO & CONTATO PROFISSIONAL] // CANAL DIRETO</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight leading-tight phosphor-lime">
+          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white uppercase tracking-tight leading-tight phosphor-lime">
             CONTATO DIRETO & OPORTUNIDADES DE ENGENHARIA
           </h2>
 

@@ -53,7 +53,7 @@ export default function Navbar() {
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-bold text-xs tracking-wider uppercase text-white hover:text-brand-lime transition-colors">
+              <span className="font-serif font-bold text-sm tracking-wider uppercase text-white hover:text-brand-lime transition-colors">
                 LUIZ HENRIQUE
               </span>
             </div>

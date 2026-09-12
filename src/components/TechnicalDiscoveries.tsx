@@ -27,10 +27,9 @@ export default function TechnicalDiscoveries() {
           className="space-y-3 mb-12"
         >
           <div className="text-xs font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-lime animate-ping" />
             <span>[ENGENHARIA NA PRÁTICA] // RELATÓRIOS FORENSES DE PRODUÇÃO</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white uppercase tracking-tight">
             CASOS DE DIAGNÓSTICO E SOLUÇÃO TÉCNICA
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-sans">

@@ -52,7 +52,7 @@ export const CORE_METRICS = [
   { label: "Software Embarcado OEM", value: "Vision R15M", detail: "Drivers C#/C++, Win32 P/Invoke e UWP publicado na Microsoft Store" },
   { label: "Engenharia de Dados & BI", value: "Star Schema", detail: "Data Warehouse, pipelines de ETL atômicos e Next.js App Router" },
   { label: "Testes Automatizados", value: "700+ Testes", detail: "Testes de integração reais com PostgreSQL WASM (PGlite) sem mocks" },
-  { label: "Arquitetura & Microsserviços", value: "Full-Stack", detail: "NestJS, Bun, .NET, Python, TypeScript e sistemas em produção" },
+  { label: "Stack", value: "Full-Stack", detail: "NestJS, Bun, .NET, Python, TypeScript e sistemas em produção" },
 ];
 
 export const BI_DASHBOARDS = [

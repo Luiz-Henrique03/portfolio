@@ -21,10 +21,9 @@ export default function StatsGrid() {
           className="space-y-2 mb-12"
         >
           <div className="text-xs font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-lime animate-ping" />
             <span>[MÉTRICAS & CREDENCIAIS TÉCNICAS] // REGISTRO 1984_V2</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-white uppercase tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white uppercase tracking-tight">
             INDICADORES DE FORMAÇÃO E IMPACTO
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl font-sans">
