@@ -1,126 +1,189 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import InteractiveBinaryPhoto from "./InteractiveBinaryPhoto";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 
 export default function Hero() {
+  const fullBioText = useMemo(() => [
+    "> INICIALIZANDO TERMINAL ANALÓGICO // SISTEMA LH-1984...",
+    "> OPERADOR: LUIZ HENRIQUE DA SILVA DE OLIVEIRA",
+    "> FUNÇÃO: DESENVOLVEDOR DE SOFTWARE FULL-STACK & ARQUITETO",
+    "> LOCALIZAÇÃO: CURITIBA - PR // DISPONÍVEL REMOTO",
+    "----------------------------------------------------------------------",
+    "Bacharel em Ciência da Computação pela Universidade Positivo (Média Global 8.74, 3º lugar na Maratona de Programação) e certificado CS50x pela Harvard University, com proficiência em inglês C1 Advanced.",
+    "",
+    "Atuação sólida na engenharia de software de ponta a ponta, unindo baixo nível, resiliência de sistemas e arquitetura de dados:",
+    "",
+    "• HARDWARE OEM & BAIXO NÍVEL: Desenvolvimento em C#, C++ e chamadas Win32 nativas (P/Invoke) para controle de barramento serial e drivers da minitela embutida no notebook Positivo Vision R15M, com aplicação UWP homologada na Microsoft Store.",
+    "",
+    "• BACKEND & MICROSSERVIÇOS: Arquitetura de microsserviços de alta concorrência em NestJS, Bun e TypeScript, com circuit breakers, resiliência contra falhas de rede e suíte com mais de 700 testes automatizados reais rodando sobre PostgreSQL WASM (PGlite).",
+    "",
+    "• ENGENHARIA DE DADOS & BI: Modelagem dimensional Star Schema (dimensões e fatos), pipelines de ETL atômicos serializados por advisory locks no PostgreSQL e dashboards operacionais em tempo real com Next.js App Router e Server Actions.",
+    "----------------------------------------------------------------------",
+    "> [STATUS]: NÚCLEO OPERACIONAL CARREGADO COM SUCESSO.",
+    "> [AÇÃO]: ROLE A PÁGINA PARA INSPECIONAR OS PROJETOS E DADOS ▾"
+  ].join("\n"), []);
+
+  const [charIndex, setCharIndex] = useState(0);
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+
+  useEffect(() => {
+    if (charIndex < fullBioText.length) {
+      // Stream characters at dynamic pace (~12ms per tick, streaming 1-3 chars for natural feel)
+      const timeout = setTimeout(() => {
+        const step = Math.random() > 0.4 ? 2 : 1;
+        setCharIndex((prev) => Math.min(prev + step, fullBioText.length));
+      }, 14);
+      return () => clearTimeout(timeout);
+    } else {
+      setIsTypingComplete(true);
+    }
+  }, [charIndex, fullBioText]);
+
+  const handleInstantComplete = () => {
+    setCharIndex(fullBioText.length);
+    setIsTypingComplete(true);
+  };
+
+  const displayedText = fullBioText.slice(0, charIndex);
+
   return (
-    <section className="relative pt-28 pb-20 md:pt-36 md:pb-28 overflow-hidden text-left font-mono">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section className="min-h-screen flex flex-col justify-between pt-24 pb-10 relative overflow-hidden font-mono text-left">
+      {/* 1980s Ambient Phosphor Glow Backgrounds */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-lime/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-brand-cyan/5 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Main Grid: Prominent Large Photo + Dynamic Typewriter Terminal */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* Main Info Column (7 cols) */}
-          <div className="lg:col-span-7 space-y-6">
-            
-            {/* Header Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-surface border border-white/10 text-[11px] font-bold text-slate-300 uppercase">
-              CURITIBA - PR // ENGENHARIA DE SOFTWARE
-            </div>
-
-            {/* Title & Stacks */}
-            <div className="space-y-2">
-              <h1 className="text-4xl sm:text-6xl xl:text-7xl font-black tracking-tight uppercase leading-[0.95] text-white">
-                {PERSONAL_INFO.callsign}
-              </h1>
-              <div className="text-sm sm:text-lg font-bold text-brand-lime tracking-tight uppercase">
-                DESENVOLVEDOR DE SOFTWARE FULL-STACK
-              </div>
-            </div>
-
-            {/* Direct, Grounded & Technical Description */}
-            <p className="text-sm sm:text-base text-slate-300 font-sans leading-relaxed max-w-2xl">
-              Bacharel em Ciência da Computação pela Universidade Positivo (Média Global 8.74, 3º lugar na Maratona de Programação) e certificado CS50x pela Harvard University. 
-              Atuação prática no desenvolvimento de software de ponta a ponta: engenharia de software embarcado e desktop em <strong className="text-white">C#, C++ e .NET</strong> integrada a hardware OEM para a Positivo Tecnologia, sistemas backend e microsserviços em <strong className="text-white">NestJS, Bun, TypeScript e Python</strong>, e engenharia de dados com <strong className="text-white">Next.js App Router, Star Schema e pipelines de ETL</strong>.
-            </p>
-
-            {/* Core Competency Chips */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
-              <div className="p-3 rounded-lg bg-surface border border-white/10 space-y-1">
-                <div className="text-brand-lime font-bold text-[11px] uppercase">
-                  [HARDWARE & DESKTOP OEM]
-                </div>
-                <div className="text-slate-300 font-sans text-xs">
-                  Positivo Vision R15M: Minitela integrada via barramento serial, P/Invoke Win32, C#, C++ e homologação na Microsoft Store.
-                </div>
-              </div>
-
-              <div className="p-3 rounded-lg bg-surface border border-white/10 space-y-1">
-                <div className="text-brand-cyan font-bold text-[11px] uppercase">
-                  [BI & ENGENHARIA DE DADOS]
-                </div>
-                <div className="text-slate-300 font-sans text-xs">
-                  Dashboards em Next.js App Router com Star Schema (4 dimensões, 5 fatos), ETL atômico e advisory locks no PostgreSQL.
-                </div>
-              </div>
-
-              <div className="p-3 rounded-lg bg-surface border border-white/10 space-y-1">
-                <div className="text-slate-200 font-bold text-[11px] uppercase">
-                  [BACKEND & CONCORRÊNCIA]
-                </div>
-                <div className="text-slate-300 font-sans text-xs">
-                  Módulos corporativos em NestJS e Bun, circuit breakers, advisory locks em migrations e 714 testes reais em Postgres WASM (PGlite).
-                </div>
-              </div>
-
-              <div className="p-3 rounded-lg bg-surface border border-white/10 space-y-1">
-                <div className="text-slate-200 font-bold text-[11px] uppercase">
-                  [REDES & INFRAESTRUTURA]
-                </div>
-                <div className="text-slate-300 font-sans text-xs">
-                  Daemons em Linux com sockets UDP para Wake-On-LAN na Caixa Econômica, além de automação de CI/CD com Jenkins e Docker.
-                </div>
-              </div>
-            </div>
-
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-2 text-xs">
-              <a
-                href="#vision-r15m"
-                className="px-5 py-3 rounded-lg bg-brand-lime hover:bg-brand-limeHover text-black font-bold uppercase tracking-wider transition-all"
-              >
-                [VER POSITIVO VISION R15M]
-              </a>
-
-              <a
-                href="#bi-dashboards"
-                className="px-5 py-3 rounded-lg bg-surface hover:bg-surface-hover border border-white/10 text-brand-cyan font-bold uppercase transition-all"
-              >
-                [VER DASHBOARDS DE BI]
-              </a>
-
-              <a
-                href={PERSONAL_INFO.cvPath}
-                download="Cv_Luiz_Henrique_da_Silva_de_Oliveira.pdf"
-                className="px-4 py-3 rounded-lg bg-surface border border-white/10 hover:border-brand-lime text-slate-300 hover:text-white uppercase transition-all"
-              >
-                [BAIXAR CV PDF]
-              </a>
-            </div>
-
-            {/* Direct Contacts Info */}
-            <div className="pt-2 text-xs text-slate-400 flex flex-wrap items-center gap-4">
-              <span>E-MAIL: {PERSONAL_INFO.email}</span>
-              <span>•</span>
-              <span>TEL: {PERSONAL_INFO.phone}</span>
-              <span>•</span>
-              <a href={PERSONAL_INFO.github} target="_blank" rel="noreferrer" className="text-brand-lime hover:underline">
-                GITHUB
-              </a>
-              <span>•</span>
-              <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noreferrer" className="text-brand-cyan hover:underline">
-                LINKEDIN
-              </a>
-            </div>
-
-          </div>
-
-          {/* Interactive Binary Photo Column (5 cols) */}
-          <div className="lg:col-span-5">
+          {/* Left: Prominent, Enlarged Interactive Photo with 1980s Analog CRT Framing (5 cols) */}
+          <div className="lg:col-span-5 flex justify-center order-2 lg:order-1">
             <InteractiveBinaryPhoto />
           </div>
 
+          {/* Right: Dynamic Typewriter Terminal Screen (7 cols) */}
+          <div className="lg:col-span-7 order-1 lg:order-2 space-y-4">
+            
+            {/* Terminal Window Frame */}
+            <div
+              onClick={!isTypingComplete ? handleInstantComplete : undefined}
+              className="relative rounded-2xl bg-[#080a0f]/95 border-2 border-brand-lime/30 shadow-[0_0_35px_rgba(204,255,0,0.1)] p-5 sm:p-7 overflow-hidden cursor-pointer group"
+            >
+              {/* Top CRT Scanlines */}
+              <div className="absolute inset-0 crt-scanlines opacity-30 pointer-events-none" />
+
+              {/* Terminal Title Bar */}
+              <div className="flex flex-wrap items-center justify-between pb-3 mb-4 border-b border-white/10 text-xs gap-2">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 inline-block" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-brand-lime inline-block" />
+                  <span className="ml-2 font-bold text-slate-300 text-[11px] sm:text-xs tracking-wider">
+                    LUIZ_HENRIQUE // TTY-1 [CRT 1984]
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-3 text-[10px] text-slate-400">
+                  <span className="text-brand-lime font-bold">STATUS: {isTypingComplete ? "ONLINE" : "BOOTING"}</span>
+                  {!isTypingComplete && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleInstantComplete();
+                      }}
+                      className="px-2 py-0.5 rounded bg-surface border border-brand-lime/40 text-brand-lime hover:bg-brand-lime hover:text-black transition-all"
+                    >
+                      [PULAR DIGITAÇÃO ⚡]
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* Dynamic Typewriter Stream Display */}
+              <div className="relative font-mono text-xs sm:text-sm text-slate-200 leading-relaxed max-h-[500px] overflow-y-auto pr-1">
+                <pre className="whitespace-pre-wrap font-mono font-medium select-text">
+                  {displayedText}
+                  <span className="inline-block w-2.5 h-4 bg-brand-lime ml-1 align-middle animate-cursor-blink shadow-[0_0_8px_#ccff00]" />
+                </pre>
+              </div>
+
+              {/* Bottom Terminal Telemetry Footer */}
+              <div className="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between text-[10px] text-slate-400 gap-2">
+                <div className="flex items-center gap-3">
+                  <span className="text-brand-cyan">HARVARD CS50x</span>
+                  <span>•</span>
+                  <span className="text-brand-lime">EF SET C1 ENGLISH</span>
+                  <span>•</span>
+                  <span>POS_TECH OEM</span>
+                </div>
+                <div className="text-slate-500">
+                  {!isTypingComplete ? "DIGITANDO EM TEMPO REAL..." : "CLIQUE PARA REVISITAR"}
+                </div>
+              </div>
+
+              {/* Retro Corner Accents */}
+              <div className="absolute top-1 left-1 text-brand-lime/50 text-[10px] pointer-events-none">┌</div>
+              <div className="absolute top-1 right-1 text-brand-lime/50 text-[10px] pointer-events-none">┐</div>
+              <div className="absolute bottom-1 left-1 text-brand-lime/50 text-[10px] pointer-events-none">└</div>
+              <div className="absolute bottom-1 right-1 text-brand-lime/50 text-[10px] pointer-events-none">┘</div>
+            </div>
+
+            {/* Direct Link Badges */}
+            <div className="flex flex-wrap items-center justify-between gap-3 text-xs pt-1 px-1">
+              <div className="flex items-center gap-3 text-[11px] text-slate-400">
+                <span>E-MAIL: <strong className="text-white">{PERSONAL_INFO.email}</strong></span>
+                <span>•</span>
+                <span>TEL: <strong className="text-white">{PERSONAL_INFO.phone}</strong></span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <a
+                  href={PERSONAL_INFO.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-3 py-1 rounded bg-surface border border-white/10 hover:border-brand-lime text-slate-300 hover:text-white text-[11px] transition-all"
+                >
+                  [GITHUB]
+                </a>
+                <a
+                  href={PERSONAL_INFO.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-3 py-1 rounded bg-surface border border-white/10 hover:border-brand-cyan text-slate-300 hover:text-white text-[11px] transition-all"
+                >
+                  [LINKEDIN]
+                </a>
+                <a
+                  href={PERSONAL_INFO.cvPath}
+                  download="Cv_Luiz_Henrique_da_Silva_de_Oliveira.pdf"
+                  className="px-3 py-1 rounded bg-brand-lime/10 border border-brand-lime/40 text-brand-lime hover:bg-brand-lime hover:text-black font-bold text-[11px] transition-all"
+                >
+                  [CV PDF]
+                </a>
+              </div>
+            </div>
+
+          </div>
+
         </div>
+      </div>
+
+      {/* Retro 1980s Animated Scroll Prompter at bottom of the initial screen */}
+      <div className="w-full flex flex-col items-center justify-center pt-8 z-20 select-none">
+        <a
+          href="#vision-r15m"
+          className="group flex flex-col items-center gap-2 text-xs font-mono text-slate-400 hover:text-brand-lime transition-all"
+        >
+          <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-white/10 group-hover:border-brand-lime/50 text-[10px] uppercase tracking-widest text-slate-300 group-hover:text-brand-lime transition-all">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-lime animate-ping" />
+            <span>ROLE A PÁGINA PARA FORMAR OS SISTEMAS</span>
+          </div>
+          <div className="text-brand-lime font-bold text-sm animate-bounce">
+            ▼
+          </div>
+        </a>
       </div>
     </section>
   );

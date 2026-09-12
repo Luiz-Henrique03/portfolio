@@ -16,9 +16,13 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#060709] bg-grid-pattern relative selection:bg-brand-lime selection:text-black">
+    <main className="min-h-screen bg-[#060709] bg-grid-pattern relative selection:bg-brand-lime selection:text-black font-mono">
       {/* 3D WebGL Canvas Layer (Three.js Cursor-reactive) */}
       <ThreeCanvas />
+
+      {/* Global 1980s Analog CRT Scanlines & Vignette Layer */}
+      <div className="fixed inset-0 crt-scanlines opacity-15 pointer-events-none z-30" />
+      <div className="fixed inset-0 crt-vignette opacity-50 pointer-events-none z-30" />
 
       {/* Main Structural Components */}
       <div className="relative z-10">

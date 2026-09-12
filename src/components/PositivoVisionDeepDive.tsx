@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function PositivoVisionDeepDive() {
   const [activeLayer, setActiveLayer] = useState<"hardware" | "firmware" | "store">("hardware");
@@ -69,13 +70,23 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
   };
 
   return (
-    <section id="vision-r15m" className="py-24 bg-[#08090d] border-b border-white/10 relative text-left">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="vision-r15m" className="py-24 bg-[#08090d] border-b border-white/10 relative text-left overflow-hidden">
+      {/* Subtle CRT scanline overlay */}
+      <div className="absolute inset-0 crt-scanlines opacity-15 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="space-y-3 mb-12">
-          <div className="text-xs font-mono font-bold tracking-widest text-brand-lime uppercase">
-            [ENGENHARIA DE HARDWARE EMBARCADO] // CASE DE IMPACTO
+        {/* Section Header with Motion */}
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-70px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="space-y-3 mb-12"
+        >
+          <div className="text-xs font-mono font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-lime animate-ping" />
+            <span>[ENGENHARIA DE HARDWARE EMBARCADO] // CASE DE IMPACTO OEM</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
             POSITIVO VISION R15M: MINITELA EMBARCADA
@@ -83,14 +94,20 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
           <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-mono">
             Desenvolvimento completo da camada de software e integração de baixo nível para a mini tela física integrada no chassi do notebook Positivo Vision R15M. Do barramento serial à publicação na Microsoft Store.
           </p>
-        </div>
+        </motion.div>
 
         {/* Product Showcase + Architecture Breakdown Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left: Product Image and Hardware Telemetry specs (5 cols) */}
-          <div className="lg:col-span-5 space-y-4">
-            <div className="rounded-2xl bg-black border border-white/15 p-4 overflow-hidden relative group">
+          <motion.div
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-70px" }}
+            transition={{ duration: 0.75, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 space-y-4"
+          >
+            <div className="rounded-2xl bg-black border border-white/15 p-4 overflow-hidden relative group box-phosphor-lime">
               {/* Monospace frame tags */}
               <div className="flex items-center justify-between pb-3 border-b border-white/10 text-[11px] font-mono text-slate-400">
                 <span>HARDWARE: POSITIVO VISION R15M</span>
@@ -135,10 +152,16 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
                 <span className="font-bold text-white">Publicado na Microsoft Store</span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right: Technical Layer Switcher & Evidence (7 cols) */}
-          <div className="lg:col-span-7 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-70px" }}
+            transition={{ duration: 0.75, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7 space-y-6"
+          >
             
             {/* Layer Buttons */}
             <div className="grid grid-cols-3 gap-2">
@@ -221,7 +244,7 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
               </div>
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
 

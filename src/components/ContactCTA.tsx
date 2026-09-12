@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 import confetti from "canvas-confetti";
+import { motion } from "framer-motion";
 
 export default function ContactCTA() {
   const [copiedEmail, setCopiedEmail] = useState(false);
@@ -28,14 +29,29 @@ export default function ContactCTA() {
 
   return (
     <section className="py-24 bg-[#050508] relative overflow-hidden text-left font-mono">
+      {/* Background CRT scanlines */}
+      <div className="absolute inset-0 crt-scanlines opacity-15 pointer-events-none" />
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="rounded-2xl bg-surface border border-white/15 p-8 sm:p-12 lg:p-14 shadow-2xl space-y-6">
+        <motion.div
+          initial={{ opacity: 0, y: 40, scale: 0.98 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          viewport={{ once: true, margin: "-70px" }}
+          transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+          className="rounded-2xl bg-[#090b14] border-2 border-brand-lime/30 p-8 sm:p-12 lg:p-14 shadow-2xl space-y-6 relative box-phosphor-lime overflow-hidden"
+        >
+          {/* Corner crosshairs */}
+          <div className="absolute top-2 left-2 text-[10px] text-brand-lime/40 select-none">[+]</div>
+          <div className="absolute top-2 right-2 text-[10px] text-brand-lime/40 select-none">[+]</div>
+          <div className="absolute bottom-2 left-2 text-[10px] text-brand-lime/40 select-none">[+]</div>
+          <div className="absolute bottom-2 right-2 text-[10px] text-brand-lime/40 select-none">[+]</div>
           
-          <div className="text-xs font-bold tracking-widest text-brand-lime uppercase">
-            [CONTRATAÇÃO & CONTATO PROFISSIONAL] // CONTATO DIRETO
+          <div className="text-xs font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-lime animate-ping" />
+            <span>[CONTRATAÇÃO & CONTATO PROFISSIONAL] // CANAL DIRETO</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight leading-tight phosphor-lime">
             CONTATO DIRETO & OPORTUNIDADES DE ENGENHARIA
           </h2>
 
@@ -43,13 +59,13 @@ export default function ContactCTA() {
             Para oportunidades de desenvolvimento de software em C#, C++, TypeScript, Python, backend, desktop/embarcado ou engenharia de dados e BI: entre em contato diretamente.
           </p>
 
-          {/* Action buttons without icons */}
+          {/* Action buttons */}
           <div className="flex flex-wrap items-center gap-3 pt-2">
             <a
               href={PERSONAL_INFO.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3.5 rounded-lg bg-brand-lime hover:bg-brand-limeHover text-black font-bold text-xs uppercase tracking-wider transition-all"
+              className="px-6 py-3.5 rounded-lg bg-brand-lime hover:bg-brand-limeHover text-black font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-lime-500/20"
             >
               [CONVERSAR NO WHATSAPP]
             </a>
@@ -58,36 +74,35 @@ export default function ContactCTA() {
               href={PERSONAL_INFO.cvPath}
               download="Cv_Luiz_Henrique_da_Silva_de_Oliveira.pdf"
               onClick={handleDownload}
-              className="px-6 py-3.5 rounded-lg bg-surface-muted hover:bg-surface-hover border border-white/15 text-xs font-bold text-white transition-all uppercase"
+              className="px-6 py-3.5 rounded-lg bg-black/60 border border-brand-lime/40 text-brand-lime hover:bg-brand-lime hover:text-black font-bold text-xs uppercase tracking-wider transition-all"
             >
-              [BAIXAR CURRÍCULO (PDF)]
+              [BAIXAR CURRÍCULO PDF]
             </a>
 
             <button
               onClick={handleCopyEmail}
-              className="px-5 py-3.5 rounded-lg bg-surface border border-white/10 hover:border-brand-cyan text-xs text-slate-300 hover:text-white transition-all uppercase"
+              className="px-5 py-3.5 rounded-lg bg-[#080a12] border border-white/10 hover:border-brand-cyan text-slate-300 hover:text-white font-bold text-xs uppercase transition-all"
             >
-              {copiedEmail ? "[E-MAIL COPIADO COM SUCESSO]" : "[COPIAR E-MAIL]"}
+              {copiedEmail ? "[E-MAIL COPIADO!]" : "[COPIAR E-MAIL]"}
             </button>
           </div>
 
-          {/* Contact Details Footnote */}
-          <div className="pt-6 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-slate-400">
+          {/* Contact coordinates */}
+          <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-6 text-xs text-slate-400">
             <div>
-              <span className="text-slate-500 uppercase block text-[10px]">E-mail:</span>
-              <span className="text-white">{PERSONAL_INFO.email}</span>
+              <span className="text-slate-500 block text-[10px]">E-MAIL:</span>
+              <span className="text-white font-bold">{PERSONAL_INFO.email}</span>
             </div>
             <div>
-              <span className="text-slate-500 uppercase block text-[10px]">Celular / WhatsApp:</span>
-              <span className="text-white">{PERSONAL_INFO.phone}</span>
+              <span className="text-slate-500 block text-[10px]">TELEFONE:</span>
+              <span className="text-white font-bold">{PERSONAL_INFO.phone}</span>
             </div>
             <div>
-              <span className="text-slate-500 uppercase block text-[10px]">Localidade:</span>
-              <span className="text-white">{PERSONAL_INFO.location}</span>
+              <span className="text-slate-500 block text-[10px]">LOCALIZAÇÃO:</span>
+              <span className="text-white font-bold">{PERSONAL_INFO.location}</span>
             </div>
           </div>
-
-        </div>
+        </motion.div>
       </div>
     </section>
   );

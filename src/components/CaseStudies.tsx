@@ -2,18 +2,29 @@
 
 import React, { useState } from "react";
 import { PROJECTS, ProjectItem } from "@/data/portfolioData";
+import { motion } from "framer-motion";
 
 export default function CaseStudies() {
   const [selectedProject, setSelectedProject] = useState<ProjectItem>(PROJECTS[0]);
 
   return (
-    <section id="cases" className="py-24 bg-[#07070a] border-b border-white/10 relative font-mono text-left">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="cases" className="py-24 bg-[#07070a] border-b border-white/10 relative font-mono text-left overflow-hidden">
+      {/* Background CRT scanlines */}
+      <div className="absolute inset-0 crt-scanlines opacity-15 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Header */}
-        <div className="space-y-3 mb-12">
-          <div className="text-xs font-bold tracking-widest text-brand-lime uppercase">
-            [PORTFÓLIO DE PROJETOS] // ENGENHARIA DE SOFTWARE & SISTEMAS
+        {/* Header with Motion */}
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-70px" }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="space-y-3 mb-12"
+        >
+          <div className="text-xs font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-lime animate-ping" />
+            <span>[PORTFÓLIO DE PROJETOS] // MAINFRAME DE ENGENHARIA</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">
             PROJETOS DE SOFTWARE DESENVOLVIDOS
@@ -21,10 +32,16 @@ export default function CaseStudies() {
           <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-sans">
             Sistemas completos desenvolvidos ao longo da trajetória profissional: software embarcado, dashboards de BI analítico, microsserviços e automação de redes.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Project Selector Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
+        {/* Project Selector Tabs with Motion */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-70px" }}
+          transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none"
+        >
           {PROJECTS.map((project) => {
             const isSelected = selectedProject.id === project.id;
             return (
@@ -33,8 +50,8 @@ export default function CaseStudies() {
                 onClick={() => setSelectedProject(project)}
                 className={`px-4 py-2.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all border flex items-center gap-2 ${
                   isSelected
-                    ? "bg-brand-lime text-black border-brand-lime shadow-lg"
-                    : "bg-surface text-slate-400 border-white/10 hover:border-brand-lime/40 hover:text-white"
+                    ? "bg-brand-lime text-black border-brand-lime shadow-lg shadow-lime-500/20"
+                    : "bg-[#090b12] text-slate-400 border-white/10 hover:border-brand-lime/40 hover:text-white"
                 }`}
               >
                 <span>{project.title.split(":")[0]}</span>
@@ -48,11 +65,22 @@ export default function CaseStudies() {
               </button>
             );
           })}
-        </div>
+        </motion.div>
 
-        {/* Featured Project Panel */}
-        <div className="rounded-2xl bg-surface border border-white/15 p-6 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden">
-          
+        {/* Featured Project Panel with Motion & 1980s Analog CRT Framing */}
+        <motion.div
+          key={selectedProject.id}
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="rounded-2xl bg-[#090b14] border-2 border-brand-lime/25 p-6 sm:p-8 lg:p-10 shadow-2xl relative overflow-hidden box-phosphor-lime"
+        >
+          {/* Corner crosshairs */}
+          <div className="absolute top-2 left-2 text-[10px] text-brand-lime/40 select-none">[+]</div>
+          <div className="absolute top-2 right-2 text-[10px] text-brand-lime/40 select-none">[+]</div>
+          <div className="absolute bottom-2 left-2 text-[10px] text-brand-lime/40 select-none">[+]</div>
+          <div className="absolute bottom-2 right-2 text-[10px] text-brand-lime/40 select-none">[+]</div>
+
           {/* Header Row */}
           <div className="flex flex-wrap items-start justify-between gap-4 border-b border-white/10 pb-6 mb-8">
             <div className="space-y-1">
@@ -64,7 +92,7 @@ export default function CaseStudies() {
                   {selectedProject.context} // {selectedProject.period}
                 </span>
               </div>
-              <h3 className="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight">
+              <h3 className="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight phosphor-lime">
                 {selectedProject.title}
               </h3>
               <p className="text-sm text-slate-300 font-sans mt-2 max-w-3xl">
@@ -73,16 +101,16 @@ export default function CaseStudies() {
             </div>
 
             {/* Role Badge */}
-            <div className="px-3 py-1.5 rounded bg-surface-muted border border-white/10 text-xs text-slate-300">
-              ATUAÇÃO: <strong className="text-white">{selectedProject.role}</strong>
+            <div className="px-3 py-1.5 rounded bg-black/60 border border-white/10 text-xs text-slate-300 font-mono">
+              ATUAÇÃO: <strong className="text-brand-lime">{selectedProject.role}</strong>
             </div>
           </div>
 
           {/* Metrics Row */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             {selectedProject.metrics.map((m, i) => (
-              <div key={i} className="p-4 rounded-lg bg-black/50 border border-white/5 space-y-1">
-                <div className="text-2xl sm:text-3xl font-black text-white">
+              <div key={i} className="p-4 rounded-lg bg-black/60 border border-white/10 space-y-1 relative">
+                <div className="text-2xl sm:text-3xl font-black text-white phosphor-lime">
                   {m.value}
                 </div>
                 <div className="text-xs font-bold text-brand-lime uppercase">
@@ -95,9 +123,9 @@ export default function CaseStudies() {
 
           {/* Problem & Solution */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8 font-sans">
-            <div className="p-5 rounded-lg bg-red-950/20 border border-red-500/20 space-y-2">
-              <div className="text-xs font-mono font-bold text-red-400 uppercase tracking-wider">
-                [DESAFIO TÉCNICO]
+            <div className="p-5 rounded-lg bg-red-950/25 border border-red-500/25 space-y-2">
+              <div className="text-xs font-mono font-bold text-red-400 uppercase tracking-wider flex items-center gap-2">
+                <span>[DESAFIO TÉCNICO]</span>
               </div>
               <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
                 {selectedProject.problem}
@@ -105,8 +133,8 @@ export default function CaseStudies() {
             </div>
 
             <div className="p-5 rounded-lg bg-brand-lime/5 border border-brand-lime/30 space-y-2">
-              <div className="text-xs font-mono font-bold text-brand-lime uppercase tracking-wider">
-                [SOLUÇÃO DE ENGENHARIA]
+              <div className="text-xs font-mono font-bold text-brand-lime uppercase tracking-wider flex items-center gap-2">
+                <span>[SOLUÇÃO DE ENGENHARIA]</span>
               </div>
               <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
                 {selectedProject.solution}
@@ -123,7 +151,7 @@ export default function CaseStudies() {
               {selectedProject.technicalHighlights.map((highlight, idx) => (
                 <div
                   key={idx}
-                  className="p-3 rounded bg-black/40 border border-white/5 text-xs text-slate-300 font-sans flex items-start gap-2"
+                  className="p-3 rounded bg-black/40 border border-white/10 text-xs text-slate-300 font-sans flex items-start gap-2"
                 >
                   <span className="font-mono text-brand-lime font-bold shrink-0">[OK]</span>
                   <span>{highlight}</span>
@@ -155,14 +183,14 @@ export default function CaseStudies() {
             {selectedProject.tags.map((tag, idx) => (
               <span
                 key={idx}
-                className="px-2 py-0.5 rounded text-[11px] bg-surface-muted border border-white/10 text-slate-300"
+                className="px-2 py-0.5 rounded text-[11px] bg-black/60 border border-white/10 text-slate-300"
               >
                 #{tag}
               </span>
             ))}
           </div>
 
-        </div>
+        </motion.div>
 
       </div>
     </section>
