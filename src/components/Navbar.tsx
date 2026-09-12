@@ -81,7 +81,7 @@ export default function Navbar() {
             href={PERSONAL_INFO.cvPath}
             download="Cv_Luiz_Henrique_da_Silva_de_Oliveira.pdf"
             onClick={triggerDownloadCV}
-            className="px-3 py-1.5 rounded bg-surface border border-white/10 hover:border-brand-lime text-[11px] text-slate-200 hover:text-white transition-all"
+            className="btn-sheen px-3.5 py-1.5 rounded-lg bg-surface border border-white/10 hover:border-brand-lime text-[11px] font-bold text-slate-200 hover:text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(204,255,0,0.25)] active:translate-y-0 active:scale-95"
           >
             [BAIXAR CV]
           </a>
@@ -91,7 +91,7 @@ export default function Navbar() {
             href={PERSONAL_INFO.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3.5 py-1.5 rounded bg-brand-lime hover:bg-brand-limeHover text-black font-bold text-[11px] uppercase transition-all"
+            className="btn-sheen px-4 py-1.5 rounded-lg bg-brand-lime hover:bg-brand-limeHover text-black font-bold text-[11px] uppercase transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(204,255,0,0.45)] active:translate-y-0 active:scale-95"
           >
             [WHATSAPP]
           </a>
@@ -101,7 +101,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2 xl:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="px-2.5 py-1 rounded bg-surface border border-white/10 text-[11px] text-slate-200"
+            className="btn-sheen px-3 py-1.5 rounded-lg bg-surface border border-white/10 hover:border-brand-lime/60 text-[11px] text-slate-200 font-bold hover:text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95"
           >
             {mobileMenuOpen ? "[FECHAR]" : "[MENU]"}
           </button>

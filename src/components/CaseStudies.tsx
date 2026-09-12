@@ -47,10 +47,10 @@ export default function CaseStudies() {
               <button
                 key={project.id}
                 onClick={() => setSelectedProject(project)}
-                className={`px-4 py-2.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all border flex items-center gap-2 ${
+                className={`btn-sheen px-4 py-2.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all duration-200 border flex items-center gap-2 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ${
                   isSelected
-                    ? "bg-brand-lime text-black border-brand-lime shadow-lg shadow-lime-500/20"
-                    : "bg-[#090b12] text-slate-400 border-white/10 hover:border-brand-lime/40 hover:text-white"
+                    ? "bg-brand-lime text-black border-brand-lime shadow-[0_0_20px_rgba(204,255,0,0.35)]"
+                    : "bg-[#090b12] text-slate-400 border-white/10 hover:border-brand-lime/50 hover:text-white hover:shadow-[0_0_15px_rgba(204,255,0,0.2)]"
                 }`}
               >
                 <span>{project.title.split(":")[0]}</span>
@@ -159,22 +159,7 @@ export default function CaseStudies() {
             </div>
           </div>
 
-          {/* Code Snippet */}
-          {selectedProject.codeSnippet && (
-            <div className="space-y-2 mb-8">
-              <div className="flex items-center justify-between text-xs text-slate-400">
-                <div className="font-bold text-brand-cyan">
-                  ARQUIVO: {selectedProject.codeSnippet.filename}
-                </div>
-                <span className="text-[11px] text-slate-500 font-sans">{selectedProject.codeSnippet.explanation}</span>
-              </div>
-              <div className="rounded-lg bg-[#050609] border border-white/10 p-4 text-xs text-slate-300 overflow-x-auto">
-                <pre>
-                  <code>{selectedProject.codeSnippet.code}</code>
-                </pre>
-              </div>
-            </div>
-          )}
+
 
           {/* Tags */}
           <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-white/10 text-xs">

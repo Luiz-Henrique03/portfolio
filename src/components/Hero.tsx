@@ -74,7 +74,7 @@ export default function Hero() {
                       e.stopPropagation();
                       handleInstantComplete();
                     }}
-                    className="px-2.5 py-0.5 rounded bg-surface border border-brand-lime/40 text-brand-lime hover:bg-brand-lime hover:text-black text-[11px] transition-all"
+                    className="btn-sheen px-3 py-1 rounded-md bg-surface border border-brand-lime/50 text-brand-lime hover:bg-brand-lime hover:text-black text-[11px] font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(204,255,0,0.4)] active:translate-y-0 active:scale-95"
                   >
                     [PULAR DIGITAÇÃO ⚡]
                   </button>
@@ -123,7 +123,7 @@ export default function Hero() {
                   href={PERSONAL_INFO.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-3 py-1 rounded bg-surface border border-white/10 hover:border-brand-lime text-slate-300 hover:text-white text-[11px] transition-all"
+                  className="btn-sheen px-3 py-1.5 rounded-lg bg-surface border border-white/10 hover:border-brand-lime text-slate-300 hover:text-white text-[11px] font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(204,255,0,0.3)] active:translate-y-0 active:scale-95"
                 >
                   [GITHUB]
                 </a>
@@ -131,14 +131,14 @@ export default function Hero() {
                   href={PERSONAL_INFO.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-3 py-1 rounded bg-surface border border-white/10 hover:border-brand-cyan text-slate-300 hover:text-white text-[11px] transition-all"
+                  className="btn-sheen px-3 py-1.5 rounded-lg bg-surface border border-white/10 hover:border-brand-cyan text-slate-300 hover:text-white text-[11px] font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] active:translate-y-0 active:scale-95"
                 >
                   [LINKEDIN]
                 </a>
                 <a
                   href={PERSONAL_INFO.cvPath}
                   download="Cv_Luiz_Henrique_da_Silva_de_Oliveira.pdf"
-                  className="px-3 py-1 rounded bg-brand-lime/10 border border-brand-lime/40 text-brand-lime hover:bg-brand-lime hover:text-black font-bold text-[11px] transition-all"
+                  className="btn-sheen px-3.5 py-1.5 rounded-lg bg-brand-lime/10 border border-brand-lime/50 text-brand-lime hover:bg-brand-lime hover:text-black font-bold text-[11px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(204,255,0,0.4)] active:translate-y-0 active:scale-95"
                 >
                   [CV PDF]
                 </a>

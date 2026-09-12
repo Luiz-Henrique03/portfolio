@@ -64,7 +64,7 @@ export default function ContactCTA() {
               href={PERSONAL_INFO.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3.5 rounded-lg bg-brand-lime hover:bg-brand-limeHover text-black font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-lime-500/20"
+              className="btn-sheen px-6 py-3.5 rounded-lg bg-brand-lime hover:bg-brand-limeHover text-black font-bold text-xs uppercase tracking-wider transition-all duration-200 shadow-md shadow-lime-500/20 hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(204,255,0,0.5)] active:translate-y-0 active:scale-95"
             >
               [CONVERSAR NO WHATSAPP]
             </a>
@@ -73,14 +73,14 @@ export default function ContactCTA() {
               href={PERSONAL_INFO.cvPath}
               download="Cv_Luiz_Henrique_da_Silva_de_Oliveira.pdf"
               onClick={handleDownload}
-              className="px-6 py-3.5 rounded-lg bg-black/60 border border-brand-lime/40 text-brand-lime hover:bg-brand-lime hover:text-black font-bold text-xs uppercase tracking-wider transition-all"
+              className="btn-sheen px-6 py-3.5 rounded-lg bg-black/60 border border-brand-lime/50 text-brand-lime hover:bg-brand-lime hover:text-black font-bold text-xs uppercase tracking-wider transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(204,255,0,0.4)] active:translate-y-0 active:scale-95"
             >
               [BAIXAR CURRÍCULO PDF]
             </a>
 
             <button
               onClick={handleCopyEmail}
-              className="px-5 py-3.5 rounded-lg bg-[#080a12] border border-white/10 hover:border-brand-cyan text-slate-300 hover:text-white font-bold text-xs uppercase transition-all"
+              className="btn-sheen px-5 py-3.5 rounded-lg bg-[#080a12] border border-white/15 hover:border-brand-cyan text-slate-300 hover:text-white font-bold text-xs uppercase transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(0,240,255,0.35)] active:translate-y-0 active:scale-95"
             >
               {copiedEmail ? "[E-MAIL COPIADO!]" : "[COPIAR E-MAIL]"}
             </button>

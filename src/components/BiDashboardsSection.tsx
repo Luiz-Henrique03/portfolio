@@ -46,10 +46,10 @@ export default function BiDashboardsSection() {
             <button
               key={bi.id}
               onClick={() => setActiveBi(idx)}
-              className={`py-2.5 px-4 rounded-lg text-xs font-bold border transition-all ${
+              className={`btn-sheen py-2.5 px-4 rounded-lg text-xs font-bold border transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ${
                 activeBi === idx
-                  ? "bg-brand-cyan text-black border-brand-cyan shadow-md shadow-cyan-500/20"
-                  : "bg-[#090b12] border-white/10 text-slate-400 hover:text-white hover:border-brand-cyan/40"
+                  ? "bg-brand-cyan text-black border-brand-cyan shadow-[0_0_20px_rgba(0,240,255,0.4)]"
+                  : "bg-[#090b12] border-white/10 text-slate-400 hover:text-white hover:border-brand-cyan/60 hover:shadow-[0_0_15px_rgba(0,240,255,0.2)]"
               }`}
             >
               [PROJETO {idx + 1}] {bi.title}

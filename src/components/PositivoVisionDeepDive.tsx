@@ -166,30 +166,30 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
             <div className="grid grid-cols-3 gap-2">
               <button
                 onClick={() => setActiveLayer("hardware")}
-                className={`py-3 px-3 rounded-xl font-mono text-xs font-bold border transition-all text-center ${
+                className={`btn-sheen py-3 px-3 rounded-xl font-mono text-xs font-bold border transition-all duration-200 text-center hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ${
                   activeLayer === "hardware"
-                    ? "bg-brand-lime text-black border-brand-lime"
-                    : "bg-surface border-white/10 text-slate-400 hover:text-white"
+                    ? "bg-brand-lime text-black border-brand-lime shadow-[0_0_20px_rgba(204,255,0,0.35)]"
+                    : "bg-surface border-white/10 text-slate-400 hover:text-white hover:border-brand-lime/50 hover:shadow-[0_0_15px_rgba(204,255,0,0.15)]"
                 }`}
               >
                 [01] BAIXO NÍVEL
               </button>
               <button
                 onClick={() => setActiveLayer("firmware")}
-                className={`py-3 px-3 rounded-xl font-mono text-xs font-bold border transition-all text-center ${
+                className={`btn-sheen py-3 px-3 rounded-xl font-mono text-xs font-bold border transition-all duration-200 text-center hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ${
                   activeLayer === "firmware"
-                    ? "bg-brand-lime text-black border-brand-lime"
-                    : "bg-surface border-white/10 text-slate-400 hover:text-white"
+                    ? "bg-brand-lime text-black border-brand-lime shadow-[0_0_20px_rgba(204,255,0,0.35)]"
+                    : "bg-surface border-white/10 text-slate-400 hover:text-white hover:border-brand-lime/50 hover:shadow-[0_0_15px_rgba(204,255,0,0.15)]"
                 }`}
               >
                 [02] APLICAÇÃO UWP
               </button>
               <button
                 onClick={() => setActiveLayer("store")}
-                className={`py-3 px-3 rounded-xl font-mono text-xs font-bold border transition-all text-center ${
+                className={`btn-sheen py-3 px-3 rounded-xl font-mono text-xs font-bold border transition-all duration-200 text-center hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] ${
                   activeLayer === "store"
-                    ? "bg-brand-lime text-black border-brand-lime"
-                    : "bg-surface border-white/10 text-slate-400 hover:text-white"
+                    ? "bg-brand-lime text-black border-brand-lime shadow-[0_0_20px_rgba(204,255,0,0.35)]"
+                    : "bg-surface border-white/10 text-slate-400 hover:text-white hover:border-brand-lime/50 hover:shadow-[0_0_15px_rgba(204,255,0,0.15)]"
                 }`}
               >
                 [03] STORE & OEM
@@ -215,18 +215,6 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
                     <div className="text-xs text-white font-bold">{item.val}</div>
                   </div>
                 ))}
-              </div>
-
-              {/* Code Snippet */}
-              <div className="space-y-1.5">
-                <div className="text-[10px] font-mono text-slate-500 uppercase">
-                  // TRECHO DE IMPLEMENTAÇÃO TÉCNICA
-                </div>
-                <div className="rounded-xl bg-[#06070a] border border-white/10 p-4 font-mono text-xs text-slate-300 overflow-x-auto">
-                  <pre>
-                    <code>{layers[activeLayer].code}</code>
-                  </pre>
-                </div>
               </div>
 
               {/* Responsibilities list */}

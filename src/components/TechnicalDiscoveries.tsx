@@ -51,16 +51,16 @@ export default function TechnicalDiscoveries() {
                 className={`rounded-xl transition-all border overflow-hidden relative ${
                   isExpanded
                     ? "bg-[#090b14] border-brand-lime/45 shadow-xl box-phosphor-lime"
-                    : "bg-[#080910] border-white/10 hover:border-white/20"
+                    : "bg-[#080910] border-white/10 hover:border-brand-lime/40 hover:shadow-[0_0_20px_rgba(204,255,0,0.08)]"
                 }`}
               >
                 {/* Accordion header */}
                 <button
                   onClick={() => toggleExpand(item.id)}
-                  className="w-full p-4 sm:p-5 flex items-center justify-between text-left gap-4"
+                  className="w-full p-4 sm:p-5 flex items-center justify-between text-left gap-4 group transition-all"
                 >
                   <div className="flex items-center gap-3 sm:gap-4">
-                    <span className="text-sm sm:text-base font-black text-brand-lime bg-black/60 px-2.5 py-1 rounded border border-brand-lime/30 shrink-0 phosphor-lime">
+                    <span className="text-sm sm:text-base font-black text-brand-lime bg-black/60 px-2.5 py-1 rounded border border-brand-lime/30 shrink-0 phosphor-lime group-hover:shadow-[0_0_10px_rgba(204,255,0,0.3)] transition-all">
                       #{item.id.toString().padStart(2, "0")}
                     </span>
                     <div>
@@ -70,13 +70,13 @@ export default function TechnicalDiscoveries() {
                         </span>
                         <span className="text-slate-500 font-mono">[{item.context}]</span>
                       </div>
-                      <h3 className="text-sm sm:text-base font-bold text-white tracking-tight">
+                      <h3 className="text-sm sm:text-base font-bold text-white tracking-tight group-hover:text-brand-lime transition-colors">
                         {item.title}
                       </h3>
                     </div>
                   </div>
 
-                  <div className="text-brand-lime font-bold text-xs shrink-0 font-mono">
+                  <div className="text-brand-lime font-bold text-xs shrink-0 font-mono px-2.5 py-1 rounded bg-surface border border-brand-lime/30 group-hover:border-brand-lime group-hover:shadow-[0_0_12px_rgba(204,255,0,0.35)] transition-all">
                     {isExpanded ? "[- RECOLHER]" : "[+ DETALHES]"}
                   </div>
                 </button>
