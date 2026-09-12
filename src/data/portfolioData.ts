@@ -45,41 +45,41 @@ export const PERSONAL_INFO = {
 };
 
 export const CORE_METRICS = [
-  { label: "Média Graduação", value: "8.74", detail: "Bacharel em Ciência da Computação (Universidade Positivo)" },
-  { label: "Maratona de Programação", value: "3º Lugar", detail: "Pódio universitário em algoritmos e resolução sob pressão" },
-  { label: "Hardware OEM", value: "Vision R15M", detail: "Minitela embarcada C#/C++ publicada na Microsoft Store" },
-  { label: "Dashboards de BI", value: "2 Módulos", detail: "Fiscalização e Impedimentos (Star Schema, ETL atômico em Next.js)" },
-  { label: "Sistemas em Produção", value: "4 Módulos", detail: "Agenda Fiscais, Almoxarifado, Medições e Admissão" },
-  { label: "Testes de Integração", value: "714+", detail: "Testes automatizados reais com Postgres WASM (PGlite)" },
-  { label: "Tempo de Parsing .MPP", value: "250ms", detail: "2.490 tarefas do MS Project em TypeScript nativo sem Java" },
-  { label: "Certificação Internacional", value: "CS50x", detail: "Harvard University (C, Python, SQL, Algoritmos)" },
+  { label: "Média Acadêmica", value: "8.74 / 10", detail: "Bacharel em Ciência da Computação (Universidade Positivo)" },
+  { label: "Maratona de Algoritmos", value: "3º Lugar", detail: "Pódio universitário em resolução de problemas algorítmicos" },
+  { label: "Certificação Internacional", value: "CS50x", detail: "Harvard University (C, Python, SQL, Estruturas de Dados)" },
+  { label: "Proficiência em Inglês", value: "C1 Advanced", detail: "Certificado EF SET — Comunicação corporativa e técnica fluente" },
+  { label: "Software Embarcado OEM", value: "Vision R15M", detail: "Drivers C#/C++, Win32 P/Invoke e UWP publicado na Microsoft Store" },
+  { label: "Engenharia de Dados & BI", value: "Star Schema", detail: "Data Warehouse, pipelines de ETL atômicos e Next.js App Router" },
+  { label: "Testes Automatizados", value: "700+ Testes", detail: "Testes de integração reais com PostgreSQL WASM (PGlite) sem mocks" },
+  { label: "Arquitetura & Microsserviços", value: "Full-Stack", detail: "NestJS, Bun, .NET, Python, TypeScript e sistemas em produção" },
 ];
 
 export const BI_DASHBOARDS = [
   {
     id: "bi-fiscalizacao",
-    title: "BI de Fiscalização de Obras",
-    objective: "Consolidação analítica do ciclo de vistorias de qualidade, liberação de serviços e não conformidades em canteiros de obras.",
-    architecture: "Modelagem dimensional (Star Schema) com pipeline de ETL automatizado em Next.js e PostgreSQL, desacoplando o banco analítico do operacional.",
-    impact: "Visibilidade executiva em tempo real de indicadores de qualidade, conformidade técnica e métricas contratuais de empreiteiras parceiras.",
+    title: "Plataforma Analítica & Data Warehouse (Star Schema)",
+    objective: "Consolidação analítica de indicadores de auditoria técnica, conformidade operacional e métricas contratuais de fornecedores parceiros em tempo real.",
+    architecture: "Modelagem dimensional em Star Schema (dimensões e fatos) com pipeline de ETL atômico em Next.js e PostgreSQL, desacoplando totalmente a carga analítica do banco operacional transacional.",
+    impact: "Consultas analíticas instantâneas, eliminação de concorrência com o sistema operacional e relatórios executivos com rastreabilidade contratual fidedigna.",
     stack: ["Next.js (App Router)", "PostgreSQL", "Drizzle ORM", "Vitest", "Star Schema"],
     highlights: [
-      "Isolamento entre banco analítico e operacional, garantindo consultas rápidas sem impacto nas aplicações de canteiro.",
-      "Pipeline de ETL com atualização atômica e controle de concorrência no PostgreSQL.",
-      "Ajuste em regras de negócio para atribuição precisa de ocorrências por razão social de empresas contratadas.",
+      "Isolamento entre banco analítico e operacional, garantindo consultas complexas sem impacto nas transações do sistema principal.",
+      "Pipeline de ETL com atualização atômica e controle de concorrência via advisory locks nativos do PostgreSQL.",
+      "Modelagem dimensional com granularidade fina para atribuição contratual precisa por pessoa jurídica.",
     ],
   },
   {
     id: "bi-impedimentos",
-    title: "Torre de Controle de Impedimentos de Obra",
-    objective: "Painel operacional em tempo real para registro, triagem e resolução de paralisações em canteiros de obras.",
-    architecture: "Aplicação em Next.js App Router com Server Actions para tratativas ágeis, controle automatizado de SLA (48h) e modo mural para TVs corporativas.",
-    impact: "Agilidade na resolução de gargalos operacionais (Projetos, Suprimentos e Execução), redução no tempo de obras paradas e histórico centralizado de decisões.",
+    title: "Torre de Controle Operacional em Tempo Real",
+    objective: "Painel de controle em tempo real para registro, triagem e resolução de incidentes críticos, paralisações e gargalos de execução operacional.",
+    architecture: "Aplicação Next.js App Router orientada a eventos com Server Actions, validação de regras no banco de dados, motor de controle de SLA e exibição contínua em modo mural (TV).",
+    impact: "Redução no tempo de resposta a incidentes críticos, transparência operacional entre setores e histórico auditável de decisões e tratativas.",
     stack: ["Next.js (App Router)", "React Server Actions", "PostgreSQL", "Zod", "Vitest"],
     highlights: [
       "Fluxo de tratativas em tempo real com controle de SLA e faixas visuais de envelhecimento de demandas.",
-      "Server Actions com autorização direta no banco de dados para segurança em operações críticas.",
-      "Modo TV automatizado para exibição contínua em telas de monitoramento nas centrais de engenharia.",
+      "Server Actions com autorização direta na cláusula WHERE do banco de dados para segurança em operações críticas.",
+      "Modo mural (TV) com transição cíclica de painéis controlada via estado de URL sem recarregamento de página.",
     ],
   },
 ];
@@ -129,31 +129,31 @@ public async Task DespacharFrameAsync(byte[] buffer) {
     id: "bi-dashboards",
     title: "Engenharia de Dados & Dashboards de BI",
     category: "Engenharia de Dados & Business Intelligence",
-    context: "LYX Engenharia",
+    context: "Data Warehouse & Next.js",
     period: "2026",
     role: "Desenvolvedor Full-Stack & Dados",
     summary:
-      "Criação de dashboards operacionais e gerenciais em Next.js App Router alimentados por banco analítico PostgreSQL dedicado com modelagem Star Schema (4 dimensões e 5 fatos) e pipelines de ETL atômicos.",
+      "Criação de dashboards operacionais e gerenciais em Next.js App Router alimentados por banco analítico PostgreSQL dedicado com modelagem Star Schema (dimensões e fatos) e pipelines de ETL atômicos.",
     problem:
-      "Consultas pesadas diretamente no banco operacional causavam lentidão em telas de usuários. Relatórios continham inconsistências de regras de negócio (como atribuição incorreta de não conformidades) e atrasos de sincronização.",
+      "Consultas analíticas pesadas executadas diretamente no banco transacional degradavam a performance do sistema principal. Relatórios continham inconsistências de regras de negócio e concorrência desordenada.",
     solution:
-      "Separação estrita entre banco operacional e banco analítico. Modelagem dimensional Star Schema, pipeline de ETL com full reload atômico em 1-2s com advisory lock do Postgres, e módulo de impedimentos com Server Actions e Modo TV para murais de canteiro.",
+      "Separação estrita entre banco operacional e banco analítico. Modelagem dimensional Star Schema, pipeline de ETL com full reload atômico em 1-2s com advisory lock do Postgres, e módulo operacional com Server Actions e Modo Mural para telas corporativas.",
     metrics: [
-      { label: "Modelagem", value: "Star Schema", detail: "4 dimensões e 5 tabelas fato" },
+      { label: "Modelagem", value: "Star Schema", detail: "Dimensões e tabelas fato isoladas" },
       { label: "Tempo de ETL", value: "1 a 2s", detail: "Full reload atômico com advisory lock" },
-      { label: "Módulos", value: "2 Dashboards", detail: "Fiscalização e Impedimentos de Obra" },
-      { label: "Testes", value: "26 Arquivos", detail: "3.896 linhas de testes em Vitest" },
+      { label: "Arquitetura", value: "Next.js 14", detail: "App Router & Server Actions desacopladas" },
+      { label: "Qualidade", value: "Vitest", detail: "Testes automatizados cobrindo regras e transações" },
     ],
     technicalHighlights: [
       "Isolamento arquitetural entre banco operacional e banco do BI.",
       "ETL com transação atômica BEGIN...COMMIT e TRUNCATE sem cascade, serializado por pg_try_advisory_lock.",
       "Server Actions com autorização no WHERE (exigirAutorUserId) para mitigação de vulnerabilidades.",
-      "Modo TV que gerencia transições automáticas de slides via URL state em murais de obras.",
+      "Modo Mural que gerencia transições automáticas de slides via URL state em telas de monitoramento.",
     ],
     codeSnippet: {
-      filename: "fiscalizacao-etl.service.ts",
+      filename: "analytics-etl.service.ts",
       code: `// Full reload atômico com advisory lock para evitar concorrência no ETL
-export async function executarEtlFiscalizacao(db: DrizzleClient) {
+export async function executarEtlAnalitico(db: DrizzleClient) {
   const lockAdquirido = await db.execute(sql\`SELECT pg_try_advisory_lock(427914)\`);
   if (!lockAdquirido.rows[0].pg_try_advisory_lock) {
     throw new EtlConcorrenteError("Execução em andamento");
@@ -161,7 +161,7 @@ export async function executarEtlFiscalizacao(db: DrizzleClient) {
 
   await db.transaction(async (tx) => {
     // Truncate atômico em todas as dimensões e fatos
-    await tx.execute(sql\`TRUNCATE bi.fact_fiscalizacao, bi.fact_nc RESTART IDENTITY\`);
+    await tx.execute(sql\`TRUNCATE bi.fact_auditorias, bi.fact_ocorrencias RESTART IDENTITY\`);
     // Carga idempotente dos dados do banco operacional
     await carregarDimensoesEFatos(tx);
   });
@@ -172,42 +172,42 @@ export async function executarEtlFiscalizacao(db: DrizzleClient) {
   },
   {
     id: "backend-monolito",
-    title: "Backend & Monolito Modular Resiliente",
-    category: "Engenharia de Backend & Microsserviços",
-    context: "LYX Engenharia",
+    title: "Arquitetura Backend & Microsserviços Resilientes",
+    category: "Engenharia de Backend & Sistemas Distribuídos",
+    context: "NestJS, Bun & PostgreSQL",
     period: "2026",
     role: "Desenvolvedor Backend Core",
     summary:
-      "Arquitetura e desenvolvimento de módulos centrais no lyx-monolith em NestJS, Bun, PostgreSQL (Drizzle) e Better Auth: motor de agendamento autônomo de vistorias, espelho de ERP com conciliação orçamentária e leitura de notas fiscais.",
+      "Arquitetura e desenvolvimento de microsserviços centrais de backend em NestJS, Bun, PostgreSQL (Drizzle) e Better Auth: motor algorítmico de agendamento autônomo, espelho de ERP corporativo com conciliação orçamentária e parser binário de alta performance.",
     problem:
-      "Processos manuais lentos em canteiros, timeouts severos em APIs de ERPs legados (acima de 120 segundos) e necessidade de regras de negócio complexas sem quebra de integridade transacional.",
+      "APIs externas legadas com tempos de resposta instáveis (superiores a 120 segundos), concorrência descontrolada em calendários compartilhados e necessidade de regras de negócio complexas sem perda de integridade transacional.",
     solution:
-      "Construção de 4 módulos de missão crítica, implementação de clientes HTTP resilientes com circuit breaker, migração de dados com advisory locks no boot e 714 testes automatizados em Postgres WASM real (PGlite).",
+      "Construção de arquitetura modular resiliente, implementação de clientes HTTP com circuit breaker, migração de dados com advisory locks no boot e 714 testes automatizados em Postgres WASM real (PGlite).",
     metrics: [
-      { label: "Módulos Zero-to-One", value: "4", detail: "Agenda, Almoxarifado, Medições, Admissão" },
-      { label: "Testes Reais", value: "714", detail: "Postgres WASM real (PGlite), zero mocks" },
-      { label: "Otimização API", value: "120s → 2s", detail: "Redução de latência no espelho do ERP SAP" },
-      { label: "Parsing .MPP", value: "250ms", detail: "2.490 tarefas em TypeScript puro sem Java" },
+      { label: "Testes Automatizados", value: "714 Testes", detail: "Postgres WASM real (PGlite), zero mocks" },
+      { label: "Otimização API", value: "120s → 2s", detail: "Redução de latência no espelho do ERP corporativo" },
+      { label: "Parsing Binário", value: "250ms", detail: "Processamento de estruturas complexas em TypeScript nativo" },
+      { label: "Arquitetura", value: "Modular", detail: "Isolamento de domínios e zero dependências circulares" },
     ],
     technicalHighlights: [
-      "Motor autônomo de fiscalização com 27 regras de FVS modeladas como dados e escalonador de 4 passes.",
-      "Parser de cronogramas do MS Project (.mpp) em TypeScript nativo (@tensor-estate/tsmpp) rodando em 250ms.",
-      "Conciliação orçamentária do ERP SAP por famílias de insumos espécie S com 96% de assertividade.",
-      "Auditoria forense no Axiom via queries APL que erradicou 562 agendamentos órfãos no Microsoft Teams.",
+      "Motor autônomo de alocação de recursos com regras modeladas como dados e escalonador algorítmico de 4 passes.",
+      "Parser de arquivos binários e cronogramas em TypeScript nativo rodando em 250ms sem necessidade de JVM legada.",
+      "Conciliação orçamentária de insumos corporativos com 96% de assertividade automatizada.",
+      "Auditoria forense em observabilidade (Axiom APL) que identificou e erradicou 562 eventos órfãos de concorrência.",
     ],
     codeSnippet: {
-      filename: "agenda-fiscais.agendador.ts",
-      code: `// Algoritmo de 4 passes para alocação balanceada de fiscais
-export async function alocarFiscal(demanda: Demanda, pool: Fiscal[]): Promise<ResultadoAlocacao> {
-  // Retorno tri-estado contra consistência eventual do Graph: livre | ocupado | erro
+      filename: "resource-scheduler.service.ts",
+      code: `// Algoritmo de 4 passes para alocação balanceada de recursos
+export async function alocarRecurso(demanda: Demanda, pool: Recurso[]): Promise<ResultadoAlocacao> {
+  // Retorno tri-estado contra consistência eventual: livre | ocupado | erro
   const disponibilidade = await verificarSlotsTriEstado(pool);
   if (disponibilidade.possuiErro) {
-    throw new CircuitError("Falha na consulta do calendário; abortando com segurança");
+    throw new CircuitError("Falha na consulta de disponibilidade; abortando com segurança");
   }
 
-  // Passe 1: Balanceamento semanal estrito sem repetir fiscal
-  // Passe 2: Relaxamento de anti-repetição mantendo teto de 2 fiscais por obra
-  // Passe 3: Aceitação de compartilhamento de slot
+  // Passe 1: Balanceamento estrito de carga horária
+  // Passe 2: Relaxamento com limite de alocações simultâneas
+  // Passe 3: Compartilhamento seguro de slot
   // Passe 4: Extensão de horizonte de agendamento
   return despacharPlano(demanda, disponibilidade.slots);
 }`,
@@ -283,7 +283,7 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
     id: 2,
     title: "Full Reload Atômico com Advisory Lock no ETL de BI",
     area: "Engenharia de Dados",
-    context: "LYX Engenharia (BI Fiscalização)",
+    context: "Engenharia de Dados (PostgreSQL / Drizzle)",
     problemFound:
       "Cargas concorrentes ou parciais de ETL deixavam o dashboard em estado inconsistente enquanto as queries de inserção eram executadas.",
     engineeringSolution:
@@ -292,20 +292,20 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
   },
   {
     id: 3,
-    title: "Correção de Atribuição de Não Conformidades por Razão Social",
+    title: "Modelagem Dimensional para Rastreabilidade Jurídica",
     area: "Modelagem de Negócio",
-    context: "LYX Engenharia (BI Fiscalização)",
+    context: "Data Warehouse (Star Schema)",
     problemFound:
-      "O dashboard atribuía não conformidades a quem cadastrou a vistoria (161 de 165 apontamentos vinculavam à mesma pessoa física), inviabilizando a cobrança contratual de empreiteiras.",
+      "O dashboard analítico atribuía ocorrências ao operador que cadastrou o registro no sistema em vez do fornecedor terceirizado contratado, inviabilizando cobranças e conciliações contratuais.",
     engineeringSolution:
-      "Reestruturação da dimensão para capturar a razão social em caixa alta e o regime de contratação (Terceirizado vs Mão de Obra Própria) diretamente na linha do fato, separando contratos de gestão interna sem recorrer a joins textuais imprecisos.",
-    takeaway: "Dados analíticos usados para cobrança financeira exigem que a chave estrangeira reflita a entidade jurídica real, não o usuário do sistema.",
+      "Reestruturação da dimensão para capturar a razão social em caixa alta e o regime contratual diretamente na linha do fato analítico, separando contratos de gestão interna sem recorrer a joins textuais imprecisos.",
+    takeaway: "Dados analíticos usados para cobrança financeira e auditoria jurídica exigem que a chave estrangeira reflita a entidade real, e não o usuário do sistema.",
   },
   {
     id: 4,
     title: "Autorização no WHERE de Server Actions Públicas",
     area: "Segurança de Software",
-    context: "LYX Engenharia (BI Impedimentos)",
+    context: "Segurança Web (Next.js & SQL)",
     problemFound:
       "Server Actions em Next.js são endpoints POST públicos. Validar autoria apenas com um 'if' no código da action permite que requisições HTTP forjadas alterem demandas de terceiros.",
     engineeringSolution:
@@ -314,24 +314,24 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
   },
   {
     id: 5,
-    title: "Parser de Cronogramas MS Project (.MPP) em TypeScript Puro",
+    title: "Parser de Cronogramas e Arquivos Binários em TypeScript Puro",
     area: "Engenharia de Software",
-    context: "LYX Engenharia (Almoxarifado)",
+    context: "Engenharia de Software (TypeScript / Node)",
     problemFound:
-      "A leitura de cronogramas .mpp do MS Project usualmente dependia de bibliotecas lentas em Java ou microsserviços externos caros.",
+      "A leitura de arquivos complexos de cronograma (.mpp) usualmente dependia de bibliotecas legadas em Java ou microsserviços externos caros e com alto consumo de memória.",
     engineeringSolution:
-      "Implementação de parser nativo em TypeScript puro (@tensor-estate/tsmpp) sobre cfb, processando arquivos de 8MB com 2.490 tarefas e hierarquia de 7 níveis em apenas 250ms dentro do próprio processo da aplicação.",
-    takeaway: "Eliminar dependências de outros runtimes reduz drasticamente o consumo de memória e a superfície de falha em produção.",
+      "Implementação de parser nativo em TypeScript puro sobre arquivos binários estruturados, processando arquivos com milhares de tarefas e hierarquias profundas em apenas 250ms dentro do próprio processo da aplicação.",
+    takeaway: "Eliminar pontes entre diferentes linguagens e runtimes reduz drasticamente o consumo de memória e a superfície de falha em produção.",
   },
   {
     id: 6,
-    title: "Investigação Forense no Axiom via Query APL",
+    title: "Diagnóstico Forense de Concorrência Fantasma via Logs Estruturados",
     area: "Observabilidade & Produção",
-    context: "LYX Engenharia (Agenda Fiscais)",
+    context: "Observabilidade & Produção (Axiom APL)",
     problemFound:
-      "Eventos órfãos apareciam no calendário do Microsoft Teams travando a disponibilidade dos fiscais de obras sem acusar erros explícitos de código.",
+      "Eventos duplicados e órfãos apareciam em calendários corporativos bloqueando a disponibilidade de recursos compartilhados sem acusar erros explícitos no código.",
     engineeringSolution:
-      "Execução de query analítica APL no Axiom agrupando por hostname e evento, descobrindo que duas instâncias rodavam paralelamente, sendo uma build legada com slots de 30min contra o banco antigo. Remoção cirúrgica com script sequencial de backoff de 180ms eliminou 562 órfãos sem falhas.",
+      "Execução de query analítica APL no Axiom correlacionando hostname, payload e assinaturas temporais, descobrindo uma versão legada do serviço rodando paralelamente em container órfão. Remoção cirúrgica com rotina de backoff eliminou 562 órfãos com zero novas falhas.",
     takeaway: "Em problemas fantasmas de produção, logs estruturados com hostname e assinaturas temporais são mais eficazes que qualquer suposição estática.",
   },
 ];
@@ -385,7 +385,7 @@ export const CAREER_JOURNEY = [
     period: "2026",
     type: "Contrato / Projeto Estratégico",
     description:
-      "Atuação no desenvolvimento de sistemas backend (NestJS, Bun, PostgreSQL/Drizzle) e dashboards de BI e engenharia de dados (Next.js App Router, Star Schema, Vitest). Responsável pela entrega de 4 módulos de missão crítica, pipelines de ETL atômicos e 714 testes automatizados em Postgres WASM real.",
+      "Atuação no desenvolvimento de sistemas backend (NestJS, Bun, PostgreSQL/Drizzle) e engenharia de dados & BI (Next.js App Router, Star Schema, Vitest). Responsável pela entrega de módulos de missão crítica, pipelines de ETL atômicos e suíte com 714 testes automatizados em Postgres WASM real.",
     tags: ["Next.js", "NestJS", "Bun", "PostgreSQL", "Star Schema", "ETL", "Drizzle ORM", "Axiom"],
   },
   {

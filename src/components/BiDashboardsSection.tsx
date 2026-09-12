@@ -20,7 +20,7 @@ export default function BiDashboardsSection() {
             DASHBOARDS DE ENGENHARIA & BI
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-sans">
-            Soluções de Business Intelligence e engenharia de dados desenvolvidas para apoiar decisões operacionais e estratégicas em canteiros de obras.
+            Soluções de Business Intelligence e engenharia de dados desenvolvidas para apoiar decisões operacionais e estratégicas em tempo real.
           </p>
         </div>
 

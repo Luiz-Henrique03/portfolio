@@ -17,7 +17,7 @@ export default function CareerTimeline() {
             DO CÓDIGO EMBARCADO AOS MONOLITOS DISTRIBUÍDOS
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl font-sans">
-            Evolução prática desde chão de fábrica automotivo na Volkswagen até projetos OEM de hardware na Positivo Tecnologia e arquitetura core na LYX Engenharia.
+            Evolução técnica desde automação industrial até projetos OEM de hardware na Positivo Tecnologia, arquitetura de sistemas distribuídos e engenharia de dados.
           </p>
         </div>
 

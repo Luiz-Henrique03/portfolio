@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Luiz Henrique | Software Engineer & Systems Architect",
     description:
-      "410+ commits em produção no lyx-monolith, 86 PRs mergeadas, 4 módulos do zero, 714 testes reais com WASM Postgres e engenharia de baixo nível.",
+      "Desenvolvedor de Software Full-Stack (C#, C++, .NET, NestJS, Bun, Next.js, PostgreSQL). Hardware OEM para Positivo Vision R15M na Microsoft Store, Star Schema e testes reais com WASM Postgres.",
     url: "https://github.com/Luiz-Henrique03",
     siteName: "Luiz Henrique Portfolio",
     locale: "pt_BR",
