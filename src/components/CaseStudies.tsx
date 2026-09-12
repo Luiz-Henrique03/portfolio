@@ -29,7 +29,7 @@ export default function CaseStudies() {
             PROJETOS DE SOFTWARE DESENVOLVIDOS
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-sans">
-            Sistemas completos desenvolvidos ao longo da trajetória profissional: software embarcado, dashboards de BI analítico, microsserviços e automação de redes.
+            Sistemas completos desenvolvidos ao longo da trajetória profissional: software embarcado, dashboards de BI analítico, monólitos modulares e automação de redes.
           </p>
         </motion.div>
 

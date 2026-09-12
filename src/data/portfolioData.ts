@@ -34,7 +34,7 @@ export const PERSONAL_INFO = {
   callsign: "LUIZ HENRIQUE",
   role: "Desenvolvedor de Software Full-Stack",
   headline:
-    "Graduado em Ciência da Computação (Média 8.74, 3º lugar na Maratona de Programação) e certificado CS50x por Harvard. Experiência no desenvolvimento de software de ponta a ponta: de aplicações desktop e baixo nível integradas a hardware (C#, C++, .NET) a arquiteturas web, microsserviços (NestJS, Bun, TypeScript, Python) e engenharia de dados & BI (Next.js, PostgreSQL, Star Schema, ETL).",
+    "Graduado em Ciência da Computação (Média 8.74, 3º lugar na Maratona de Programação) e certificado CS50x por Harvard. Experiência no desenvolvimento de software de ponta a ponta: de aplicações desktop e baixo nível integradas a hardware (C#, C++, .NET) a monólitos modulares de alta concorrência (NestJS, Bun, TypeScript, Python) e engenharia de dados & BI (Next.js, PostgreSQL, Star Schema, ETL).",
   location: "Curitiba - PR",
   email: "luizdasilvaoliveira7@gmail.com",
   phone: "+55 (41) 99895-7337",
@@ -201,13 +201,13 @@ export async function executarEtlAnalitico(db: DrizzleClient) {
   },
   {
     id: "backend-monolito",
-    title: "Arquitetura Backend & Microsserviços Resilientes",
-    category: "Engenharia de Backend & Sistemas Distribuídos",
+    title: "Monólito Modular & Backend de Alta Concorrência",
+    category: "Engenharia de Backend & Monólitos Modulares",
     context: "NestJS, Bun & PostgreSQL",
     period: "2026",
     role: "Desenvolvedor Backend Core",
     summary:
-      "Arquitetura e desenvolvimento de microsserviços centrais de backend em NestJS, Bun, PostgreSQL (Drizzle) e Better Auth: motor algorítmico de agendamento autônomo, espelho de ERP corporativo com conciliação orçamentária e parser binário de alta performance.",
+      "Arquitetura e desenvolvimento de módulos centrais no monólito modular de backend em NestJS, Bun, PostgreSQL (Drizzle) e Better Auth: motor algorítmico de agendamento autônomo, espelho de ERP corporativo com conciliação orçamentária e parser binário de alta performance.",
     problem:
       "APIs externas legadas com tempos de resposta instáveis (superiores a 120 segundos), concorrência descontrolada em calendários compartilhados e necessidade de regras de negócio complexas sem perda de integridade transacional.",
     solution:
@@ -347,7 +347,7 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
     area: "Engenharia de Software",
     context: "Engenharia de Software (TypeScript / Node)",
     problemFound:
-      "A leitura de arquivos complexos de cronograma (.mpp) usualmente dependia de bibliotecas legadas em Java ou microsserviços externos caros e com alto consumo de memória.",
+      "A leitura de arquivos complexos de cronograma (.mpp) usualmente dependia de bibliotecas legadas em Java ou serviços externos caros e com alto consumo de memória.",
     engineeringSolution:
       "Implementação de parser nativo em TypeScript puro sobre arquivos binários estruturados, processando arquivos com milhares de tarefas e hierarquias profundas em apenas 250ms dentro do próprio processo da aplicação.",
     takeaway: "Eliminar pontes entre diferentes linguagens e runtimes reduz drasticamente o consumo de memória e a superfície de falha em produção.",

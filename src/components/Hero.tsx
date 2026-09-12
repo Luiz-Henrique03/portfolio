@@ -12,7 +12,7 @@ export default function Hero() {
     "",
     "• HARDWARE OEM & BAIXO NÍVEL: Desenvolvimento em C#, C++ e chamadas Win32 nativas (P/Invoke) para controle de barramento serial e drivers da minitela embutida no notebook Positivo Vision R15M, com aplicação UWP homologada na Microsoft Store.",
     "",
-    "• BACKEND & MICROSSERVIÇOS: Arquitetura de microsserviços de alta concorrência em NestJS, Bun e TypeScript, com circuit breakers, resiliência contra falhas de rede e suíte com mais de 700 testes automatizados reais rodando sobre PostgreSQL WASM (PGlite).",
+    "• BACKEND & MONÓLITOS MODULARES: Arquitetura de monólitos modulares de alta concorrência em NestJS, Bun e TypeScript, com circuit breakers, resiliência contra falhas de rede e suíte com mais de 700 testes automatizados reais rodando sobre PostgreSQL WASM (PGlite).",
     "",
     "• ENGENHARIA DE DADOS & BI: Modelagem dimensional Star Schema (dimensões e fatos), pipelines de ETL atômicos serializados por advisory locks no PostgreSQL e dashboards operacionais em tempo real com Next.js App Router e Server Actions."
   ].join("\n"), []);

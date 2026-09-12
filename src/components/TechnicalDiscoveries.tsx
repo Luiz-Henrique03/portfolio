@@ -33,7 +33,7 @@ export default function TechnicalDiscoveries() {
             CASOS DE DIAGNÓSTICO E SOLUÇÃO TÉCNICA
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-sans">
-            Exemplos concretos de gargalos e inconsistências técnicas identificados e solucionados em sistemas de hardware, dados e microsserviços.
+            Exemplos concretos de gargalos e inconsistências técnicas identificados e solucionados em sistemas de hardware, dados e monólitos modulares.
           </p>
         </motion.div>
 
