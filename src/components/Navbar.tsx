@@ -56,9 +56,6 @@ export default function Navbar() {
               <span className="font-bold text-xs tracking-wider uppercase text-white hover:text-brand-lime transition-colors">
                 LUIZ HENRIQUE
               </span>
-              <span className="text-[10px] text-brand-lime bg-brand-lime/10 px-1 py-0.2 rounded border border-brand-lime/30">
-                DISPONÍVEL
-              </span>
             </div>
             <p className="text-[10px] text-slate-400">Software Developer</p>
           </div>

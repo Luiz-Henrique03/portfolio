@@ -14,9 +14,8 @@ export default function Hero() {
           <div className="lg:col-span-7 space-y-6">
             
             {/* Header Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-surface border border-white/10 text-[11px] font-bold text-brand-lime uppercase">
-              <span className="w-2 h-2 rounded-full bg-brand-lime animate-ping mr-1" />
-              CURITIBA - PR // DISPONÍVEL PARA ATUAÇÃO REMOTA OU HÍBRIDA
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-surface border border-white/10 text-[11px] font-bold text-slate-300 uppercase">
+              CURITIBA - PR // ENGENHARIA DE SOFTWARE
             </div>
 
             {/* Title & Stacks */}

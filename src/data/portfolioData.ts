@@ -35,7 +35,7 @@ export const PERSONAL_INFO = {
   role: "Desenvolvedor de Software Full-Stack",
   headline:
     "Graduado em Ciência da Computação (Média 8.74, 3º lugar na Maratona de Programação) e certificado CS50x por Harvard. Experiência no desenvolvimento de software de ponta a ponta: de aplicações desktop e baixo nível integradas a hardware (C#, C++, .NET) a arquiteturas web, microsserviços (NestJS, Bun, TypeScript, Python) e engenharia de dados & BI (Next.js, PostgreSQL, Star Schema, ETL).",
-  location: "Curitiba - PR (Disponível para atuação Remota ou Híbrida)",
+  location: "Curitiba - PR",
   email: "luizdasilvaoliveira7@gmail.com",
   phone: "+55 (41) 99895-7337",
   whatsappUrl: "https://wa.me/5541998957337?text=Ol%C3%A1%20Luiz,%20acessei%20seu%20portf%C3%B3lio%20de%20desenvolvedor%20e%20gostaria%20de%20conversar!",

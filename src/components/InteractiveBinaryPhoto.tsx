@@ -172,8 +172,8 @@ export default function InteractiveBinaryPhoto() {
         {/* Status HUD in lower section */}
         <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black via-black/80 to-transparent p-4 z-20 font-mono text-left">
           <div className="flex items-center justify-between text-[11px] text-brand-lime font-bold">
-            <span>STATUS: ATIVO</span>
-            <span>FLUXO BINÁRIO INTERATIVO</span>
+            <span>ENGENHARIA DE SOFTWARE</span>
+            <span>INTERATIVO</span>
           </div>
           <div className="text-[10px] text-slate-400 tracking-tight mt-0.5">
             Passe o cursor sobre a imagem para decodificação em tempo real

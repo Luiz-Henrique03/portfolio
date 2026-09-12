@@ -36,7 +36,7 @@ export default function ContactCTA() {
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight leading-tight">
-            DISPONÍVEL PARA DESAFIOS DE ENGENHARIA DE SOFTWARE
+            CONTATO DIRETO & OPORTUNIDADES DE ENGENHARIA
           </h2>
 
           <p className="text-sm sm:text-base text-slate-300 font-sans leading-relaxed max-w-2xl">
