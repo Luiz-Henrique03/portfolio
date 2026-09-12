@@ -9,7 +9,6 @@ import StatsGrid from "@/components/StatsGrid";
 import CaseStudies from "@/components/CaseStudies";
 import ArchitecturePhilosophy from "@/components/ArchitecturePhilosophy";
 import TechnicalDiscoveries from "@/components/TechnicalDiscoveries";
-import InteractiveTerminal from "@/components/InteractiveTerminal";
 import SkillsRadar from "@/components/SkillsRadar";
 import CareerTimeline from "@/components/CareerTimeline";
 import ContactCTA from "@/components/ContactCTA";
@@ -32,7 +31,6 @@ export default function Home() {
         <CaseStudies />
         <ArchitecturePhilosophy />
         <TechnicalDiscoveries />
-        <InteractiveTerminal />
         <SkillsRadar />
         <CareerTimeline />
         <ContactCTA />

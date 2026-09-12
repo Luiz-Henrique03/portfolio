@@ -33,7 +33,6 @@ export default function Navbar() {
     { label: "BI & Engenharia de Dados", href: "#bi-dashboards" },
     { label: "Projetos de Software", href: "#cases" },
     { label: "Casos Técnicos", href: "#discoveries" },
-    { label: "Terminal", href: "#terminal" },
     { label: "Skills", href: "#skills" },
     { label: "Trajetória", href: "#journey" },
   ];
