@@ -2,12 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { sound } from "@/utils/sound";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 import confetti from "canvas-confetti";
 
 export default function Navbar() {
-  const [audioEnabled, setAudioEnabled] = useState(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -19,13 +17,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleAudio = () => {
-    const next = sound.toggle();
-    setAudioEnabled(next);
-  };
-
   const triggerDownloadCV = () => {
-    sound.playSuccess();
     try {
       confetti({
         particleCount: 80,
@@ -38,11 +30,11 @@ export default function Navbar() {
 
   const navLinks = [
     { label: "Positivo Vision R15M", href: "#vision-r15m" },
-    { label: "Módulos LYX", href: "#cases" },
-    { label: "10 Achados Forenses", href: "#forensics" },
-    { label: "Arquitetura Monolito", href: "#architecture" },
-    { label: "Terminal Interativo", href: "#terminal" },
-    { label: "Comprovações de Stack", href: "#skills" },
+    { label: "BI & Engenharia de Dados", href: "#bi-dashboards" },
+    { label: "Projetos de Software", href: "#cases" },
+    { label: "Casos Técnicos", href: "#discoveries" },
+    { label: "Terminal", href: "#terminal" },
+    { label: "Skills", href: "#skills" },
     { label: "Trajetória", href: "#journey" },
   ];
 
@@ -56,10 +48,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand / Logo */}
-        <Link
-          href="#"
-          className="flex items-center gap-2.5 text-left"
-        >
+        <Link href="#" className="flex items-center gap-2.5 text-left">
           <div className="px-2 py-1 rounded bg-brand-lime text-black font-black text-xs">
             LH
           </div>
@@ -72,7 +61,7 @@ export default function Navbar() {
                 DISPONÍVEL
               </span>
             </div>
-            <p className="text-[10px] text-slate-400">Software Engineer & Systems</p>
+            <p className="text-[10px] text-slate-400">Software Developer</p>
           </div>
         </Link>
 
@@ -89,46 +78,31 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Action Controls without icons */}
+        {/* Action Controls without audio */}
         <div className="hidden sm:flex items-center gap-2">
-          {/* Audio toggle */}
-          <button
-            onClick={toggleAudio}
-            title="Alternar áudio tátil"
-            className="px-2.5 py-1.5 rounded bg-surface border border-white/10 text-[11px] text-slate-300 hover:text-brand-lime hover:border-brand-lime/40 transition-all"
-          >
-            {audioEnabled ? "[AUDIO: ON]" : "[AUDIO: OFF]"}
-          </button>
-
           {/* Download CV */}
           <a
             href={PERSONAL_INFO.cvPath}
             download="Cv_Luiz_Henrique_da_Silva_de_Oliveira.pdf"
             onClick={triggerDownloadCV}
-            className="px-3 py-1.5 rounded bg-surface border border-white/10 hover:border-brand-lime/50 text-[11px] text-slate-200 hover:text-white transition-all"
+            className="px-3 py-1.5 rounded bg-surface border border-white/10 hover:border-brand-lime text-[11px] text-slate-200 hover:text-white transition-all"
           >
             [BAIXAR CV]
           </a>
 
-          {/* WhatsApp / Contact */}
+          {/* WhatsApp */}
           <a
             href={PERSONAL_INFO.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="px-3.5 py-1.5 rounded bg-brand-lime hover:bg-brand-limeHover text-black font-bold text-[11px] uppercase transition-all"
           >
-            [CONTATO WHATSAPP]
+            [WHATSAPP]
           </a>
         </div>
 
         {/* Mobile menu button */}
         <div className="flex items-center gap-2 xl:hidden">
-          <button
-            onClick={toggleAudio}
-            className="px-2 py-1 rounded bg-surface border border-white/10 text-[10px] text-brand-lime"
-          >
-            {audioEnabled ? "AUDIO: ON" : "AUDIO: OFF"}
-          </button>
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="px-2.5 py-1 rounded bg-surface border border-white/10 text-[11px] text-slate-200"
@@ -168,7 +142,7 @@ export default function Navbar() {
               rel="noopener noreferrer"
               className="text-center py-2 rounded bg-brand-lime text-black font-bold text-xs uppercase"
             >
-              [FALAR NO WHATSAPP]
+              [CONVERSAR NO WHATSAPP]
             </a>
           </div>
         </div>

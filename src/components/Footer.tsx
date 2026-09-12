@@ -2,11 +2,9 @@
 
 import React from "react";
 import { PERSONAL_INFO } from "@/data/portfolioData";
-import { sound } from "@/utils/sound";
 
 export default function Footer() {
   const scrollToTop = () => {
-    sound.playClick();
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -19,8 +17,8 @@ export default function Footer() {
         {/* Left info */}
         <div>
           <span className="font-bold text-white uppercase">{PERSONAL_INFO.name}</span>
-          <p className="text-[11px] text-slate-500">
-            Next.js 14, WebGL / Three.js, GSAP, Tailwind CSS. Sem mocks de infraestrutura.
+          <p className="text-[11px] text-slate-500 font-sans">
+            Next.js 14, WebGL / Three.js, GSAP, Tailwind CSS. Sem dependências externas de áudio.
           </p>
         </div>
 

@@ -2,14 +2,12 @@
 
 import React, { useState } from "react";
 import { PERSONAL_INFO } from "@/data/portfolioData";
-import { sound } from "@/utils/sound";
 import confetti from "canvas-confetti";
 
 export default function ContactCTA() {
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   const handleCopyEmail = () => {
-    sound.playSuccess();
     setCopiedEmail(true);
     if (typeof navigator !== "undefined") {
       navigator.clipboard.writeText(PERSONAL_INFO.email);
@@ -18,7 +16,6 @@ export default function ContactCTA() {
   };
 
   const handleDownload = () => {
-    sound.playSuccess();
     try {
       confetti({
         particleCount: 120,
@@ -35,15 +32,15 @@ export default function ContactCTA() {
         <div className="rounded-2xl bg-surface border border-white/15 p-8 sm:p-12 lg:p-14 shadow-2xl space-y-6">
           
           <div className="text-xs font-bold tracking-widest text-brand-lime uppercase">
-            [CONTRATAÇÃO & PARCERIA TÉCNICA] // CONTATO DIRETO
+            [CONTRATAÇÃO & CONTATO PROFISSIONAL] // CONTATO DIRETO
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight leading-tight">
-            DISPONÍVEL PARA DESAFIOS DE ENGENHARIA DE ALTA COMPLEXIDADE
+            DISPONÍVEL PARA DESAFIOS DE ENGENHARIA DE SOFTWARE
           </h2>
 
           <p className="text-sm sm:text-base text-slate-300 font-sans leading-relaxed max-w-2xl">
-            Para liderar módulos de sistemas críticos, diagnosticar gargalos de produção ou arquitetar monolitos modulares de alta concorrência: entre em contato diretamente.
+            Para oportunidades de desenvolvimento de software em C#, C++, TypeScript, Python, backend, desktop/embarcado ou engenharia de dados e BI: entre em contato diretamente.
           </p>
 
           {/* Action buttons without icons */}

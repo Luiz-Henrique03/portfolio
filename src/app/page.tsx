@@ -3,13 +3,13 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import ThreeCanvas from "@/components/ThreeCanvas";
 import PositivoVisionDeepDive from "@/components/PositivoVisionDeepDive";
+import BiDashboardsSection from "@/components/BiDashboardsSection";
 import TelemetryTicker from "@/components/TelemetryTicker";
 import StatsGrid from "@/components/StatsGrid";
-import ManifestoSection from "@/components/ManifestoSection";
 import CaseStudies from "@/components/CaseStudies";
-import ForensicRules from "@/components/ForensicRules";
 import ArchitecturePhilosophy from "@/components/ArchitecturePhilosophy";
-import ForensicsTerminal from "@/components/ForensicsTerminal";
+import TechnicalDiscoveries from "@/components/TechnicalDiscoveries";
+import InteractiveTerminal from "@/components/InteractiveTerminal";
 import SkillsRadar from "@/components/SkillsRadar";
 import CareerTimeline from "@/components/CareerTimeline";
 import ContactCTA from "@/components/ContactCTA";
@@ -27,12 +27,12 @@ export default function Home() {
         <Hero />
         <TelemetryTicker />
         <PositivoVisionDeepDive />
+        <BiDashboardsSection />
         <StatsGrid />
-        <ManifestoSection />
         <CaseStudies />
-        <ForensicRules />
         <ArchitecturePhilosophy />
-        <ForensicsTerminal />
+        <TechnicalDiscoveries />
+        <InteractiveTerminal />
         <SkillsRadar />
         <CareerTimeline />
         <ContactCTA />
