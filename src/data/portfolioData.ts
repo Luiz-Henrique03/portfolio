@@ -126,6 +126,35 @@ public async Task DespacharFrameAsync(byte[] buffer) {
     tags: ["C#", "C++", ".NET", "Windows UWP", "Win32 P/Invoke", "Serial UART", "Microsoft Store"],
   },
   {
+    id: "agenda-fiscais",
+    title: "Agenda Fiscais: Motor Autônomo de Vistorias",
+    category: "Engenharia de Backend & Algoritmos de Alocação",
+    context: "NestJS / Graph API",
+    period: "2026",
+    role: "Arquiteto & Engenheiro de Software Backend",
+    summary:
+      "Motor autônomo de alocação de vistorias técnicas e controle de qualidade em canteiros de obras. Implementa escalonamento algorítmico em 4 passes com integrações corporativas transacionais via Microsoft Graph API e Evolution API (WhatsApp).",
+    problem:
+      "Sempre que uma etapa de obra era finalizada (montagem de formas, concretagem, ramais hidráulicos, prumadas de esgoto), uma Ficha de Verificação de Serviço (FVS) era liberada com meta regulatória rígida: a vistoria técnica precisava ocorrer em até 48 horas úteis. Manualmente ou com automações frágeis, o processo gerava: fiscais cruzando a cidade várias vezes ao dia; mesma obra sendo sempre avaliada pelo mesmo fiscal (falta de imparcialidade); e eventos duplicados e horários colidindo no calendário corporativo do Microsoft Teams.",
+    solution:
+      "Construção de um motor determinístico em NestJS, Bun e TypeScript com escalonamento em 4 passes e integrações transacionais de produção: Worker Cron a cada 30 minutos com claim atômico via PostgreSQL para evitar race conditions em deploys com múltiplos containers; sincronização oficial com a Microsoft Graph API (Teams/Outlook Calendar) e disparo instantâneo de notificações no WhatsApp via Evolution API com dados da FVS, bloco e pavimento.",
+    metrics: [
+      { label: "Janela Regulatória", value: "48h Úteis", detail: "Cálculo automático de dias úteis e feriados (BrasilAPI)" },
+      { label: "Execução Concorrente", value: "30 Minutos", detail: "Worker Cron com claim atômico e idempotência no PostgreSQL" },
+      { label: "Escalonador", value: "4 Passes", detail: "Algoritmo de fallback progressivo sem sobrecarga" },
+      { label: "Auditoria Forense", value: "562 Eventos", detail: "Erradicação de eventos órfãos/zumbis no Microsoft Teams" },
+    ],
+    technicalHighlights: [
+      "Item 1 (Problema de Negócio): Garantia estrita da janela de 48h úteis para FVS liberadas, eliminando conflitos de agenda no Teams, rotas ineficientes e repetição viciada de fiscais.",
+      "Item 4 (Arquitetura e Integrações): Core em NestJS, Bun, TypeScript e Drizzle ORM sobre PostgreSQL, executando Worker Cron com claim atômico contra concorrência.",
+      "Integração Microsoft Graph API: Criação, atualização e cancelamento transacional de eventos oficiais no calendário Outlook/Teams dos fiscais.",
+      "Evolution API (WhatsApp) & BrasilAPI: Disparo de mensagens automáticas no WhatsApp com dados de bloco/pavimento e consulta dinâmica de feriados nacionais/municipais.",
+      "Motor Algorítmico de Regras: Priorização do Dono do Dia, anti-repetição recente (<=3 dias), balanceamento de carga semanal e teto de no máximo 2 canteiros por fiscal.",
+      "Escalonador em 4 Passes: Fallback em cascata (ideal 48h -> relaxa repetição -> paralelismo até 2 fiscais -> overflow) sem degradação do sistema.",
+    ],
+    tags: ["NestJS", "Bun", "TypeScript", "PostgreSQL", "Drizzle ORM", "Microsoft Graph", "Teams Calendar", "Evolution API", "BrasilAPI", "Axiom APL"],
+  },
+  {
     id: "bi-dashboards",
     title: "Engenharia de Dados & Dashboards de BI",
     category: "Engenharia de Dados & Business Intelligence",
