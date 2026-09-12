@@ -58,56 +58,82 @@ export default function Hero() {
           {/* Right: Dynamic Typewriter Terminal Screen (7 cols) */}
           <div className="lg:col-span-7 order-1 lg:order-2 space-y-4">
             
-            {/* Terminal Window Frame */}
+            {/* Terminal Window Frame (macOS Style) */}
             <div
               onClick={!isTypingComplete ? handleInstantComplete : undefined}
-              className="relative rounded-2xl bg-[#080a0f]/95 border-2 border-brand-lime/30 shadow-[0_0_35px_rgba(204,255,0,0.1)] p-5 sm:p-7 overflow-hidden cursor-pointer group"
+              className="relative rounded-2xl bg-[#080a10]/95 border border-white/15 shadow-[0_20px_60px_rgba(0,0,0,0.85)] overflow-hidden cursor-pointer group"
             >
               {/* Top CRT Scanlines */}
-              <div className="absolute inset-0 crt-scanlines opacity-30 pointer-events-none" />
+              <div className="absolute inset-0 crt-scanlines opacity-25 pointer-events-none z-10" />
 
-              {/* Terminal Header */}
-              {!isTypingComplete && (
-                <div className="flex justify-end pb-3 mb-3 border-b border-white/10 text-xs">
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleInstantComplete();
-                    }}
-                    className="btn-sheen px-3 py-1 rounded-md bg-surface border border-brand-lime/50 text-brand-lime hover:bg-brand-lime hover:text-black text-[11px] font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(204,255,0,0.4)] active:translate-y-0 active:scale-95"
-                  >
-                    [PULAR DIGITAÇÃO ⚡]
-                  </button>
+              {/* macOS Window Title Bar */}
+              <div className="relative px-4 py-3 bg-[#12151f]/95 border-b border-white/10 flex items-center justify-between select-none z-20">
+                {/* Left: macOS Traffic Light Buttons */}
+                <div className="flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full bg-[#ff5f56] border border-[#e0443e] inline-block shadow-sm" />
+                  <span className="w-3 h-3 rounded-full bg-[#ffbd2e] border border-[#dea123] inline-block shadow-sm" />
+                  <span className="w-3 h-3 rounded-full bg-[#27c93f] border border-[#1aab29] inline-block shadow-sm" />
                 </div>
-              )}
 
-              {/* Dynamic Typewriter Stream Display */}
-              <div className="relative font-serif font-bold text-sm sm:text-base md:text-lg text-slate-100 leading-relaxed max-h-[500px] overflow-y-auto pr-1">
-                <pre className="whitespace-pre-wrap font-serif font-bold select-text">
-                  {displayedText}
-                  <span className="inline-block w-2 h-5 bg-brand-lime ml-1 align-middle animate-cursor-blink shadow-[0_0_8px_#ccff00]" />
-                </pre>
+                {/* Center: macOS Window Title */}
+                <div className="flex items-center gap-1.5 text-xs text-slate-400 font-mono font-medium">
+                  <span className="text-slate-500">~</span>
+                  <span>luiz@portfolio: — -zsh — 80×24</span>
+                </div>
+
+                {/* Right: Skip typing button or session status */}
+                <div>
+                  {!isTypingComplete ? (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleInstantComplete();
+                      }}
+                      className="btn-sheen px-2.5 py-0.5 rounded-md bg-surface border border-brand-lime/50 text-brand-lime hover:bg-brand-lime hover:text-black text-[10px] font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_12px_rgba(204,255,0,0.4)] active:scale-95"
+                    >
+                      [PULAR DIGITAÇÃO ⚡]
+                    </button>
+                  ) : (
+                    <div className="flex items-center gap-1.5 text-[10px] text-slate-500 font-mono">
+                      <span className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10">zsh</span>
+                      <span className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10">UTF-8</span>
+                    </div>
+                  )}
+                </div>
               </div>
 
-              {/* Bottom Terminal Telemetry Footer */}
-              <div className="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between text-[10px] text-slate-400 gap-2">
-                <div className="flex items-center gap-3">
-                  <span className="text-brand-cyan">HARVARD CS50x</span>
-                  <span>•</span>
-                  <span className="text-brand-lime">EF SET C1 ENGLISH</span>
-                  <span>•</span>
-                  <span>POS_TECH OEM</span>
+              {/* Terminal Window Body */}
+              <div className="p-5 sm:p-7 relative z-20">
+                {/* Shell Command Prompt */}
+                <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-3 pb-2 border-b border-white/5">
+                  <span className="text-brand-cyan font-bold">luiz@macbook-pro</span>
+                  <span className="text-slate-600">:</span>
+                  <span className="text-brand-lime font-bold">~</span>
+                  <span className="text-slate-300 font-semibold">$ whoami --presentation</span>
                 </div>
-                <div className="text-slate-500">
-                  {!isTypingComplete ? "DIGITANDO EM TEMPO REAL..." : "CLIQUE PARA REVISITAR"}
+
+                {/* Dynamic Typewriter Stream Display */}
+                <div className="relative font-serif font-bold text-sm sm:text-base md:text-lg text-slate-100 leading-relaxed max-h-[480px] overflow-y-auto pr-1">
+                  <pre className="whitespace-pre-wrap font-serif font-bold select-text">
+                    {displayedText}
+                    <span className="inline-block w-2 h-5 bg-brand-lime ml-1 align-middle animate-cursor-blink shadow-[0_0_8px_#ccff00]" />
+                  </pre>
+                </div>
+
+                {/* Bottom Terminal Telemetry Footer */}
+                <div className="mt-4 pt-3 border-t border-white/10 flex flex-wrap items-center justify-between text-[10px] font-mono text-slate-400 gap-2">
+                  <div className="flex items-center gap-3">
+                    <span className="text-brand-cyan">HARVARD CS50x</span>
+                    <span>•</span>
+                    <span className="text-brand-lime">EF SET C1 ENGLISH</span>
+                    <span>•</span>
+                    <span>POS_TECH OEM</span>
+                  </div>
+                  <div className="text-slate-500">
+                    {!isTypingComplete ? "DIGITANDO EM TEMPO REAL..." : "CLIQUE PARA REVISITAR"}
+                  </div>
                 </div>
               </div>
-
-              {/* Retro Corner Accents */}
-              <div className="absolute top-1 left-1 text-brand-lime/50 text-[10px] pointer-events-none">┌</div>
-              <div className="absolute top-1 right-1 text-brand-lime/50 text-[10px] pointer-events-none">┐</div>
-              <div className="absolute bottom-1 left-1 text-brand-lime/50 text-[10px] pointer-events-none">└</div>
-              <div className="absolute bottom-1 right-1 text-brand-lime/50 text-[10px] pointer-events-none">┘</div>
             </div>
 
             {/* Direct Link Badges */}
