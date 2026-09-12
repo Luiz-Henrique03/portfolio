@@ -6,11 +6,6 @@ import { PERSONAL_INFO } from "@/data/portfolioData";
 
 export default function Hero() {
   const fullBioText = useMemo(() => [
-    "> INICIALIZANDO TERMINAL ANALÓGICO // SISTEMA LH-1984...",
-    "> OPERADOR: LUIZ HENRIQUE DA SILVA DE OLIVEIRA",
-    "> FUNÇÃO: DESENVOLVEDOR DE SOFTWARE FULL-STACK & ARQUITETO",
-    "> LOCALIZAÇÃO: CURITIBA - PR // DISPONÍVEL REMOTO",
-    "----------------------------------------------------------------------",
     "Bacharel em Ciência da Computação pela Universidade Positivo (Média Global 8.74, 3º lugar na Maratona de Programação) e certificado CS50x pela Harvard University, com proficiência em inglês C1 Advanced.",
     "",
     "Atuação sólida na engenharia de software de ponta a ponta, unindo baixo nível, resiliência de sistemas e arquitetura de dados:",
@@ -19,10 +14,7 @@ export default function Hero() {
     "",
     "• BACKEND & MICROSSERVIÇOS: Arquitetura de microsserviços de alta concorrência em NestJS, Bun e TypeScript, com circuit breakers, resiliência contra falhas de rede e suíte com mais de 700 testes automatizados reais rodando sobre PostgreSQL WASM (PGlite).",
     "",
-    "• ENGENHARIA DE DADOS & BI: Modelagem dimensional Star Schema (dimensões e fatos), pipelines de ETL atômicos serializados por advisory locks no PostgreSQL e dashboards operacionais em tempo real com Next.js App Router e Server Actions.",
-    "----------------------------------------------------------------------",
-    "> [STATUS]: NÚCLEO OPERACIONAL CARREGADO COM SUCESSO.",
-    "> [AÇÃO]: ROLE A PÁGINA PARA INSPECIONAR OS PROJETOS E DADOS ▾"
+    "• ENGENHARIA DE DADOS & BI: Modelagem dimensional Star Schema (dimensões e fatos), pipelines de ETL atômicos serializados por advisory locks no PostgreSQL e dashboards operacionais em tempo real com Next.js App Router e Server Actions."
   ].join("\n"), []);
 
   const [charIndex, setCharIndex] = useState(0);
@@ -75,30 +67,24 @@ export default function Hero() {
               <div className="absolute inset-0 crt-scanlines opacity-30 pointer-events-none" />
 
               {/* Terminal Title Bar */}
-              <div className="flex flex-wrap items-center justify-between pb-3 mb-4 border-b border-white/10 text-xs gap-2">
+              <div className="flex items-center justify-between pb-3 mb-4 border-b border-white/10 text-xs">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block" />
                   <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 inline-block" />
                   <span className="w-2.5 h-2.5 rounded-full bg-brand-lime inline-block" />
-                  <span className="ml-2 font-bold text-slate-300 text-[11px] sm:text-xs tracking-wider">
-                    LUIZ_HENRIQUE // TTY-1 [CRT 1984]
-                  </span>
                 </div>
 
-                <div className="flex items-center gap-3 text-[10px] text-slate-400">
-                  <span className="text-brand-lime font-bold">STATUS: {isTypingComplete ? "ONLINE" : "BOOTING"}</span>
-                  {!isTypingComplete && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleInstantComplete();
-                      }}
-                      className="px-2 py-0.5 rounded bg-surface border border-brand-lime/40 text-brand-lime hover:bg-brand-lime hover:text-black transition-all"
-                    >
-                      [PULAR DIGITAÇÃO ⚡]
-                    </button>
-                  )}
-                </div>
+                {!isTypingComplete && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleInstantComplete();
+                    }}
+                    className="px-2.5 py-0.5 rounded bg-surface border border-brand-lime/40 text-brand-lime hover:bg-brand-lime hover:text-black text-[11px] transition-all"
+                  >
+                    [PULAR DIGITAÇÃO ⚡]
+                  </button>
+                )}
               </div>
 
               {/* Dynamic Typewriter Stream Display */}
