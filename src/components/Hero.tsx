@@ -106,7 +106,7 @@ export default function Hero() {
               <div className="p-5 sm:p-7 relative z-20">
                 {/* Shell Command Prompt */}
                 <div className="flex items-center gap-2 text-xs font-mono text-slate-400 mb-3 pb-2 border-b border-white/5">
-                  <span className="text-brand-cyan font-bold">luiz@macbook-pro</span>
+                  <span className="text-brand-cyan font-bold">luiz@desktop</span>
                   <span className="text-slate-600">:</span>
                   <span className="text-brand-lime font-bold">~</span>
                   <span className="text-slate-300 font-semibold">$ whoami --presentation</span>
