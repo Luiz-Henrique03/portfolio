@@ -4,7 +4,6 @@ import Hero from "@/components/Hero";
 import ThreeCanvas from "@/components/ThreeCanvas";
 import PositivoVisionDeepDive from "@/components/PositivoVisionDeepDive";
 import BiDashboardsSection from "@/components/BiDashboardsSection";
-import TelemetryTicker from "@/components/TelemetryTicker";
 import StatsGrid from "@/components/StatsGrid";
 import CaseStudies from "@/components/CaseStudies";
 import ArchitecturePhilosophy from "@/components/ArchitecturePhilosophy";
@@ -28,7 +27,6 @@ export default function Home() {
       <div className="relative z-10">
         <Navbar />
         <Hero />
-        <TelemetryTicker />
         <PositivoVisionDeepDive />
         <BiDashboardsSection />
         <StatsGrid />
