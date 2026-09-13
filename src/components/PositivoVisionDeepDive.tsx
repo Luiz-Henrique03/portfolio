@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import MinitelaStickyShowcase from "./MinitelaStickyShowcase";
 
 export default function PositivoVisionDeepDive() {
   const [activeLayer, setActiveLayer] = useState<"hardware" | "firmware" | "store">("hardware");
@@ -70,11 +71,11 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
   };
 
   return (
-    <section id="vision-r15m" className="py-24 bg-[#08090d] border-b border-white/10 relative text-left overflow-hidden">
+    <section id="vision-r15m" className="py-24 bg-[#08090d] border-b border-white/10 relative text-left">
       {/* Subtle CRT scanline overlay */}
       <div className="absolute inset-0 crt-scanlines opacity-15 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-10">
         
         {/* Section Header with Motion */}
         <motion.div
@@ -82,7 +83,7 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-70px" }}
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="space-y-3 mb-12"
+          className="space-y-3"
         >
           <div className="text-xs font-mono font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
             <span>[ENGENHARIA DE HARDWARE EMBARCADO] // CASE DE IMPACTO OEM</span>
@@ -94,7 +95,12 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
             Desenvolvimento completo da camada de software e integração de baixo nível para a mini tela física integrada no chassi do notebook Positivo Vision R15M. Do barramento serial à publicação na Microsoft Store.
           </p>
         </motion.div>
+      </div>
 
+      {/* Pinned Scrollytelling Showcase of Minitela Modes (Scrolls through the 6 screens) */}
+      <MinitelaStickyShowcase />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16">
         {/* Product Showcase + Architecture Breakdown Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
