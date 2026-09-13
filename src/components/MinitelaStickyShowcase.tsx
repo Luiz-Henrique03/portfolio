@@ -117,7 +117,6 @@ const SCREENS: MinitelaScreen[] = [
 export default function MinitelaStickyShowcase() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [scrollPercent, setScrollPercent] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -125,7 +124,6 @@ export default function MinitelaStickyShowcase() {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    setScrollPercent(Math.min(100, Math.max(0, Math.round(latest * 100))));
     // Map latest (0 to 1) into an integer from 0 to SCREENS.length - 1
     const idx = Math.min(
       SCREENS.length - 1,
@@ -139,66 +137,14 @@ export default function MinitelaStickyShowcase() {
   return (
     <div
       ref={containerRef}
-      className="relative min-h-[380vh] w-full"
+      className="relative min-h-[360vh] w-full"
     >
       {/* Sticky viewport frame that pins and stays static while scrolling */}
-      <div className="sticky top-20 sm:top-24 h-[calc(100vh-5.5rem)] sm:h-[calc(100vh-6.5rem)] flex flex-col justify-between py-2 sm:py-4 z-30 font-mono text-left">
-        
-        {/* Top Header Card */}
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl bg-[#090b14]/95 border border-white/15 p-4 sm:p-5 shadow-2xl backdrop-blur-md">
-            
-            {/* Header Telemetry Row */}
-            <div className="flex flex-wrap items-center justify-between gap-3 pb-3 mb-3 border-b border-white/10 text-xs">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-brand-lime animate-pulse" />
-                <span className="font-bold text-brand-lime uppercase tracking-wider text-[11px]">
-                  MINITELA VISION R15M // REPRODUÇÃO EM HARDWARE
-                </span>
-              </div>
-              <div className="flex items-center gap-3 text-[11px] text-slate-400">
-                <span>PROGRESSO: <strong className="text-white">{scrollPercent}%</strong></span>
-                <span>•</span>
-                <span className="text-brand-cyan font-bold">
-                  TELA {activeIndex + 1} DE {SCREENS.length}
-                </span>
-              </div>
-            </div>
-
-            {/* Screen Selector Tabs (Interactive Click + Scroll-Driven) */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
-              {SCREENS.map((screen, idx) => {
-                const isActive = activeIndex === idx;
-                return (
-                  <button
-                    key={screen.id}
-                    onClick={() => {
-                      setActiveIndex(idx);
-                      // Scroll to roughly that position if user clicks
-                      if (containerRef.current) {
-                        const top = containerRef.current.offsetTop;
-                        const height = containerRef.current.offsetHeight;
-                        const targetY = top + (idx / SCREENS.length) * height + 10;
-                        window.scrollTo({ top: targetY, behavior: "smooth" });
-                      }
-                    }}
-                    className={`btn-sheen px-3 py-1.5 rounded-lg text-[11px] font-bold whitespace-nowrap transition-all duration-200 border flex items-center gap-1.5 hover:-translate-y-0.5 active:scale-95 ${
-                      isActive
-                        ? "bg-brand-lime text-black border-brand-lime shadow-[0_0_15px_rgba(204,255,0,0.35)]"
-                        : "bg-surface border-white/10 text-slate-400 hover:text-white hover:border-brand-lime/40"
-                    }`}
-                  >
-                    <span>{screen.short}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </div>
+      <div className="sticky top-20 sm:top-24 h-[calc(100vh-5.5rem)] sm:h-[calc(100vh-6.5rem)] flex items-center justify-center py-4 z-30 font-mono text-left">
 
         {/* Main Pinned Center: Minitela Device Chassis + Interactive Screen Breakdown */}
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
             
             {/* Left Col (5 cols): Authentic Hardware Minitela Mockup Frame */}
             <div className="lg:col-span-5 flex flex-col items-center justify-center">
@@ -261,9 +207,21 @@ export default function MinitelaStickyShowcase() {
                     <span className="px-2.5 py-0.5 rounded text-[11px] font-bold bg-brand-lime/10 text-brand-lime border border-brand-lime/30 uppercase">
                       {current.badge}
                     </span>
-                    <span className="text-slate-400 text-[11px]">
-                      MODO DE TELA {activeIndex + 1} // {SCREENS.length}
-                    </span>
+                    <div className="flex items-center gap-3 text-slate-400 text-[11px]">
+                      <span>MODO DE TELA {activeIndex + 1} DE {SCREENS.length}</span>
+                      <div className="flex items-center gap-1.5">
+                        {SCREENS.map((_, i) => (
+                          <span
+                            key={i}
+                            className={`h-1.5 rounded-full transition-all duration-300 ${
+                              i === activeIndex
+                                ? "w-4 bg-brand-lime shadow-[0_0_8px_rgba(204,255,0,0.6)]"
+                                : "w-1.5 bg-white/20"
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    </div>
                   </div>
 
                   {/* Screen Title */}
@@ -307,28 +265,6 @@ export default function MinitelaStickyShowcase() {
               </AnimatePresence>
             </div>
 
-          </div>
-        </div>
-
-        {/* Bottom Pinned Footer: Interactive Scroll Progress Prompt */}
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="p-3 rounded-xl bg-black/80 border border-white/10 flex flex-wrap items-center justify-between text-xs gap-3">
-            <div className="flex items-center gap-2 text-slate-300 font-mono text-[11px]">
-              <span className="text-brand-lime animate-bounce">▼</span>
-              <span>ROLE A PÁGINA PARA AVANÇAR ENTRE AS TELAS DA MINITELA (1 → {SCREENS.length})</span>
-            </div>
-            {/* Visual Progress Bar */}
-            <div className="flex items-center gap-3 w-full sm:w-auto">
-              <div className="w-full sm:w-48 h-2 rounded-full bg-white/10 overflow-hidden">
-                <div
-                  className="h-full bg-gradient-to-r from-brand-cyan to-brand-lime transition-all duration-150"
-                  style={{ width: `${Math.max(5, scrollPercent)}%` }}
-                />
-              </div>
-              <span className="text-[11px] font-mono text-slate-400 shrink-0">
-                {scrollPercent}%
-              </span>
-            </div>
           </div>
         </div>
 

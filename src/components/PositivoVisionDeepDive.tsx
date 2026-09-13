@@ -236,6 +236,20 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
 
         </div>
 
+        {/* Sub-tópico Showcase das Telas Desenvolvidas */}
+        <div className="pt-12 sm:pt-16 border-t border-white/10 space-y-3">
+          <div className="text-xs font-mono font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-brand-lime animate-pulse" />
+            <span>SUB-TÓPICO // DISPLAY SECUNDÁRIO OEM</span>
+          </div>
+          <h3 className="text-2xl sm:text-4xl font-serif font-bold text-white uppercase tracking-tight">
+            SHOWCASE DAS TELAS DESENVOLVIDAS
+          </h3>
+          <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-mono leading-relaxed">
+            Modos de operação e funcionalidades programadas para a minitela do Positivo Vision R15M. Conforme você rola a página, cada tela é reproduzida com sua respectiva camada de controle e comunicação serial.
+          </p>
+        </div>
+
       </div>
 
       {/* Pinned Scrollytelling Showcase of Minitela Modes (Scrolls through the 6 screens) */}
