@@ -27,7 +27,7 @@ export default function StatsGrid() {
             INDICADORES DE FORMAÇÃO E IMPACTO
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl font-sans">
-            Tempo de mercado, formação em Ciência da Computação, certificação internacional e proficiência linguística para atuação em times de alta performance.
+            Tempo de mercado, formação em Ciência da Computação pela Universidade Positivo, certificação internacional e proficiência linguística para atuação em times de alta performance.
           </p>
         </motion.div>
 
