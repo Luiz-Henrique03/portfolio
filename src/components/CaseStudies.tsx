@@ -20,7 +20,7 @@ const PROJECT_META: Record<
   },
   "bi-dashboards": {
     shortTitle: "Engenharia de Dados & BI",
-    subtitle: "Star Schema & ETL Atômico",
+    subtitle: "Star Schema & ETL",
     badge: "Data / BI",
   },
   "backend-monolito": {

@@ -14,7 +14,7 @@ export default function Hero() {
     "",
     "• BACKEND & MONÓLITOS MODULARES: Arquitetura de monólitos modulares de alta concorrência em NestJS, Bun e TypeScript, com circuit breakers, resiliência contra falhas de rede e suíte com mais de 700 testes automatizados reais rodando sobre PostgreSQL WASM (PGlite).",
     "",
-    "• ENGENHARIA DE DADOS & BI: Modelagem dimensional Star Schema (dimensões e fatos), pipelines de ETL atômicos serializados por advisory locks no PostgreSQL e dashboards operacionais em tempo real com Next.js App Router e Server Actions."
+    "• ENGENHARIA DE DADOS & BI: Modelagem dimensional Star Schema (dimensões e fatos), pipelines de ETL serializados por advisory locks no PostgreSQL e dashboards operacionais em tempo real com Next.js App Router e Server Actions."
   ].join("\n"), []);
 
   const [charIndex, setCharIndex] = useState(0);

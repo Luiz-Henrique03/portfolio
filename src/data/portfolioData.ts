@@ -50,7 +50,7 @@ export const CORE_METRICS = [
   { label: "Certificação Internacional", value: "CS50x", detail: "Harvard University (C, Python, SQL, Estruturas de Dados)" },
   { label: "Proficiência em Inglês", value: "C1 Advanced", detail: "Certificado EF SET — Comunicação corporativa e técnica fluente" },
   { label: "Software Embarcado OEM", value: "Vision R15M", detail: "Drivers C#/C++, Win32 P/Invoke e UWP publicado na Microsoft Store" },
-  { label: "Engenharia de Dados & BI", value: "Star Schema", detail: "Data Warehouse, pipelines de ETL atômicos e Next.js App Router" },
+  { label: "Engenharia de Dados & BI", value: "Star Schema", detail: "Data Warehouse, pipelines de ETL e Next.js App Router" },
   { label: "Testes Automatizados", value: "700+ Testes", detail: "Testes de integração reais com PostgreSQL WASM (PGlite) sem mocks" },
   { label: "Stack", value: "Full-Stack", detail: "NestJS, Bun, .NET, Python, TypeScript e sistemas em produção" },
 ];
@@ -60,12 +60,12 @@ export const BI_DASHBOARDS = [
     id: "bi-fiscalizacao",
     title: "Plataforma Analítica & Data Warehouse (Star Schema)",
     objective: "Consolidação analítica de indicadores de auditoria técnica, conformidade operacional e métricas contratuais de fornecedores parceiros em tempo real.",
-    architecture: "Modelagem dimensional em Star Schema (dimensões e fatos) com pipeline de ETL atômico em Next.js e PostgreSQL, desacoplando totalmente a carga analítica do banco operacional transacional.",
+    architecture: "Modelagem dimensional em Star Schema (dimensões e fatos) com pipeline de ETL em Next.js e PostgreSQL, desacoplando totalmente a carga analítica do banco operacional transacional.",
     impact: "Consultas analíticas instantâneas, eliminação de concorrência com o sistema operacional e relatórios executivos com rastreabilidade contratual fidedigna.",
     stack: ["Next.js (App Router)", "PostgreSQL", "Drizzle ORM", "Vitest", "Star Schema"],
     highlights: [
       "Isolamento entre banco analítico e operacional, garantindo consultas complexas sem impacto nas transações do sistema principal.",
-      "Pipeline de ETL com atualização atômica e controle de concorrência via advisory locks nativos do PostgreSQL.",
+      "Pipeline de ETL com controle de concorrência via advisory locks nativos do PostgreSQL.",
       "Modelagem dimensional com granularidade fina para atribuição contratual precisa por pessoa jurídica.",
     ],
   },
@@ -162,26 +162,26 @@ public async Task DespacharFrameAsync(byte[] buffer) {
     period: "2026",
     role: "Desenvolvedor Full-Stack & Dados",
     summary:
-      "Criação de dashboards operacionais e gerenciais em Next.js App Router alimentados por banco analítico PostgreSQL dedicado com modelagem Star Schema (dimensões e fatos) e pipelines de ETL atômicos.",
+      "Criação de dashboards operacionais e gerenciais em Next.js App Router alimentados por banco analítico PostgreSQL dedicado com modelagem Star Schema (dimensões e fatos) e pipelines de ETL.",
     problem:
       "Consultas analíticas pesadas executadas diretamente no banco transacional degradavam a performance do sistema principal. Relatórios continham inconsistências de regras de negócio e concorrência desordenada.",
     solution:
-      "Separação estrita entre banco operacional e banco analítico. Modelagem dimensional Star Schema, pipeline de ETL com full reload atômico em 1-2s com advisory lock do Postgres, e módulo operacional com Server Actions e Modo Mural para telas corporativas.",
+      "Separação estrita entre banco operacional e banco analítico. Modelagem dimensional Star Schema, pipeline de ETL com full reload em 1-2s com advisory lock do Postgres, e módulo operacional com Server Actions e Modo Mural para telas corporativas.",
     metrics: [
       { label: "Modelagem", value: "Star Schema", detail: "Dimensões e tabelas fato isoladas" },
-      { label: "Tempo de ETL", value: "1 a 2s", detail: "Full reload atômico com advisory lock" },
+      { label: "Tempo de ETL", value: "1 a 2s", detail: "Full reload com advisory lock" },
       { label: "Arquitetura", value: "Next.js 14", detail: "App Router & Server Actions desacopladas" },
       { label: "Qualidade", value: "Vitest", detail: "Testes automatizados cobrindo regras e transações" },
     ],
     technicalHighlights: [
       "Isolamento arquitetural entre banco operacional e banco do BI.",
-      "ETL com transação atômica BEGIN...COMMIT e TRUNCATE sem cascade, serializado por pg_try_advisory_lock.",
+      "ETL com transação BEGIN...COMMIT e TRUNCATE sem cascade, serializado por pg_try_advisory_lock.",
       "Server Actions com autorização no WHERE (exigirAutorUserId) para mitigação de vulnerabilidades.",
       "Modo Mural que gerencia transições automáticas de slides via URL state em telas de monitoramento.",
     ],
     codeSnippet: {
       filename: "analytics-etl.service.ts",
-      code: `// Full reload atômico com advisory lock para evitar concorrência no ETL
+      code: `// Full reload com advisory lock para evitar concorrência no ETL
 export async function executarEtlAnalitico(db: DrizzleClient) {
   const lockAdquirido = await db.execute(sql\`SELECT pg_try_advisory_lock(427914)\`);
   if (!lockAdquirido.rows[0].pg_try_advisory_lock) {
@@ -189,7 +189,7 @@ export async function executarEtlAnalitico(db: DrizzleClient) {
   }
 
   await db.transaction(async (tx) => {
-    // Truncate atômico em todas as dimensões e fatos
+    // Truncate em todas as dimensões e fatos
     await tx.execute(sql\`TRUNCATE bi.fact_auditorias, bi.fact_ocorrencias RESTART IDENTITY\`);
     // Carga idempotente dos dados do banco operacional
     await carregarDimensoesEFatos(tx);
@@ -310,14 +310,14 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
   },
   {
     id: 2,
-    title: "Full Reload Atômico com Advisory Lock no ETL de BI",
+    title: "Full Reload com Advisory Lock no ETL de BI",
     area: "Engenharia de Dados",
     context: "Engenharia de Dados (PostgreSQL / Drizzle)",
     problemFound:
       "Cargas concorrentes ou parciais de ETL deixavam o dashboard em estado inconsistente enquanto as queries de inserção eram executadas.",
     engineeringSolution:
       "Estruturação de pipeline de ETL que executa dentro de uma única transação BEGIN...COMMIT com TRUNCATE e reinserção dos fatos, protegido por advisory lock do Postgres (pg_try_advisory_lock 427914) que responde 409 locked para tentativas simultâneas.",
-    takeaway: "Para volumes de milhares de registros com carga rápida (1 a 2s), o full reload atômico elimina complexidade e garante consistência imediata.",
+    takeaway: "Para volumes de milhares de registros com carga rápida (1 a 2s), o full reload elimina complexidade e garante consistência imediata.",
   },
   {
     id: 3,
@@ -391,7 +391,7 @@ export const SKILL_GROUPS = [
     group: "Bancos de Dados & Engenharia de Dados",
     items: [
       { name: "PostgreSQL & Drizzle ORM", level: "Avançado", desc: "Modelagem relacional, migrations com advisory locks e schemas" },
-      { name: "Star Schema (Data Warehouse)", level: "Avançado", desc: "Modelagem de dimensões, fatos, grãos e pipelines de ETL atômico" },
+      { name: "Star Schema (Data Warehouse)", level: "Avançado", desc: "Modelagem de dimensões, fatos, grãos e pipelines de ETL" },
       { name: "PGlite (Postgres WASM)", level: "Avançado", desc: "Testes de integração reais sem mocks de banco de dados" },
       { name: "MariaDB / MySQL / SQL Server", level: "Avançado", desc: "Otimização de consultas, normalização e integridade referencial" },
     ],
@@ -414,7 +414,7 @@ export const CAREER_JOURNEY = [
     period: "2026",
     type: "Contrato / Projeto Estratégico",
     description:
-      "Atuação no desenvolvimento de sistemas backend (NestJS, Bun, PostgreSQL/Drizzle) e engenharia de dados & BI (Next.js App Router, Star Schema, Vitest). Responsável pela entrega de módulos de missão crítica, pipelines de ETL atômicos e suíte com 714 testes automatizados em Postgres WASM real.",
+      "Atuação no desenvolvimento de sistemas backend (NestJS, Bun, PostgreSQL/Drizzle) e engenharia de dados & BI (Next.js App Router, Star Schema, Vitest). Responsável pela entrega de módulos de missão crítica, pipelines de ETL e suíte com 714 testes automatizados em Postgres WASM real.",
     tags: ["Next.js", "NestJS", "Bun", "PostgreSQL", "Star Schema", "ETL", "Drizzle ORM", "Axiom"],
   },
   {

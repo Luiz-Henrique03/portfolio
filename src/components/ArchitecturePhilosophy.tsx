@@ -12,7 +12,7 @@ export default function ArchitecturePhilosophy() {
     },
     {
       title: "Isolamento Estrito entre Banco Analítico (BI) e Operacional",
-      rule: "Sistemas de Business Intelligence e dashboards nunca devem consultar o banco operacional diretamente. As leituras analíticas são isoladas em um banco dedicado (Star Schema) abastecido por pipelines de ETL atômicos, protegendo a aplicação de concorrência com relatórios pesados.",
+      rule: "Sistemas de Business Intelligence e dashboards nunca devem consultar o banco operacional diretamente. As leituras analíticas são isoladas em um banco dedicado (Star Schema) abastecido por pipelines de ETL, protegendo a aplicação de concorrência com relatórios pesados.",
       detail: "Zero impacto na experiência do usuário final durante a geração de relatórios.",
     },
     {
