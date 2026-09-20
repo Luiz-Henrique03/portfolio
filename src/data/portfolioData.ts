@@ -51,6 +51,11 @@ export const CORE_METRICS = [
     detail: "Atuação contínua em engenharia de software de ponta a ponta (Desktop, Backend e Dados).",
   },
   {
+    label: "Formação Superior",
+    value: "Bacharel",
+    detail: "Formado em Ciência da Computação pela Universidade Positivo.",
+  },
+  {
     label: "Certificação Internacional",
     value: "CS50x",
     detail: "Harvard University — Ciência da Computação, algoritmos, C, Python e SQL.",
