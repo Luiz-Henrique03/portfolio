@@ -202,25 +202,22 @@ export default function MinitelaStickyShowcase() {
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   className="rounded-2xl bg-[#090b14]/95 border-2 border-brand-lime/30 p-6 sm:p-7 shadow-2xl relative space-y-4"
                 >
-                  {/* Badge & Telemetry Bar */}
+                  {/* Badge & Step Indicator */}
                   <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-white/10 text-xs">
                     <span className="px-2.5 py-0.5 rounded text-[11px] font-bold bg-brand-lime/10 text-brand-lime border border-brand-lime/30 uppercase">
                       {current.badge}
                     </span>
-                    <div className="flex items-center gap-3 text-slate-400 text-[11px]">
-                      <span>MODO DE TELA {activeIndex + 1} DE {SCREENS.length}</span>
-                      <div className="flex items-center gap-1.5">
-                        {SCREENS.map((_, i) => (
-                          <span
-                            key={i}
-                            className={`h-1.5 rounded-full transition-all duration-300 ${
-                              i === activeIndex
-                                ? "w-4 bg-brand-lime shadow-[0_0_8px_rgba(204,255,0,0.6)]"
-                                : "w-1.5 bg-white/20"
-                            }`}
-                          />
-                        ))}
-                      </div>
+                    <div className="flex items-center gap-1.5">
+                      {SCREENS.map((_, i) => (
+                        <span
+                          key={i}
+                          className={`h-1.5 rounded-full transition-all duration-300 ${
+                            i === activeIndex
+                              ? "w-4 bg-brand-lime shadow-[0_0_8px_rgba(204,255,0,0.6)]"
+                              : "w-1.5 bg-white/20"
+                          }`}
+                        />
+                      ))}
                     </div>
                   </div>
 
