@@ -27,12 +27,12 @@ export default function StatsGrid() {
             INDICADORES DE FORMAÇÃO E IMPACTO
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl font-sans">
-            Métricas acadêmicas, certificações internacionais e números comprovados em projetos de engenharia de software e hardware.
+            Tempo de mercado, certificação internacional e proficiência linguística para atuação em times de alta performance.
           </p>
         </motion.div>
 
-        {/* 4x2 Grid with Staggered Scroll Reveal & 1980s Analog CRT Card Styling */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
+        {/* 3-Col Grid with Staggered Scroll Reveal & 1980s Analog CRT Card Styling */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
           {CORE_METRICS.map((metric, idx) => (
             <motion.div
               key={idx}

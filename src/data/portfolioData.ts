@@ -45,14 +45,21 @@ export const PERSONAL_INFO = {
 };
 
 export const CORE_METRICS = [
-  { label: "Média Acadêmica", value: "8.74 / 10", detail: "Bacharel em Ciência da Computação (Universidade Positivo)" },
-  { label: "Maratona de Algoritmos", value: "3º Lugar", detail: "Pódio universitário em resolução de problemas algorítmicos" },
-  { label: "Certificação Internacional", value: "CS50x", detail: "Harvard University (C, Python, SQL, Estruturas de Dados)" },
-  { label: "Proficiência em Inglês", value: "C1 Advanced", detail: "Certificado EF SET — Comunicação corporativa e técnica fluente" },
-  { label: "Software Embarcado OEM", value: "Vision R15M", detail: "Drivers C#/C++, Win32 P/Invoke e UWP publicado na Microsoft Store" },
-  { label: "Engenharia de Dados & BI", value: "Star Schema", detail: "Data Warehouse, pipelines de ETL e Next.js App Router" },
-  { label: "Testes Automatizados", value: "700+ Testes", detail: "Testes de integração reais com PostgreSQL WASM (PGlite) sem mocks" },
-  { label: "Stack", value: "Full-Stack", detail: "NestJS, Bun, .NET, Python, TypeScript e sistemas em produção" },
+  {
+    label: "Experiência Profissional",
+    value: "4+ Anos",
+    detail: "Atuação contínua em engenharia de software de ponta a ponta (Desktop, Backend e Dados).",
+  },
+  {
+    label: "Certificação Internacional",
+    value: "CS50x",
+    detail: "Harvard University — Ciência da Computação, algoritmos, C, Python e SQL.",
+  },
+  {
+    label: "Proficiência em Inglês",
+    value: "C1 Advanced",
+    detail: "Certificado EF SET — Comunicação corporativa e técnica fluente em nível avançado.",
+  },
 ];
 
 export const BI_DASHBOARDS = [
