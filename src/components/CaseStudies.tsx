@@ -60,9 +60,11 @@ export default function CaseStudies() {
   const handleSelectProject = (idx: number) => {
     setActiveIndex(idx);
     if (containerRef.current) {
-      const top = containerRef.current.offsetTop;
+      const rect = containerRef.current.getBoundingClientRect();
+      const absoluteTop = window.scrollY + rect.top;
       const height = containerRef.current.offsetHeight;
-      const targetY = top + (idx / PROJECTS.length) * height + 10;
+      const scrollableRange = Math.max(0, height - window.innerHeight);
+      const targetY = absoluteTop + ((idx + 0.5) / PROJECTS.length) * scrollableRange;
       window.scrollTo({ top: targetY, behavior: "smooth" });
     }
   };
