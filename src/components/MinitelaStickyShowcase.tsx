@@ -252,15 +252,6 @@ export default function MinitelaStickyShowcase() {
                     </div>
                   </div>
 
-                  {/* Hardware Communication Stream Bar */}
-                  <div className="p-3 rounded-lg bg-black/60 border border-brand-cyan/25 flex items-center justify-between text-[11px] font-mono">
-                    <div className="flex items-center gap-2 truncate text-slate-300">
-                      <span className="text-brand-cyan font-bold">[SINAL]:</span>
-                      <span className="truncate text-slate-400">{current.hardwareSignal}</span>
-                    </div>
-                    <span className="text-brand-lime font-bold shrink-0 ml-2">200 OK</span>
-                  </div>
-
                 </motion.div>
               </AnimatePresence>
             </div>
