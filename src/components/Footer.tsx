@@ -18,7 +18,7 @@ export default function Footer() {
         <div>
           <span className="font-bold text-white uppercase">{PERSONAL_INFO.name}</span>
           <p className="text-[11px] text-slate-500 font-sans">
-            Next.js 14, WebGL / Three.js, GSAP, Tailwind CSS. Sem dependências externas de áudio.
+            Software Engineer & Systems Architect
           </p>
         </div>
 
