@@ -13,6 +13,11 @@ const PROJECT_META: Record<
     subtitle: "Minitela Embarcada & Driver Win32",
     badge: "Hardware OEM",
   },
+  "caixa-wol": {
+    shortTitle: "Gerenciamento WOL",
+    subtitle: "Wake-On-LAN & Sockets UDP",
+    badge: "Redes / Linux",
+  },
   "agenda-fiscais": {
     shortTitle: "Agenda Fiscais",
     subtitle: "Motor Autônomo & Graph API",
@@ -27,11 +32,6 @@ const PROJECT_META: Record<
     shortTitle: "Monólito Modular",
     subtitle: "Alta Concorrência & Resiliência",
     badge: "NestJS / Bun",
-  },
-  "caixa-wol": {
-    shortTitle: "Gerenciamento WOL",
-    subtitle: "Wake-On-LAN & Sockets UDP",
-    badge: "Redes / Linux",
   },
   "timecontrol": {
     shortTitle: "TimeControl Corporativo",

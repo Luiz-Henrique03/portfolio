@@ -138,6 +138,32 @@ public async Task DespacharFrameAsync(byte[] buffer) {
     tags: ["C#", "C++", ".NET", "Windows UWP", "Win32 P/Invoke", "Serial UART", "Microsoft Store"],
   },
   {
+    id: "caixa-wol",
+    title: "Gerenciamento Remoto de Máquinas (Wake-On-LAN)",
+    category: "Sistemas Distribuídos & Redes",
+    context: "Redes Corporativas / Linux",
+    period: "2023 - 2024",
+    role: "Desenvolvedor Full-Stack Júnior",
+    summary:
+      "Desenvolvimento de backend em Python com sockets UDP para acionamento remoto de computadores via pacotes mágicos Wake-On-LAN (WOL), listagem remota de pacotes e controle de energia (desligamento/reboot) em ambiente Linux, com frontend dinâmico em JavaScript para gerenciamento de rede corporativa bancária.",
+    problem:
+      "Necessidade de ligar, desligar, reiniciar, consultar pacotes disponíveis para download e aplicar rotinas em centenas de computadores corporativos de rede bancária remotamente e sem deslocamento físico.",
+    solution:
+      "Backend em Python capaz de emitir pacotes mágicos Wake-On-LAN via sockets UDP em rede, consultar pacotes remotamente e controlar o ciclo de energia das máquinas Linux, integrado a interface dinâmica em JavaScript para gerenciamento intuitivo.",
+    metrics: [
+      { label: "Protocolo", value: "UDP / WOL", detail: "Magic packets transmitidos em rede corporativa" },
+      { label: "Ambiente", value: "Linux Server", detail: "Daemons seguros de gerenciamento remoto" },
+      { label: "Stack", value: "Python / JS", detail: "Backend em Python e interface dinâmica em JS" },
+    ],
+    technicalHighlights: [
+      "Montagem de pacotes binários mágicos (payload com 6 bytes 0xFF e 16 repetições do MAC address).",
+      "Transmissão via sockets UDP com controle de portas de broadcast em sub-redes.",
+      "Listagem remota de pacotes disponíveis para download e execução de comandos de energia.",
+      "Frontend dinâmico e responsivo em JavaScript com operações em tempo real.",
+    ],
+    tags: ["Python", "Linux", "Wake-On-LAN", "Sockets UDP", "Redes", "JavaScript"],
+  },
+  {
     id: "agenda-fiscais",
     title: "Agenda Fiscais: Motor Autônomo de Vistorias",
     category: "Engenharia de Backend & Algoritmos de Alocação",
@@ -255,31 +281,6 @@ export async function alocarRecurso(demanda: Demanda, pool: Recurso[]): Promise<
       explanation: "Escalonamento com blindagem contra falhas silenciosas de rede em APIs externas.",
     },
     tags: ["NestJS", "Bun", "PostgreSQL", "Drizzle ORM", "Circuit Breakers", "TypeScript", "Axiom"],
-  },
-  {
-    id: "caixa-wol",
-    title: "Gerenciamento Remoto de Máquinas (Wake-On-LAN)",
-    category: "Sistemas Distribuídos & Redes",
-    context: "Parque Corporativo / Redes Linux",
-    period: "2022 - 2023",
-    role: "Desenvolvedor de Software (P&D)",
-    summary:
-      "Desenvolvimento de daemons Linux e serviços de backend em Python para gerenciamento e acionamento remoto de computadores através de pacotes mágicos Wake-On-LAN (WOL), além de painel web em JavaScript para controle de parques corporativos.",
-    problem:
-      "Necessidade de ligar, desligar, reiniciar e aplicar atualizações em centenas de computadores corporativos distribuídos geograficamente sem deslocamento físico de equipes de TI.",
-    solution:
-      "Backend em Python com sockets UDP para emissão de pacotes Wake-On-LAN através de sub-redes, API REST de gerenciamento e frontend dinâmico para controle em tempo real.",
-    metrics: [
-      { label: "Protocolo", value: "UDP / WOL", detail: "Magic packets transmitidos em rede corporativa" },
-      { label: "Ambiente", value: "Linux Server", detail: "Daemons seguros de gerenciamento" },
-      { label: "Stack", value: "Python / JS", detail: "Backend em Python e interface dinâmica" },
-    ],
-    technicalHighlights: [
-      "Montagem de pacotes binários mágicos (payload com 6 bytes 0xFF e 16 repetições do MAC address).",
-      "Transmissão via sockets UDP em portas de broadcast configuráveis.",
-      "Controle de estado de hosts remotos com detecção de disponibilidade e comandos de energia.",
-    ],
-    tags: ["Python", "Linux", "Wake-On-LAN", "Sockets UDP", "Redes", "JavaScript"],
   },
   {
     id: "timecontrol",
@@ -444,8 +445,8 @@ export const CAREER_JOURNEY = [
     period: "2023 — 2024",
     type: "Tempo Integral",
     description:
-      "Desenvolvimento de aplicações corporativas (TimeControl), APIs RESTful, modelagem de banco de dados relacional e criação de rotinas de automação interna.",
-    tags: ["JavaScript", "PHP", "MariaDB", "APIs REST", "HTML/CSS"],
+      "Desenvolvimento de aplicações corporativas (TimeControl), APIs RESTful, modelagem de banco de dados relacional e criação de rotinas de automação interna. Atuação como desenvolvedor no sistema de gerenciamento remoto de máquinas via Wake-On-LAN (WOL) e sockets UDP em Linux e Python para edital governamental de banco público nacional, com interface dinâmica em JavaScript.",
+    tags: ["Python", "Linux", "Wake-On-LAN", "Sockets UDP", "JavaScript", "PHP", "MariaDB", "APIs REST"],
   },
   {
     role: "Jovem Aprendiz de Pesquisa & Desenvolvimento (P&D)",
@@ -453,8 +454,8 @@ export const CAREER_JOURNEY = [
     period: "2022 — 2023",
     type: "P&D",
     description:
-      "Desenvolvimento de daemons Linux em Python com sockets UDP para acionamento remoto de computadores via Wake-On-LAN (WOL) para edital de governo em banco público nacional.",
-    tags: ["Python", "Linux", "Wake-On-LAN", "Sockets UDP", "Redes"],
+      "Atuação no setor de Pesquisa e Desenvolvimento (P&D) focado em soluções tecnológicas e monitoramento inteligente: criação de rotinas automatizadas, scripts em Python para processamento de dados e apoio técnico na homologação de sistemas corporativos.",
+    tags: ["Python", "P&D", "Automação", "Linux", "Testes de Software"],
   },
   {
     role: "Jovem Aprendiz de Eletroeletrônica",

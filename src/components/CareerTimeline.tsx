@@ -27,7 +27,7 @@ export default function CareerTimeline() {
             DO CÓDIGO EMBARCADO AOS MONOLITOS DISTRIBUÍDOS
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl font-sans">
-            Evolução técnica desde automação industrial até projetos OEM de hardware na Positivo Tecnologia, arquitetura de sistemas distribuídos e engenharia de dados.
+            Evolução técnica desde automação industrial até projetos OEM de hardware em escala comercial, arquitetura de sistemas distribuídos e engenharia de dados.
           </p>
         </motion.div>
 
