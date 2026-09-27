@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from "react";
 import InteractiveBinaryPhoto from "./InteractiveBinaryPhoto";
+import HeroTechMarquee from "./HeroTechMarquee";
 import { PERSONAL_INFO } from "@/data/portfolioData";
 
 export default function Hero() {
@@ -47,6 +48,9 @@ export default function Hero() {
       {/* 1980s Ambient Phosphor Glow Backgrounds */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-lime/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-brand-cyan/5 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Flowing Tech Logos Marquee Stream in Background */}
+      <HeroTechMarquee />
 
       {/* Main Grid: Prominent Large Photo + Dynamic Typewriter Terminal */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full my-auto z-10">
@@ -146,29 +150,53 @@ export default function Hero() {
                 <span>TEL: <strong className="text-white">{PERSONAL_INFO.phone}</strong></span>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <a
+                  href={PERSONAL_INFO.whatsappUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-sheen inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 hover:border-emerald-400 text-emerald-400 hover:text-emerald-300 text-[11px] font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(52,211,153,0.3)] active:translate-y-0 active:scale-95"
+                >
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M12.031 0C5.396 0 .029 5.367.029 12.003c0 2.119.553 4.186 1.606 6.01L.002 24l6.167-1.618a11.96 11.96 0 0 0 5.862 1.524h.005c6.634 0 12.001-5.367 12.001-12.003A12.01 12.01 0 0 0 12.031 0zm0 21.913a9.92 9.92 0 0 1-5.06-1.39l-.363-.215-3.757.986.998-3.664-.236-.375a9.916 9.916 0 0 1-1.517-5.252c0-5.485 4.464-9.949 9.953-9.949 2.658 0 5.157 1.036 7.036 2.915a9.89 9.89 0 0 1 2.91 7.037c0 5.487-4.464 9.952-9.951 9.952zm5.454-7.447c-.299-.15-1.77-.874-2.044-.974-.275-.099-.475-.15-.675.15s-.774.974-.95 1.173c-.174.2-.35.225-.649.075-.3-.15-1.266-.467-2.411-1.488-.891-.795-1.493-1.778-1.668-2.078-.175-.3-.019-.462.131-.611.135-.134.3-.35.45-.525.15-.175.2-.299.3-.499.1-.2.05-.374-.025-.524-.075-.15-.675-1.625-.925-2.224-.244-.584-.492-.505-.675-.514-.175-.009-.375-.009-.575-.009-.2 0-.525.075-.8.375s-1.05 1.025-1.05 2.5 1.075 2.898 1.225 3.098c.15.2 2.115 3.23 5.123 4.531.716.31 1.275.495 1.71.634.719.229 1.373.197 1.89.12.577-.087 1.77-.724 2.02-1.423.25-.699.25-1.298.175-1.423-.075-.125-.275-.2-.575-.35z" />
+                  </svg>
+                  <span>WHATSAPP</span>
+                </a>
                 <a
                   href={PERSONAL_INFO.github}
                   target="_blank"
                   rel="noreferrer"
-                  className="btn-sheen px-3 py-1.5 rounded-lg bg-surface border border-white/10 hover:border-brand-lime text-slate-300 hover:text-white text-[11px] font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(204,255,0,0.3)] active:translate-y-0 active:scale-95"
+                  className="btn-sheen inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface border border-white/10 hover:border-brand-lime text-slate-300 hover:text-white text-[11px] font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(204,255,0,0.3)] active:translate-y-0 active:scale-95"
                 >
-                  [GITHUB]
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                  </svg>
+                  <span>GITHUB</span>
                 </a>
                 <a
                   href={PERSONAL_INFO.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="btn-sheen px-3 py-1.5 rounded-lg bg-surface border border-white/10 hover:border-brand-cyan text-slate-300 hover:text-white text-[11px] font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] active:translate-y-0 active:scale-95"
+                  className="btn-sheen inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface border border-white/10 hover:border-brand-cyan text-slate-300 hover:text-white text-[11px] font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] active:translate-y-0 active:scale-95"
                 >
-                  [LINKEDIN]
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6 1.6 1.6 0 0 0-1.6-1.6z" />
+                  </svg>
+                  <span>LINKEDIN</span>
                 </a>
                 <a
                   href={PERSONAL_INFO.cvPath}
                   download="Cv_Luiz_Henrique_da_Silva_de_Oliveira.pdf"
-                  className="btn-sheen px-3.5 py-1.5 rounded-lg bg-brand-lime/10 border border-brand-lime/50 text-brand-lime hover:bg-brand-lime hover:text-black font-bold text-[11px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(204,255,0,0.4)] active:translate-y-0 active:scale-95"
+                  className="btn-sheen inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-brand-lime/10 border border-brand-lime/50 text-brand-lime hover:bg-brand-lime hover:text-black font-bold text-[11px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(204,255,0,0.4)] active:translate-y-0 active:scale-95"
                 >
-                  [CV PDF]
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="12" y1="18" x2="12" y2="12" />
+                    <line x1="9" y1="15" x2="12" y2="18" />
+                    <line x1="15" y1="15" x2="12" y2="18" />
+                  </svg>
+                  <span>CV PDF</span>
                 </a>
               </div>
             </div>
