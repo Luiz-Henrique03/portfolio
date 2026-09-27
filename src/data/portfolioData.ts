@@ -312,69 +312,91 @@ export async function alocarRecurso(demanda: Demanda, pool: Recurso[]): Promise<
 export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
   {
     id: 1,
-    title: "P/Invoke Win32 e Barramento Serial no Positivo Vision R15M",
-    area: "Hardware & Baixo Nível",
-    context: "Positivo Tecnologia",
+    title: "Varredura Retomável de ERP com Heartbeat e Particionamento Binário",
+    area: "Resiliência & Sincronização ERP",
+    context: "Sincronização SAP (PostgreSQL / NestJS)",
     problemFound:
-      "Atualizar a minitela embarcada no notebook consumindo APIs comuns do Windows causava picos de uso de CPU e impacto na autonomia da bateria.",
+      "A sincronização noturna de Ordens de Fornecimento no ERP SAP sofria com timeouts frequentes, respostas HTTP 200 falsamente vazias na madrugada e perda total de progresso a cada deploy, reiniciando do zero e gerando sobrecarga no banco.",
     engineeringSolution:
-      "Utilização de chamadas diretas P/Invoke da Win32 API (kernel32.dll) e comunicação serial assíncrona compactada com o microcontrolador do display, garantindo consumo mínimo de energia e operação em segundo plano no Windows UWP.",
-    takeaway: "Em sistemas embarcados, a eficiência mora na proximidade com as chamadas nativas do sistema operacional.",
+      "Implementação de máquina de estados distribuída com tabela de checkpoints (almoxarifado_sync_faixa) e posse por heartbeat (auto-recuperação após 10min). Mecanismo defensivo de particionamento binário recursivo para fatias volumosas (divididas até 5x) e retenção com backoff exponencial contra falsos positivos do ERP.",
+    takeaway: "",
   },
   {
     id: 2,
-    title: "Full Reload com Advisory Lock no ETL de BI",
-    area: "Engenharia de Dados",
-    context: "Engenharia de Dados (PostgreSQL / Drizzle)",
+    title: "Prevenção de Inundação de 148 Agendamentos por Anomalia de Prefixos Legados",
+    area: "Algoritmos & Motores Autônomos",
+    context: "Motor de Agendamento (NestJS / Bun)",
     problemFound:
-      "Cargas concorrentes ou parciais de ETL deixavam o dashboard em estado inconsistente enquanto as queries de inserção eram executadas.",
+      "Quando a equipe desativava fichas de serviço com prefixos no sistema legado ('[Desativada] FVS...'), o parser de códigos por âncora inicial falhava, caía no fallback e gerou uma inundação em produção de 148 cards duplicados em 5 canteiros de obra para vistorias que já estavam 100% concluídas.",
     engineeringSolution:
-      "Estruturação de pipeline de ETL que executa dentro de uma única transação BEGIN...COMMIT com TRUNCATE e reinserção dos fatos, protegido por advisory lock do Postgres (pg_try_advisory_lock 427914) que responde 409 locked para tentativas simultâneas.",
-    takeaway: "Para volumes de milhares de registros com carga rápida (1 a 2s), o full reload elimina complexidade e garante consistência imediata.",
+      "Refatoração profunda no mapa canônico de descrições com regex estrito sobre catálogo de 5.760 fichas. O motor passou a filtrar fichas desativadas ou fora de escopo na fonte, blindando os 4 caminhos do escalonador contra falsas coberturas e garantindo idempotência estrita.",
+    takeaway: "",
   },
   {
     id: 3,
-    title: "Modelagem Dimensional para Rastreabilidade Jurídica",
-    area: "Modelagem de Negócio",
-    context: "Data Warehouse (Star Schema)",
+    title: "Erradicação de Gargalo N+1 no Cron de Agendamento via Resolução em Memória",
+    area: "Performance & Concorrência de Banco",
+    context: "Otimização de Banco de Dados (PostgreSQL / Drizzle)",
     problemFound:
-      "O dashboard analítico atribuía ocorrências ao operador que cadastrou o registro no sistema em vez do fornecedor terceirizado contratado, inviabilizando cobranças e conciliações contratuais.",
+      "O Worker Cron realizava varredura no banco tabela por tabela para cada unidade habitacional para checar cards ocultos, gerando centenas de queries repetidas, lock contention massivo no PostgreSQL e lentidão operacional.",
     engineeringSolution:
-      "Reestruturação da dimensão para capturar a razão social em caixa alta e o regime contratual diretamente na linha do fato analítico, separando contratos de gestão interna sem recorrer a joins textuais imprecisos.",
-    takeaway: "Dados analíticos usados para cobrança financeira e auditoria jurídica exigem que a chave estrangeira reflita a entidade real, e não o usuário do sistema.",
+      "Resolução do estado de cards ocultos diretamente em memória através de Maps e Sets indexados por chave composta. O cron passou a usar cache seletivo que grava exclusivamente os diffs reais no banco, reduzindo o tempo de processamento de minutos para segundos com zero lock contention.",
+    takeaway: "",
   },
   {
     id: 4,
-    title: "Autorização no WHERE de Server Actions Públicas",
-    area: "Segurança de Software",
-    context: "Segurança Web (Next.js & SQL)",
+    title: "Desacoplamento de Webhooks de CRM Fora do Request Path HTTP",
+    area: "Arquitetura Assíncrona & Webhooks",
+    context: "Microsserviços & APIs (NestJS / Kommo CRM)",
     problemFound:
-      "Server Actions em Next.js são endpoints POST públicos. Validar autoria apenas com um 'if' no código da action permite que requisições HTTP forjadas alterem demandas de terceiros.",
+      "A sincronização síncrona com o CRM externo no fluxo de admissão de pessoal prendia o request HTTP do usuário, gerando latências de mais de 8 segundos e causando frequentes erros de timeout 504 no frontend.",
     engineeringSolution:
-      "Inclusão obrigatória do ID do usuário autenticado diretamente na cláusula WHERE do UPDATE SQL (exigirAutorUserId), garantindo que o banco de dados barre mutações indevidas a nível atômico.",
-    takeaway: "Em arquiteturas modernas com Server Actions, a autorização final pertence à consulta do banco de dados.",
+      "Desacoplamento assíncrono para fora do ciclo de vida da requisição HTTP (request path), despachando eventos para processamento em background com retentativas independentes e dead-letter queue para isolamento de falhas, reduzindo a resposta do endpoint para menos de 50ms.",
+    takeaway: "",
   },
   {
     id: 5,
-    title: "Parser de Cronogramas e Arquivos Binários em TypeScript Puro",
-    area: "Engenharia de Software",
-    context: "Engenharia de Software (TypeScript / Node)",
+    title: "Exportação em Streaming de 100 Mil Linhas de Insumos sem Estouro de Memória",
+    area: "Sistemas de Alta Escala & Memória",
+    context: "Relatórios Corporativos (Node.js / ExcelJS)",
     problemFound:
-      "A leitura de arquivos complexos de cronograma (.mpp) usualmente dependia de bibliotecas legadas em Java ou serviços externos caros e com alto consumo de memória.",
+      "A geração de planilhas complexas com histórico de insumos comprometidos, saldo de compras e ordens de fornecimento estourava a memória do processo (Out Of Memory - OOM) ao carregar dezenas de milhares de linhas simultaneamente.",
     engineeringSolution:
-      "Implementação de parser nativo em TypeScript puro sobre arquivos binários estruturados, processando arquivos com milhares de tarefas e hierarquias profundas em apenas 250ms dentro do próprio processo da aplicação.",
-    takeaway: "Eliminar pontes entre diferentes linguagens e runtimes reduz drasticamente o consumo de memória e a superfície de falha em produção.",
+      "Arquitetura de exportação em streaming contínuo via WorkbookWriter acoplada a cursores paginados do PostgreSQL, gerando planilhas formatadas de até 100.000 linhas em tempo real sem impacto no consumo de RAM da aplicação.",
+    takeaway: "",
   },
   {
     id: 6,
-    title: "Diagnóstico Forense de Concorrência Fantasma via Logs Estruturados",
-    area: "Observabilidade & Produção",
-    context: "Observabilidade & Produção (Axiom APL)",
+    title: "Geofencing Anti-Fraude com Validação de Coordenadas em Vistorias de Obra",
+    area: "Integridade de Dados & Auditoria",
+    context: "Vistoria de Materiais & Mobile Web",
     problemFound:
-      "Eventos duplicados e órfãos apareciam em calendários corporativos bloqueando a disponibilidade de recursos compartilhados sem acusar erros explícitos no código.",
+      "Fichas de Verificação de Material (FVM) em canteiros de obras eram suscetíveis a fraudes e recebimentos irregulares com fotos genéricas tiradas fora da obra ou reutilizadas de entregas anteriores.",
     engineeringSolution:
-      "Execução de query analítica APL no Axiom correlacionando hostname, payload e assinaturas temporais, descobrindo uma versão legada do serviço rodando paralelamente em container órfão. Remoção cirúrgica com rotina de backoff eliminou 562 órfãos com zero novas falhas.",
-    takeaway: "Em problemas fantasmas de produção, logs estruturados com hostname e assinaturas temporais são mais eficazes que qualquer suposição estática.",
+      "Validação estrita de coordenadas geográficas extraídas do sensor do dispositivo no momento do envio, confrontando o raio de tolerância (geofencing) das coordenadas cadastradas da obra antes de autorizar a baixa da remessa de materiais.",
+    takeaway: "",
+  },
+  {
+    id: 7,
+    title: "P/Invoke Win32 e Barramento Serial em Hardware OEM Integrado",
+    area: "Hardware & Baixo Nível",
+    context: "Notebook OEM (C# / C++ / Win32)",
+    problemFound:
+      "Atualizar a minitela física secundária embutida no chassi do notebook através de chamadas convencionais consumia ciclos excessivos de GPU/CPU, drenando rapidamente a bateria do computador.",
+    engineeringSolution:
+      "Construção de driver leve em C# com chamadas nativas P/Invoke da Win32 API (kernel32.dll) e comunicação serial assíncrona compactada via UART com o microcontrolador do display, garantindo consumo mínimo de energia em segundo plano no Windows UWP.",
+    takeaway: "",
+  },
+  {
+    id: 8,
+    title: "Full Reload com Transação Única e Advisory Lock no ETL de BI",
+    area: "Engenharia de Dados & Concorrência",
+    context: "Data Warehouse & BI (PostgreSQL / Drizzle)",
+    problemFound:
+      "Execuções paralelas ou falhas parciais em pipelines de ETL deixavam os dashboards de Business Intelligence em estado corrompido ou exibindo dados incompletos durante inserções concorrentes.",
+    engineeringSolution:
+      "Pipeline transacional atômico protegido por pg_try_advisory_lock exclusivo no PostgreSQL. Execuções simultâneas respondem 409 Locked de forma determinística, garantindo isolamento total entre carga de dados e leitura analítica.",
+    takeaway: "",
   },
 ];
 
