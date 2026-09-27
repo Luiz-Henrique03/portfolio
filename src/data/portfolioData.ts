@@ -41,7 +41,7 @@ export const PERSONAL_INFO = {
   whatsappUrl: "https://wa.me/5541998957337?text=Ol%C3%A1%20Luiz,%20acessei%20seu%20portf%C3%B3lio%20de%20desenvolvedor%20e%20gostaria%20de%20conversar!",
   github: "https://github.com/Luiz-Henrique03",
   linkedin: "https://www.linkedin.com/in/luiz-henrique-s-b05363226/",
-  cvPath: "/cv.pdf",
+  cvPath: "/docs/Cv_Luiz_Henrique_da_Silva_de_Oliveira.pdf",
 };
 
 export const CORE_METRICS = [
@@ -513,7 +513,7 @@ export const EDUCATION_HONORS = [
     title: "CS50x — Introduction to Computer Science",
     institution: "Harvard University",
     period: "Certificação Internacional",
-    badge: "CERTIFICADO INTERNACIONAL",
+    badge: "Curso Complementar",
     highlight: "C, Python, SQL, Estruturas de Dados",
     description:
       "Aprofundamento em gestão manual de memória, ponteiros, estruturas de dados clássicas e algoritmos de busca e ordenação.",
