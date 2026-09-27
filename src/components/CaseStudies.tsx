@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useRef, useState } from "react";
-import { PROJECTS } from "@/data/portfolioData";
+import React, { useRef, useState, useMemo } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
-const PROJECT_META: Record<
+const PROJECT_META_PT: Record<
   string,
   { shortTitle: string; subtitle: string; badge: string }
 > = {
@@ -40,7 +40,45 @@ const PROJECT_META: Record<
   },
 };
 
+const PROJECT_META_EN: Record<
+  string,
+  { shortTitle: string; subtitle: string; badge: string }
+> = {
+  "positivo-vision": {
+    shortTitle: "Vision R15M",
+    subtitle: "Embedded Sub-Screen & Win32 Driver",
+    badge: "OEM Hardware",
+  },
+  "caixa-wol": {
+    shortTitle: "WOL Management",
+    subtitle: "Wake-On-LAN & UDP Sockets",
+    badge: "Banking / Linux",
+  },
+  "agenda-fiscais": {
+    shortTitle: "Fiscal Scheduler",
+    subtitle: "Autonomous Engine & Graph API",
+    badge: "NestJS",
+  },
+  "bi-dashboards": {
+    shortTitle: "Data Engineering & BI",
+    subtitle: "Star Schema & ETL",
+    badge: "Data / BI",
+  },
+  "backend-monolito": {
+    shortTitle: "Modular Monolith",
+    subtitle: "High Concurrency & Resilience",
+    badge: "NestJS / Bun",
+  },
+  "timecontrol": {
+    shortTitle: "Corporate TimeControl",
+    subtitle: "Team Management & CI/CD",
+    badge: "Web / CI/CD",
+  },
+};
+
 export default function CaseStudies() {
+  const { t, isPt, projects } = useLanguage();
+  const projectMeta = useMemo(() => (isPt ? PROJECT_META_PT : PROJECT_META_EN), [isPt]);
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -51,8 +89,8 @@ export default function CaseStudies() {
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const idx = Math.min(
-      PROJECTS.length - 1,
-      Math.max(0, Math.floor(latest * PROJECTS.length))
+      projects.length - 1,
+      Math.max(0, Math.floor(latest * projects.length))
     );
     setActiveIndex(idx);
   });
@@ -64,12 +102,12 @@ export default function CaseStudies() {
       const absoluteTop = window.scrollY + rect.top;
       const height = containerRef.current.offsetHeight;
       const scrollableRange = Math.max(0, height - window.innerHeight);
-      const targetY = absoluteTop + ((idx + 0.5) / PROJECTS.length) * scrollableRange;
+      const targetY = absoluteTop + ((idx + 0.5) / projects.length) * scrollableRange;
       window.scrollTo({ top: targetY, behavior: "smooth" });
     }
   };
 
-  const selectedProject = PROJECTS[activeIndex];
+  const selectedProject = projects[activeIndex] || projects[0];
 
   return (
     <section id="cases" className="relative bg-[#07070a] border-b border-white/10 font-mono text-left">
@@ -81,13 +119,13 @@ export default function CaseStudies() {
         <div className="space-y-3">
           <div className="text-xs font-mono font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-brand-lime animate-pulse" />
-            <span>[PORTFÓLIO DE PROJETOS] // MAINFRAME DE ENGENHARIA</span>
+            <span>{t.cases.tag}</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white uppercase tracking-tight">
-            PROJETOS DE SOFTWARE DESENVOLVIDOS
+            {t.cases.title}
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-sans">
-            Sistemas completos desenvolvidos ao longo da trajetória profissional: software embarcado, dashboards de BI analítico, monólitos modulares e automação de redes.
+            {t.cases.subtitle}
           </p>
         </div>
       </div>
@@ -100,9 +138,9 @@ export default function CaseStudies() {
             
             {/* Mobile Project Selector Tabs (uncompressed, smooth horizontal scroll) */}
             <div className="flex lg:hidden overflow-x-auto gap-2 pb-3 mb-3 scrollbar-none">
-              {PROJECTS.map((project, idx) => {
+              {projects.map((project, idx) => {
                 const isSelected = activeIndex === idx;
-                const meta = PROJECT_META[project.id] || {
+                const meta = projectMeta[project.id] || {
                   shortTitle: project.title.split(":")[0],
                   badge: project.context.split(" ")[0],
                 };
@@ -131,18 +169,18 @@ export default function CaseStudies() {
                 <div className="flex items-center justify-between pb-1 text-xs text-slate-400 font-mono">
                   <span className="text-[11px] font-bold uppercase text-brand-lime flex items-center gap-1.5">
                     <span className="w-2 h-2 rounded-full bg-brand-lime animate-pulse" />
-                    ÍNDICE DE SISTEMAS
+                    {isPt ? "ÍNDICE DE SISTEMAS" : "SYSTEMS DIRECTORY"}
                   </span>
                   <div className="flex items-center gap-2 text-[11px]">
                     <span className="text-brand-lime font-bold">0{activeIndex + 1}</span>
                     <span className="text-slate-600">/</span>
-                    <span className="text-slate-400">0{PROJECTS.length}</span>
+                    <span className="text-slate-400">0{projects.length}</span>
                   </div>
                 </div>
 
-                {PROJECTS.map((project, idx) => {
+                {projects.map((project, idx) => {
                   const isSelected = activeIndex === idx;
-                  const meta = PROJECT_META[project.id] || {
+                  const meta = projectMeta[project.id] || {
                     shortTitle: project.title.split(":")[0],
                     subtitle: project.category,
                     badge: project.context.split(" ")[0],
@@ -174,7 +212,7 @@ export default function CaseStudies() {
                               isSelected ? "text-brand-lime" : "text-slate-500"
                             }`}
                           >
-                            PROJETO 0{idx + 1}
+                            {isPt ? "PROJETO" : "PROJECT"} 0{idx + 1}
                           </span>
                           <span
                             className={`text-[9px] px-2 py-0.5 rounded font-mono font-bold uppercase shrink-0 ${
@@ -242,7 +280,7 @@ export default function CaseStudies() {
 
                       {/* Role Badge */}
                       <div className="px-3 py-1.5 rounded bg-black/60 border border-white/10 text-xs text-slate-300 font-mono shrink-0">
-                        ATUAÇÃO: <strong className="text-brand-lime">{selectedProject.role}</strong>
+                        {t.cases.actingLabel} <strong className="text-brand-lime">{selectedProject.role}</strong>
                       </div>
                     </div>
 
@@ -266,7 +304,7 @@ export default function CaseStudies() {
                       <div className="p-4 rounded-lg bg-red-950/25 border border-red-500/25 space-y-1.5">
                         <div className="text-xs font-mono font-bold text-red-400 uppercase tracking-wider flex items-center gap-1.5">
                           <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
-                          <span>[DESAFIO TÉCNICO]</span>
+                          <span>{t.cases.challengeTitle}</span>
                         </div>
                         <p className="text-xs text-slate-200 leading-relaxed">
                           {selectedProject.problem}
@@ -276,7 +314,7 @@ export default function CaseStudies() {
                       <div className="p-4 rounded-lg bg-brand-lime/5 border border-brand-lime/30 space-y-1.5">
                         <div className="text-xs font-mono font-bold text-brand-lime uppercase tracking-wider flex items-center gap-1.5">
                           <span className="w-1.5 h-1.5 rounded-full bg-brand-lime animate-pulse" />
-                          <span>[SOLUÇÃO DE ENGENHARIA]</span>
+                          <span>{t.cases.solutionTitle}</span>
                         </div>
                         <p className="text-xs text-slate-200 leading-relaxed">
                           {selectedProject.solution}
@@ -287,7 +325,7 @@ export default function CaseStudies() {
                     {/* Technical Highlights */}
                     <div className="space-y-2 mb-5">
                       <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                        // DESTAQUES DE ARQUITETURA & CÓDIGO
+                        {t.cases.highlightsTitle}
                       </div>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {selectedProject.technicalHighlights.map((highlight, idx) => (
@@ -304,7 +342,7 @@ export default function CaseStudies() {
 
                     {/* Tags */}
                     <div className="flex flex-wrap items-center gap-1.5 pt-3 border-t border-white/10 text-xs">
-                      <span className="text-slate-500 mr-1 text-[11px]">STACKS:</span>
+                      <span className="text-slate-500 mr-1 text-[11px]">{t.cases.stacksLabel}</span>
                       {selectedProject.tags.map((tag, idx) => (
                         <span
                           key={idx}

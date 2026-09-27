@@ -1,9 +1,11 @@
 "use client";
 
 import React from "react";
-import { PERSONAL_INFO } from "@/data/portfolioData";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { t, isPt, personalInfo } = useLanguage();
+
   const scrollToTop = () => {
     if (typeof window !== "undefined") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -16,16 +18,16 @@ export default function Footer() {
         
         {/* Left info */}
         <div>
-          <span className="font-bold text-white uppercase">{PERSONAL_INFO.name}</span>
+          <span className="font-bold text-white uppercase">{personalInfo.name}</span>
           <p className="text-[11px] text-slate-500 font-sans">
-            Software Engineer & Systems Architect
+            {isPt ? "Engenheiro de Software & Arquiteto de Sistemas" : "Software Engineer & Systems Architect"}
           </p>
         </div>
 
         {/* Center Links */}
         <div className="flex items-center gap-4 text-xs">
           <a
-            href={PERSONAL_INFO.github}
+            href={personalInfo.github}
             target="_blank"
             rel="noreferrer"
             className="hover:text-brand-lime transition-colors"
@@ -33,7 +35,7 @@ export default function Footer() {
             [GITHUB]
           </a>
           <a
-            href={PERSONAL_INFO.linkedin}
+            href={personalInfo.linkedin}
             target="_blank"
             rel="noreferrer"
             className="hover:text-brand-cyan transition-colors"
@@ -47,7 +49,7 @@ export default function Footer() {
           onClick={scrollToTop}
           className="px-3 py-1.5 rounded bg-surface border border-white/10 hover:border-brand-lime text-slate-400 hover:text-white transition-all text-[11px]"
         >
-          [SUBIR AO TOPO]
+          {isPt ? "[SUBIR AO TOPO ↑]" : "[BACK TO TOP ↑]"}
         </button>
 
       </div>

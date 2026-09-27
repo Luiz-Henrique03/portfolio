@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { PERSONAL_INFO } from "@/data/portfolioData";
+import { useLanguage } from "@/context/LanguageContext";
+import LanguageToggle from "./LanguageToggle";
 import confetti from "canvas-confetti";
 
 export default function Navbar() {
+  const { t, personalInfo } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -29,12 +31,12 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { label: "Positivo Vision R15M", href: "#vision-r15m" },
-    { label: "BI & Engenharia de Dados", href: "#bi-dashboards" },
-    { label: "Projetos de Software", href: "#cases" },
-    { label: "Casos Técnicos", href: "#discoveries" },
-    { label: "Skills", href: "#skills" },
-    { label: "Trajetória", href: "#journey" },
+    { label: t.nav.vision, href: "#vision-r15m" },
+    { label: t.nav.bi, href: "#bi-dashboards" },
+    { label: t.nav.cases, href: "#cases" },
+    { label: t.nav.discoveries, href: "#discoveries" },
+    { label: t.nav.skills, href: "#skills" },
+    { label: t.nav.journey, href: "#journey" },
   ];
 
   return (
@@ -48,7 +50,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand / Logo */}
         <Link href="#" className="flex items-center gap-2.5 text-left">
-          <div className="px-2 py-1 rounded bg-brand-lime text-black font-black text-xs">
+          <div className="px-2 py-1 rounded bg-brand-lime text-black font-black text-xs shadow-[0_0_10px_rgba(204,255,0,0.3)]">
             LH
           </div>
           <div>
@@ -57,7 +59,7 @@ export default function Navbar() {
                 LUIZ HENRIQUE
               </span>
             </div>
-            <p className="text-[10px] text-slate-400">Software Developer</p>
+            <p className="text-[10px] text-slate-400">{t.nav.role}</p>
           </div>
         </Link>
 
@@ -74,36 +76,40 @@ export default function Navbar() {
           ))}
         </nav>
 
-        {/* Action Controls without audio */}
-        <div className="hidden sm:flex items-center gap-2">
+        {/* Action Controls with Language Switcher */}
+        <div className="hidden sm:flex items-center gap-3">
+          {/* Flag-based Language Switcher (🇧🇷 / 🇺🇸) */}
+          <LanguageToggle />
+
           {/* Download CV */}
           <a
-            href={PERSONAL_INFO.cvPath}
+            href={personalInfo.cvPath}
             download="Cv_Luiz_Henrique_da_Silva_de_Oliveira.pdf"
             onClick={triggerDownloadCV}
             className="btn-sheen px-3.5 py-1.5 rounded-lg bg-surface border border-white/10 hover:border-brand-lime text-[11px] font-bold text-slate-200 hover:text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(204,255,0,0.25)] active:translate-y-0 active:scale-95"
           >
-            [BAIXAR CV]
+            {t.nav.downloadCv}
           </a>
 
           {/* WhatsApp */}
           <a
-            href={PERSONAL_INFO.whatsappUrl}
+            href={personalInfo.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-sheen px-4 py-1.5 rounded-lg bg-brand-lime hover:bg-brand-limeHover text-black font-bold text-[11px] uppercase transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(204,255,0,0.45)] active:translate-y-0 active:scale-95"
           >
-            [WHATSAPP]
+            {t.nav.whatsapp}
           </a>
         </div>
 
-        {/* Mobile menu button */}
+        {/* Mobile controls */}
         <div className="flex items-center gap-2 xl:hidden">
+          <LanguageToggle />
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="btn-sheen px-3 py-1.5 rounded-lg bg-surface border border-white/10 hover:border-brand-lime/60 text-[11px] text-slate-200 font-bold hover:text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 active:scale-95"
           >
-            {mobileMenuOpen ? "[FECHAR]" : "[MENU]"}
+            {mobileMenuOpen ? t.nav.close : t.nav.menu}
           </button>
         </div>
       </div>
@@ -125,20 +131,20 @@ export default function Navbar() {
           </div>
           <div className="pt-2 border-t border-white/10 flex flex-col gap-2">
             <a
-              href={PERSONAL_INFO.cvPath}
+              href={personalInfo.cvPath}
               download="Cv_Luiz_Henrique_da_Silva_de_Oliveira.pdf"
               onClick={triggerDownloadCV}
-              className="text-center py-2 rounded bg-surface border border-white/10 text-xs text-slate-200"
+              className="text-center py-2 rounded bg-surface border border-white/10 text-xs text-slate-200 font-bold"
             >
-              [BAIXAR CURRÍCULO COMPLETO PDF]
+              {t.nav.downloadCv}
             </a>
             <a
-              href={PERSONAL_INFO.whatsappUrl}
+              href={personalInfo.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="text-center py-2 rounded bg-brand-lime text-black font-bold text-xs uppercase"
             >
-              [CONVERSAR NO WHATSAPP]
+              {t.nav.whatsapp}
             </a>
           </div>
         </div>

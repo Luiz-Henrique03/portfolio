@@ -3,19 +3,37 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import MinitelaStickyShowcase from "./MinitelaStickyShowcase";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function PositivoVisionDeepDive() {
+  const { t, isPt } = useLanguage();
   const [activeLayer, setActiveLayer] = useState<"hardware" | "firmware" | "store">("hardware");
 
   const layers = {
     hardware: {
-      title: "CAMADA DE BAIXO NÍVEL // DRIVER & BARRAMENTO SERIAL",
-      desc: "Comunicação direta com o microcontrolador proprietário embutido no chassi do Positivo Vision R15M.",
+      title: isPt
+        ? "CAMADA DE BAIXO NÍVEL // DRIVER & BARRAMENTO SERIAL"
+        : "LOW-LEVEL LAYER // DRIVER & SERIAL BUS",
+      desc: isPt
+        ? "Comunicação direta com o microcontrolador proprietário embutido no chassi do Positivo Vision R15M."
+        : "Direct communication with the proprietary microcontroller embedded in the Positivo Vision R15M laptop chassis.",
       specs: [
-        { label: "Linguagens Utilizadas", val: "C++ / C# (.NET) / P/Invoke Win32" },
-        { label: "Protocolo de Barramento", val: "Serial RS-232 / UART sobre USB HID Controller" },
-        { label: "Mapeamento de I/O", val: "Buffers binários para comandos de display e taxa de clock" },
-        { label: "Coleta de Métricas", val: "Win32 API (kernel32 / advapi32) para telemetria de CPU e bateria" },
+        {
+          label: isPt ? "Linguagens Utilizadas" : "Languages Used",
+          val: "C++ / C# (.NET) / P/Invoke Win32",
+        },
+        {
+          label: isPt ? "Protocolo de Barramento" : "Bus Protocol",
+          val: isPt ? "Serial RS-232 / UART sobre USB HID Controller" : "Serial RS-232 / UART over USB HID Controller",
+        },
+        {
+          label: isPt ? "Mapeamento de I/O" : "I/O Mapping",
+          val: isPt ? "Buffers binários para comandos de display e taxa de clock" : "Binary buffers for display commands and clock rate",
+        },
+        {
+          label: isPt ? "Coleta de Métricas" : "Metrics Collection",
+          val: isPt ? "Win32 API (kernel32 / advapi32) para telemetria de CPU e bateria" : "Win32 API (kernel32 / advapi32) for CPU and battery telemetry",
+        },
       ],
       code: `// Chamada P/Invoke para leitura de status de bateria e hardware no Windows
 [DllImport("kernel32.dll", SetLastError = true)]
@@ -30,13 +48,29 @@ public void EnviarPacoteParaMinitela(byte[] frameBuffer) {
 }`,
     },
     firmware: {
-      title: "CAMADA DE SOFTWARE // APLICAÇÃO UWP & SERVIÇOS",
-      desc: "Aplicação responsiva integrada ao ecossistema Windows para gerenciamento das funções da minitela.",
+      title: isPt
+        ? "CAMADA DE SOFTWARE // APLICAÇÃO UWP & SERVIÇOS"
+        : "SOFTWARE LAYER // UWP APPLICATION & SERVICES",
+      desc: isPt
+        ? "Aplicação responsiva integrada ao ecossistema Windows para gerenciamento das funções da minitela."
+        : "Responsive application integrated into the Windows ecosystem for secondary display function management.",
       specs: [
-        { label: "Arquitetura", val: "Windows Universal Windows Platform (UWP) + Background Task" },
-        { label: "Consumo de Bateria", val: "Otimizado para suspensão e ciclo de vida Connected Standby" },
-        { label: "Banco de Dados Local", val: "MySQL / MariaDB local para histórico de clima e notificações" },
-        { label: "Integrações", val: "Listener de notificações WhatsApp e consumo de APIs REST meteorológicas" },
+        {
+          label: isPt ? "Arquitetura" : "Architecture",
+          val: "Windows Universal Windows Platform (UWP) + Background Task",
+        },
+        {
+          label: isPt ? "Consumo de Bateria" : "Battery Consumption",
+          val: isPt ? "Otimizado para suspensão e ciclo de vida Connected Standby" : "Optimized for sleep states and Connected Standby lifecycle",
+        },
+        {
+          label: isPt ? "Banco de Dados Local" : "Local Database",
+          val: isPt ? "MySQL / MariaDB local para histórico de clima e notificações" : "Local MySQL / MariaDB for weather cache and notification history",
+        },
+        {
+          label: isPt ? "Integrações" : "Integrations",
+          val: isPt ? "Listener de notificações WhatsApp e consumo de APIs REST meteorológicas" : "WhatsApp notification listener and weather REST API consumption",
+        },
       ],
       code: `// Despacho assíncrono de notificações de mensageria para a tela secundária
 public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagemResumida) {
@@ -50,13 +84,29 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
 }`,
     },
     store: {
-      title: "CERTIFICAÇÃO OEM // MICROSOFT STORE & RELEASES",
-      desc: "Ciclo completo de conformidade e empacotamento para distribuição em computadores de fábrica.",
+      title: isPt
+        ? "CERTIFICAÇÃO OEM // MICROSOFT STORE & RELEASES"
+        : "OEM CERTIFICATION // MICROSOFT STORE & RELEASES",
+      desc: isPt
+        ? "Ciclo completo de conformidade e empacotamento para distribuição em computadores de fábrica."
+        : "Full compliance cycle and packaging for factory computer OEM pre-installation.",
       specs: [
-        { label: "Empacotamento", val: "MSIX / AppxBundle com manifesto estrito de permissões" },
-        { label: "Assinatura de Código", val: "Certificados corporativos e auditoria de binários" },
-        { label: "Controle de Versão", val: "GitLab com branching strategy para releases de imagem OEM" },
-        { label: "Homologação", val: "Aprovado sem ressalvas na Microsoft Store para a linha Positivo Vision" },
+        {
+          label: isPt ? "Empacotamento" : "Packaging",
+          val: isPt ? "MSIX / AppxBundle com manifesto estrito de permissões" : "MSIX / AppxBundle with strict permission manifest",
+        },
+        {
+          label: isPt ? "Assinatura de Código" : "Code Signing",
+          val: isPt ? "Certificados corporativos e auditoria de binários" : "Corporate certificates and binary auditing",
+        },
+        {
+          label: isPt ? "Controle de Versão" : "Version Control",
+          val: isPt ? "GitLab com branching strategy para releases de imagem OEM" : "GitLab branching strategy for factory OEM image releases",
+        },
+        {
+          label: isPt ? "Homologação" : "Store Certification",
+          val: isPt ? "Aprovado sem ressalvas na Microsoft Store para a linha Positivo Vision" : "Approved without remarks on Microsoft Store for Positivo Vision line",
+        },
       ],
       code: `<!-- Declaração estrita de capacidades no Package.appxmanifest para OEM -->
 <Capabilities>
@@ -86,13 +136,13 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
           className="space-y-3 mb-12"
         >
           <div className="text-xs font-mono font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
-            <span>[ENGENHARIA DE HARDWARE EMBARCADO] // CASE DE IMPACTO OEM</span>
+            <span>{t.vision.tag}</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white uppercase tracking-tight">
-            POSITIVO VISION R15M: MINITELA EMBARCADA
+            {t.vision.title}
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-mono">
-            Desenvolvimento completo da camada de software e integração de baixo nível para a mini tela física integrada no chassi do notebook Positivo Vision R15M. Do barramento serial à publicação na Microsoft Store.
+            {t.vision.subtitle}
           </p>
         </motion.div>
 
@@ -111,7 +161,7 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
               {/* Monospace frame tags */}
               <div className="flex items-center justify-between pb-3 border-b border-white/10 text-[11px] font-mono text-slate-400">
                 <span>HARDWARE: POSITIVO VISION R15M</span>
-                <span className="text-brand-lime font-bold">PRODUTO OFICIAL</span>
+                <span className="text-brand-lime font-bold">{isPt ? "PRODUTO OFICIAL" : "OFFICIAL PRODUCT"}</span>
               </div>
 
               {/* Real Product Image */}
@@ -125,7 +175,7 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
               </div>
 
               <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span>DEPLOYMENT: IMAGEM DE FÁBRICA OEM</span>
+                <span>{isPt ? "DEPLOYMENT: IMAGEM DE FÁBRICA OEM" : "DEPLOYMENT: OEM FACTORY IMAGE"}</span>
                 <span className="text-brand-cyan">MICROSOFT STORE CERTIFIED</span>
               </div>
             </div>
@@ -133,23 +183,23 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
             {/* Hardware Telemetry Spec Sheet */}
             <div className="p-4 rounded-xl bg-surface border border-white/10 space-y-2 font-mono text-xs">
               <div className="text-brand-lime font-bold uppercase text-[11px] pb-1 border-b border-white/5">
-                // ESPECIFICAÇÕES DO SUBSISTEMA
+                {isPt ? "// ESPECIFICAÇÕES DO SUBSISTEMA" : "// SUBSYSTEM SPECIFICATIONS"}
               </div>
               <div className="flex justify-between py-1 border-b border-white/5 text-slate-300">
-                <span className="text-slate-500">Componente:</span>
-                <span className="font-bold text-white">Display Secundário LCD Minitela</span>
+                <span className="text-slate-500">{isPt ? "Componente:" : "Component:"}</span>
+                <span className="font-bold text-white">{isPt ? "Display Secundário LCD Minitela" : "Secondary LCD Display (Sub-screen)"}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-white/5 text-slate-300">
-                <span className="text-slate-500">Comunicação:</span>
-                <span className="font-bold text-white">Barramento Serial via Microcontrolador</span>
+                <span className="text-slate-500">{isPt ? "Comunicação:" : "Communication:"}</span>
+                <span className="font-bold text-white">{isPt ? "Barramento Serial via Microcontrolador" : "Serial Bus via Microcontroller"}</span>
               </div>
               <div className="flex justify-between py-1 border-b border-white/5 text-slate-300">
-                <span className="text-slate-500">Stack Principal:</span>
+                <span className="text-slate-500">{isPt ? "Stack Principal:" : "Core Stack:"}</span>
                 <span className="font-bold text-white">C#, .NET, C++, Windows UWP</span>
               </div>
               <div className="flex justify-between py-1 text-slate-300">
-                <span className="text-slate-500">Distribuição:</span>
-                <span className="font-bold text-white">Publicado na Microsoft Store</span>
+                <span className="text-slate-500">{isPt ? "Distribuição:" : "Distribution:"}</span>
+                <span className="font-bold text-white">{isPt ? "Publicado na Microsoft Store" : "Published on Microsoft Store"}</span>
               </div>
             </div>
           </motion.div>
@@ -173,7 +223,7 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
                     : "bg-surface border-white/10 text-slate-400 hover:text-white hover:border-brand-lime/50 hover:shadow-[0_0_15px_rgba(204,255,0,0.15)]"
                 }`}
               >
-                [01] BAIXO NÍVEL
+                {isPt ? "[01] BAIXO NÍVEL" : "[01] LOW-LEVEL"}
               </button>
               <button
                 onClick={() => setActiveLayer("firmware")}
@@ -183,7 +233,7 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
                     : "bg-surface border-white/10 text-slate-400 hover:text-white hover:border-brand-lime/50 hover:shadow-[0_0_15px_rgba(204,255,0,0.15)]"
                 }`}
               >
-                [02] APLICAÇÃO UWP
+                {isPt ? "[02] APLICAÇÃO UWP" : "[02] UWP APP"}
               </button>
               <button
                 onClick={() => setActiveLayer("store")}
@@ -193,7 +243,7 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
                     : "bg-surface border-white/10 text-slate-400 hover:text-white hover:border-brand-lime/50 hover:shadow-[0_0_15px_rgba(204,255,0,0.15)]"
                 }`}
               >
-                [03] STORE & OEM
+                {isPt ? "[03] STORE & OEM" : "[03] STORE & OEM"}
               </button>
             </div>
 
@@ -220,14 +270,29 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
 
               {/* Responsibilities list */}
               <div className="pt-3 border-t border-white/10 space-y-2 font-mono text-xs text-slate-300">
-                <div className="text-white font-bold">Responsabilidades Concretas Exercidas no Projeto:</div>
+                <div className="text-white font-bold">
+                  {isPt ? "Responsabilidades Concretas Exercidas no Projeto:" : "Concrete Engineering Responsibilities in Project:"}
+                </div>
                 <ul className="space-y-1.5 text-slate-400 list-disc list-inside">
-                  <li>Gerenciamento completo do repositório no GitLab e esteiras de build.</li>
-                  <li>Interação de baixo nível com hardware para interpretação de comandos da minitela embarcada.</li>
-                  <li>Desenvolvimento em C# para conversão de código em linguagem de máquina e consumo de APIs externas.</li>
-                  <li>Utilização de bibliotecas nativas do Windows para leitura de telemetria de hardware (temperatura, clock, bateria).</li>
-                  <li>Desenvolvimento do banco de dados relacional local para armazenamento de estado e lembretes.</li>
-                  <li>Empacotamento e publicação oficial na Microsoft Store.</li>
+                  {isPt ? (
+                    <>
+                      <li>Gerenciamento completo do repositório no GitLab e esteiras de build.</li>
+                      <li>Interação de baixo nível com hardware para interpretação de comandos da minitela embarcada.</li>
+                      <li>Desenvolvimento em C# para conversão de código em linguagem de máquina e consumo de APIs externas.</li>
+                      <li>Utilização de bibliotecas nativas do Windows para leitura de telemetria de hardware (temperatura, clock, bateria).</li>
+                      <li>Desenvolvimento do banco de dados relacional local para armazenamento de estado e lembretes.</li>
+                      <li>Empacotamento e publicação oficial na Microsoft Store.</li>
+                    </>
+                  ) : (
+                    <>
+                      <li>Full Git repository and automated build pipeline management on GitLab.</li>
+                      <li>Low-level hardware interaction for embedded sub-display command processing.</li>
+                      <li>C# development for binary payload serialization and external API consumption.</li>
+                      <li>Native Win32 APIs for hardware telemetry (CPU, battery health, Wi-Fi status).</li>
+                      <li>Local relational database design for state persistence, notes, and alerts.</li>
+                      <li>Official packaging, signing, and Microsoft Store OEM deployment.</li>
+                    </>
+                  )}
                 </ul>
               </div>
             </div>
@@ -240,13 +305,15 @@ public async Task ProcessarNotificacaoWhatsApp(string remetente, string mensagem
         <div className="pt-12 sm:pt-16 border-t border-white/10 space-y-3">
           <div className="text-xs font-mono font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-brand-lime animate-pulse" />
-            <span>SUB-TÓPICO // DISPLAY SECUNDÁRIO OEM</span>
+            <span>{isPt ? "SUB-TÓPICO // DISPLAY SECUNDÁRIO OEM" : "SUB-TOPIC // OEM SECONDARY DISPLAY"}</span>
           </div>
           <h3 className="text-2xl sm:text-4xl font-serif font-bold text-white uppercase tracking-tight">
-            SHOWCASE DAS TELAS DESENVOLVIDAS
+            {isPt ? "SHOWCASE DAS TELAS DESENVOLVIDAS" : "SHOWCASE OF DEVELOPED SCREENS"}
           </h3>
           <p className="text-xs sm:text-sm text-slate-300 max-w-3xl font-mono leading-relaxed">
-            Modos de operação e funcionalidades programadas para a minitela do Positivo Vision R15M. Conforme você rola a página, cada tela é reproduzida com sua respectiva camada de controle e comunicação serial.
+            {isPt
+              ? "Modos de operação e funcionalidades programadas para a minitela do Positivo Vision R15M. Conforme você rola a página, cada tela é reproduzida com sua respectiva camada de controle e comunicação serial."
+              : "Operating modes and features developed for the Positivo Vision R15M sub-display. As you scroll, each screen is showcased with its respective control layer and serial communication protocol."}
           </p>
         </div>
 

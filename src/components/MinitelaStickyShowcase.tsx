@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useMemo } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export interface MinitelaScreen {
   id: string;
@@ -15,7 +16,7 @@ export interface MinitelaScreen {
   color: "lime" | "cyan" | "amber";
 }
 
-const SCREENS: MinitelaScreen[] = [
+const SCREENS_PT: MinitelaScreen[] = [
   {
     id: "whatsapp",
     short: "01. WhatsApp",
@@ -114,7 +115,108 @@ const SCREENS: MinitelaScreen[] = [
   },
 ];
 
+const SCREENS_EN: MinitelaScreen[] = [
+  {
+    id: "whatsapp",
+    short: "01. WhatsApp",
+    title: "WhatsApp: Direct Sub-Display Notifications",
+    badge: "REAL-TIME NOTIFICATIONS",
+    image: "/minitela/whatsapp.png",
+    description:
+      "Dispatches instant messaging notifications directly to the embedded sub-display, allowing users to view sender, timestamp, and message preview without interrupting active work on the laptop's primary monitor.",
+    technicalHighlights: [
+      "Background C# (.NET/UWP) service capturing system notifications.",
+      "Compact binary packet serialization for zero-lag transmission.",
+      "Vector rendering optimized for secondary LCD high-contrast readability.",
+    ],
+    hardwareSignal: "PACKET_RX: NOTIF_WHATSAPP [BAUD 115200] -> DISPLAY_FLUSH",
+    color: "lime",
+  },
+  {
+    id: "notas",
+    short: "02. Notes",
+    title: "Notes: Digital Sticky Note on Hardware",
+    badge: "HARDWARE DIGITAL STICKY NOTE",
+    image: "/minitela/notas.png",
+    description:
+      "Persistent digital sticky note for quick reminders and daily task tracking. Remains continuously visible on the laptop chassis for instant glanceable reference.",
+    technicalHighlights: [
+      "Local relational database persistence for notes state storage.",
+      "Bi-directional synchronization between desktop UWP app and display memory.",
+      "Automated line-break formatting tuned for sub-screen pixel resolution.",
+    ],
+    hardwareSignal: "STORAGE_COMMIT: LOCAL_SQLITE -> BUFFER_UPDATE [DIRTY_BIT=0]",
+    color: "amber",
+  },
+  {
+    id: "monitor",
+    short: "03. Monitor",
+    title: "Monitor: Real-Time Hardware Telemetry",
+    badge: "WIN32 HARDWARE TELEMETRY",
+    image: "/minitela/monitor.png",
+    description:
+      "Real-time telemetry dashboard reporting battery health and percentage, active Wi-Fi SSID, link quality, and connected Bluetooth peripherals.",
+    technicalHighlights: [
+      "Native Win32 API calls via P/Invoke (GetSystemPowerStatus in kernel32.dll).",
+      "Non-intrusive WLAN and Bluetooth adapter telemetry without GPU overhead.",
+      "Smart adaptive polling frequency based on battery charging state.",
+    ],
+    hardwareSignal: "WIN32_CALL: GetSystemPowerStatus(sps) [BATTERY: 85% | AC_LINE=0]",
+    color: "cyan",
+  },
+  {
+    id: "gifs",
+    short: "04. GIFs",
+    title: "GIFs: Pre-rendered Animation Streaming",
+    badge: "ANIMATED FRAME STREAMING",
+    image: "/minitela/gifs.png",
+    description:
+      "Streams pre-configured GIFs and looping pixel art to the sub-display with controlled frame rate (FPS) optimized for battery efficiency.",
+    technicalHighlights: [
+      "Frame-by-frame .GIF decompression into raw byte pixel matrices.",
+      "Continuous serial stream matching microcontroller refresh rate.",
+      "Precise timing buffer algorithms preventing tearing and flicker.",
+    ],
+    hardwareSignal: "STREAM_TX: 24FPS_FRAME_BUFFER -> SERIAL_STREAM [FLUSH_OK]",
+    color: "lime",
+  },
+  {
+    id: "imagens",
+    short: "05. Images",
+    title: "Images: User Custom Image Personalization",
+    badge: "GRAPHICAL USER CUSTOMIZATION",
+    image: "/minitela/imagens.png",
+    description:
+      "Allows users to upload custom photos, company logos, or personal mascots to the mini-screen, giving every laptop a unique visual identity.",
+    technicalHighlights: [
+      "Automatic scaling and proportional cropping pipeline for native resolution.",
+      "RGB color space conversion into display controller bitmap protocol.",
+      "Persistent flash cache for instant screen rendering during cold boot.",
+    ],
+    hardwareSignal: "BITMAP_ENCODER: USER_IMG_RGB888 -> DISPLAY_NATIVE_RAW",
+    color: "cyan",
+  },
+  {
+    id: "clima",
+    short: "06. Weather",
+    title: "Weather: Dynamic Forecast & Temperature",
+    badge: "METEOROLOGICAL INTEGRATION",
+    image: "/minitela/clima.png",
+    description:
+      "Synchronized weather widget consuming external meteorological APIs, presenting ambient temperature, high/low ranges, and weekly forecast with custom icons.",
+    technicalHighlights: [
+      "Asynchronous REST API consumption with 30-minute local caching to conserve bandwidth.",
+      "Dynamic high-contrast weather condition icon mapping.",
+      "Background updates with zero impact on gaming or system performance.",
+    ],
+    hardwareSignal: "API_SYNC: WEATHER_FORECAST -> PARSE_PAYLOAD -> DISPLAY_RENDER",
+    color: "cyan",
+  },
+];
+
 export default function MinitelaStickyShowcase() {
+  const { isPt } = useLanguage();
+  const screens = useMemo(() => (isPt ? SCREENS_PT : SCREENS_EN), [isPt]);
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -124,15 +226,15 @@ export default function MinitelaStickyShowcase() {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // Map latest (0 to 1) into an integer from 0 to SCREENS.length - 1
+    // Map latest (0 to 1) into an integer from 0 to screens.length - 1
     const idx = Math.min(
-      SCREENS.length - 1,
-      Math.max(0, Math.floor(latest * SCREENS.length))
+      screens.length - 1,
+      Math.max(0, Math.floor(latest * screens.length))
     );
     setActiveIndex(idx);
   });
 
-  const current = SCREENS[activeIndex];
+  const current = screens[activeIndex] || screens[0];
 
   return (
     <div
@@ -208,7 +310,7 @@ export default function MinitelaStickyShowcase() {
                       {current.badge}
                     </span>
                     <div className="flex items-center gap-1.5">
-                      {SCREENS.map((_, i) => (
+                      {screens.map((_, i) => (
                         <span
                           key={i}
                           className={`h-1.5 rounded-full transition-all duration-300 ${

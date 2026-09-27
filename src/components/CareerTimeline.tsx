@@ -1,10 +1,12 @@
 "use client";
 
 import React from "react";
-import { CAREER_JOURNEY, EDUCATION_HONORS } from "@/data/portfolioData";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function CareerTimeline() {
+  const { t, isPt, careerJourney, educationHonors } = useLanguage();
+
   return (
     <section id="journey" className="py-24 bg-[#07070a] border-b border-white/10 relative text-left font-mono overflow-hidden">
       {/* Background CRT scanlines */}
@@ -21,10 +23,10 @@ export default function CareerTimeline() {
           className="space-y-3 mb-16"
         >
           <div className="text-xs font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
-            <span>[TRAJETÓRIA]</span>
+            <span>{t.career.tag}</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white uppercase tracking-tight">
-            HISTÓRICO ACADÊMICO E PROFISSIONAL
+            {t.career.title}
           </h2>
         </motion.div>
 
@@ -40,13 +42,13 @@ export default function CareerTimeline() {
           >
             <div className="text-sm font-bold text-white uppercase pb-2 border-b border-white/10 flex items-center justify-between">
               <span className="flex items-center gap-2">
-                // EXPERIÊNCIA PROFISSIONAL
+                // {t.career.experienceTitle}
               </span>
-              <span className="text-xs text-brand-lime font-mono">[MERCADO]</span>
+              <span className="text-xs text-brand-lime font-mono">[{isPt ? "MERCADO" : "INDUSTRY"}]</span>
             </div>
 
             <div className="relative border-l border-brand-lime/30 ml-2 pl-6 space-y-8">
-              {CAREER_JOURNEY.map((job, idx) => (
+              {careerJourney.map((job, idx) => (
                 <div key={idx} className="relative space-y-2">
                   {/* Glowing phosphor node on line */}
                   <div className="absolute -left-[31px] top-1.5 w-2.5 h-2.5 rounded-full bg-brand-lime shadow-[0_0_8px_#ccff00]" />
@@ -93,13 +95,13 @@ export default function CareerTimeline() {
           >
             <div className="text-sm font-bold text-white uppercase pb-2 border-b border-white/10 flex items-center justify-between">
               <span className="flex items-center gap-2">
-                // FORMAÇÃO & CERTIFICAÇÕES
+                // {t.career.educationTitle}
               </span>
               <span className="text-xs text-brand-cyan font-mono">[ACADEMIA]</span>
             </div>
 
             <div className="space-y-4">
-              {EDUCATION_HONORS.map((edu, idx) => (
+              {educationHonors.map((edu, idx) => (
                 <div
                   key={idx}
                   className="p-5 rounded-xl bg-[#090b14] border border-white/10 space-y-2 relative group hover:border-brand-cyan/40 transition-colors"

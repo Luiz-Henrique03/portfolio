@@ -12,9 +12,12 @@ import CareerTimeline from "@/components/CareerTimeline";
 import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
 
+import { LanguageProvider } from "@/context/LanguageContext";
+
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#060709] bg-grid-pattern relative selection:bg-brand-lime selection:text-black font-mono">
+    <LanguageProvider>
+      <main className="min-h-screen bg-[#060709] bg-grid-pattern relative selection:bg-brand-lime selection:text-black font-mono">
       {/* 3D WebGL Canvas Layer (Three.js Cursor-reactive) */}
       <ThreeCanvas />
 
@@ -37,5 +40,6 @@ export default function Home() {
         <Footer />
       </div>
     </main>
+    </LanguageProvider>
   );
 }

@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { SKILL_GROUPS } from "@/data/portfolioData";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function SkillsRadar() {
+  const { t, isPt, skillGroups } = useLanguage();
   const [activeTab, setActiveTab] = useState(0);
 
   return (
@@ -23,13 +24,13 @@ export default function SkillsRadar() {
           className="space-y-3 mb-12"
         >
           <div className="text-xs font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
-            <span>[ARSENAL TÉCNICO] // DOMÍNIO DE STACK 1984_V2</span>
+            <span>{t.skills.tag}</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white uppercase tracking-tight">
-            TECNOLOGIAS E NÍVEL DE PROFICIÊNCIA
+            {t.skills.title}
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl font-sans">
-            Linguagens, frameworks, bancos relacionais e ferramentas de engenharia de dados e DevOps aplicadas em ambiente produtivo.
+            {t.skills.subtitle}
           </p>
         </motion.div>
 
@@ -41,7 +42,7 @@ export default function SkillsRadar() {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="grid grid-cols-2 md:grid-cols-4 gap-2 mb-8"
         >
-          {SKILL_GROUPS.map((cat, idx) => (
+          {skillGroups.map((cat, idx) => (
             <button
               key={idx}
               onClick={() => setActiveTab(idx)}
@@ -52,7 +53,7 @@ export default function SkillsRadar() {
               }`}
             >
               <div className="text-[10px] text-slate-500 font-bold block mb-1">
-                [GRUPO {String(idx + 1).padStart(2, "0")}]
+                [{isPt ? "GRUPO" : "GROUP"} {String(idx + 1).padStart(2, "0")}]
               </div>
               <div className="text-xs tracking-tight font-bold">
                 {cat.group}
@@ -75,15 +76,15 @@ export default function SkillsRadar() {
 
           <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10 text-xs">
             <span className="font-bold text-white uppercase phosphor-lime">
-              // {SKILL_GROUPS[activeTab].group}
+              // {skillGroups[activeTab]?.group}
             </span>
             <span className="text-brand-cyan text-[11px]">
-              Proficiência Validada por Código em Produção
+              {isPt ? "Proficiência Validada por Código em Produção" : "Proficiency Validated by Production Code"}
             </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {SKILL_GROUPS[activeTab].items.map((skill, idx) => (
+            {skillGroups[activeTab]?.items.map((skill, idx) => (
               <div
                 key={idx}
                 className="p-4 rounded-xl bg-black/60 border border-white/10 space-y-1.5 hover:border-brand-lime/40 transition-colors"

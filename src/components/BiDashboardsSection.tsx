@@ -1,12 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { BI_DASHBOARDS } from "@/data/portfolioData";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function BiDashboardsSection() {
+  const { t, isPt, biDashboards } = useLanguage();
   const [activeBi, setActiveBi] = useState<number>(0);
-  const current = BI_DASHBOARDS[activeBi];
+  const current = biDashboards[activeBi] || biDashboards[0];
 
   return (
     <section id="bi-dashboards" className="py-24 bg-[#08090d] border-b border-white/10 relative text-left font-mono overflow-hidden">
@@ -24,13 +25,13 @@ export default function BiDashboardsSection() {
           className="space-y-3 mb-12"
         >
           <div className="text-xs font-bold tracking-widest text-brand-cyan uppercase flex items-center gap-2">
-            <span>[BUSINESS INTELLIGENCE & DADOS] // ENGENHARIA ANALÍTICA</span>
+            <span>{t.bi.tag}</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white uppercase tracking-tight">
-            DASHBOARDS DE ENGENHARIA & BI
+            {t.bi.title}
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-sans">
-            Soluções de Business Intelligence e engenharia de dados desenvolvidas para apoiar decisões operacionais e estratégicas em tempo real.
+            {t.bi.subtitle}
           </p>
         </motion.div>
 
@@ -42,7 +43,7 @@ export default function BiDashboardsSection() {
           transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-wrap gap-2 mb-8"
         >
-          {BI_DASHBOARDS.map((bi, idx) => (
+          {biDashboards.map((bi, idx) => (
             <button
               key={bi.id}
               onClick={() => setActiveBi(idx)}
@@ -52,7 +53,7 @@ export default function BiDashboardsSection() {
                   : "bg-[#090b12] border-white/10 text-slate-400 hover:text-white hover:border-brand-cyan/60 hover:shadow-[0_0_15px_rgba(0,240,255,0.2)]"
               }`}
             >
-              [PROJETO {idx + 1}] {bi.title}
+              [{isPt ? "PROJETO" : "PROJECT"} {idx + 1}] {bi.title}
             </button>
           ))}
         </motion.div>
@@ -75,7 +76,7 @@ export default function BiDashboardsSection() {
           <div className="flex flex-wrap items-start justify-between gap-4 pb-6 border-b border-white/10">
             <div>
               <div className="text-xs text-brand-cyan font-bold uppercase mb-1 flex items-center gap-2">
-                <span>SOLUÇÃO DE BUSINESS INTELLIGENCE // STAR_SCHEMA</span>
+                <span>{isPt ? "SOLUÇÃO DE BUSINESS INTELLIGENCE // STAR_SCHEMA" : "BUSINESS INTELLIGENCE SOLUTION // STAR_SCHEMA"}</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white uppercase tracking-tight phosphor-cyan">
                 {current.title}
@@ -104,7 +105,7 @@ export default function BiDashboardsSection() {
             {/* Technical Approach */}
             <div className="p-5 rounded-xl bg-black/50 border border-white/10 space-y-2">
               <div className="text-xs font-mono font-bold text-brand-lime uppercase tracking-wider flex items-center gap-2">
-                <span>[ABORDAGEM TÉCNICA]</span>
+                <span>[{isPt ? "ABORDAGEM TÉCNICA" : "TECHNICAL APPROACH"}]</span>
               </div>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
                 {current.architecture}
@@ -114,7 +115,7 @@ export default function BiDashboardsSection() {
             {/* Business Impact */}
             <div className="p-5 rounded-xl bg-brand-cyan/5 border border-brand-cyan/25 space-y-2">
               <div className="text-xs font-mono font-bold text-brand-cyan uppercase tracking-wider flex items-center gap-2">
-                <span>[IMPACTO NO NEGÓCIO & OPERAÇÃO]</span>
+                <span>[{isPt ? "IMPACTO NO NEGÓCIO & OPERAÇÃO" : "BUSINESS & OPERATIONAL IMPACT"}]</span>
               </div>
               <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium">
                 {current.impact}
@@ -126,7 +127,7 @@ export default function BiDashboardsSection() {
           {/* Key Engineering Highlights */}
           <div className="space-y-3 pt-2">
             <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-              // PONTOS CHAVE DA ENTREGA
+              {isPt ? "// PONTOS CHAVE DA ENTREGA" : "// KEY DELIVERY HIGHLIGHTS"}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {current.highlights.map((item, idx) => (

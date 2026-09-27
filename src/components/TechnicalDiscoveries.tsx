@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-import { TECHNICAL_DISCOVERIES } from "@/data/portfolioData";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function TechnicalDiscoveries() {
+  const { t, technicalDiscoveries } = useLanguage();
   const [expandedId, setExpandedId] = useState<number | null>(1);
 
   const toggleExpand = (id: number) => {
@@ -27,19 +28,19 @@ export default function TechnicalDiscoveries() {
           className="space-y-3 mb-12"
         >
           <div className="text-xs font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
-            <span>[ENGENHARIA NA PRÁTICA] // RELATÓRIOS FORENSES DE PRODUÇÃO</span>
+            <span>{t.discoveries.tag}</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white uppercase tracking-tight">
-            CASOS DE DIAGNÓSTICO E SOLUÇÃO TÉCNICA
+            {t.discoveries.title}
           </h2>
           <p className="text-sm sm:text-base text-slate-300 max-w-3xl font-sans">
-            Exemplos concretos de gargalos e inconsistências técnicas identificados e solucionados em sistemas de hardware, dados e monólitos modulares.
+            {t.discoveries.subtitle}
           </p>
         </motion.div>
 
         {/* Discoveries List with Staggered Motion */}
         <div className="space-y-3">
-          {TECHNICAL_DISCOVERIES.map((item, idx) => {
+          {technicalDiscoveries.map((item, idx) => {
             const isExpanded = expandedId === item.id;
             return (
               <motion.div
@@ -77,7 +78,7 @@ export default function TechnicalDiscoveries() {
                   </div>
 
                   <div className="text-brand-lime font-bold text-xs shrink-0 font-mono px-2.5 py-1 rounded bg-surface border border-brand-lime/30 group-hover:border-brand-lime group-hover:shadow-[0_0_12px_rgba(204,255,0,0.35)] transition-all">
-                    {isExpanded ? "[- RECOLHER]" : "[+ DETALHES]"}
+                    {isExpanded ? t.discoveries.collapse : t.discoveries.expand}
                   </div>
                 </button>
 
@@ -88,7 +89,7 @@ export default function TechnicalDiscoveries() {
                       {/* Problem */}
                       <div className="p-4 rounded-lg bg-black/60 border border-red-500/20 space-y-1">
                         <div className="text-xs font-bold text-red-400 uppercase flex items-center gap-1.5">
-                          <span>// Gargalo / Problema Diagnosticado:</span>
+                          <span>{t.discoveries.problemLabel}</span>
                         </div>
                         <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
                           {item.problemFound}
@@ -98,7 +99,7 @@ export default function TechnicalDiscoveries() {
                       {/* Solution */}
                       <div className="p-4 rounded-lg bg-brand-lime/5 border border-brand-lime/25 space-y-1">
                         <div className="text-xs font-bold text-brand-lime uppercase flex items-center gap-1.5">
-                          <span>// Solução de Engenharia Aplicada:</span>
+                          <span>{t.discoveries.solutionLabel}</span>
                         </div>
                         <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-sans font-medium">
                           {item.engineeringSolution}

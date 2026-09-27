@@ -1,31 +1,25 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import InteractiveBinaryPhoto from "./InteractiveBinaryPhoto";
 import HeroTechMarquee from "./HeroTechMarquee";
-import { PERSONAL_INFO } from "@/data/portfolioData";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Hero() {
-  const fullBioText = useMemo(() => [
-    "Bacharel em Ciência da Computação pela Universidade Positivo e certificado CS50x pela Harvard University, com proficiência em inglês C1 Advanced.",
-    "",
-    "Atuação sólida na engenharia de software de ponta a ponta, unindo baixo nível, desenvolvimento web, resiliência de backend e arquitetura de dados:",
-    "",
-    "• HARDWARE OEM & BAIXO NÍVEL: Desenvolvimento em C#, C++ e chamadas Win32 nativas (P/Invoke) para controle de barramento serial e drivers da minitela embutida em notebook OEM com tela secundária (Vision R15M), com aplicação UWP homologada na Microsoft Store.",
-    "",
-    "• DESENVOLVIMENTO WEB & APLICAÇÕES MODERNAS: Construção de aplicações e interfaces modernas em Next.js, React e TypeScript, incluindo a página oficial de download de distribuição Linux corporativa e o desenvolvimento de portais operacionais, formulários dinâmicos e módulos web para sistemas corporativos de grande porte.",
-    "",
-    "• BACKEND & MONÓLITOS MODULARES: Arquitetura de monólitos modulares de alta concorrência em NestJS, Bun e TypeScript para plataformas corporativas de missão crítica, com circuit breakers contra falhas externas, conciliação orçamentária automatizada com 96% de assertividade, parsers binários de alta performance e sincronização resiliente via PostgreSQL advisory locks.",
-    "",
-    "• ENGENHARIA DE DADOS & BI: Modelagem dimensional Star Schema (dimensões e fatos), pipelines de ETL serializados por advisory locks no PostgreSQL e dashboards operacionais em tempo real com Next.js App Router e Server Actions."
-  ].join("\n"), []);
+  const { t, personalInfo, language, isPt } = useLanguage();
+  const fullBioText = t.hero.bio;
 
   const [charIndex, setCharIndex] = useState(0);
   const [isTypingComplete, setIsTypingComplete] = useState(false);
 
+  // Reset and re-type on language change
+  useEffect(() => {
+    setCharIndex(0);
+    setIsTypingComplete(false);
+  }, [language]);
+
   useEffect(() => {
     if (charIndex < fullBioText.length) {
-      // Stream characters at dynamic pace (~12ms per tick, streaming 1-3 chars for natural feel)
       const timeout = setTimeout(() => {
         const step = Math.random() > 0.4 ? 2 : 1;
         setCharIndex((prev) => Math.min(prev + step, fullBioText.length));
@@ -97,7 +91,7 @@ export default function Hero() {
                       }}
                       className="btn-sheen px-2.5 py-0.5 rounded-md bg-surface border border-brand-lime/50 text-brand-lime hover:bg-brand-lime hover:text-black text-[10px] font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_12px_rgba(204,255,0,0.4)] active:scale-95"
                     >
-                      [PULAR DIGITAÇÃO ⚡]
+                      {t.hero.skipTyping}
                     </button>
                   ) : (
                     <div className="flex items-center gap-1.5 text-[10px] text-slate-500 font-mono">
@@ -136,7 +130,9 @@ export default function Hero() {
                     <span>POS_TECH OEM</span>
                   </div>
                   <div className="text-slate-500">
-                    {!isTypingComplete ? "DIGITANDO EM TEMPO REAL..." : "CLIQUE PARA REVISITAR"}
+                    {!isTypingComplete
+                      ? (isPt ? "DIGITANDO EM TEMPO REAL..." : "STREAMING IN REAL-TIME...")
+                      : (isPt ? "CLIQUE PARA REVISITAR" : "CLICK TO REPLAY")}
                   </div>
                 </div>
               </div>
@@ -145,14 +141,14 @@ export default function Hero() {
             {/* Direct Link Badges */}
             <div className="flex flex-wrap items-center justify-between gap-3 text-xs pt-1 px-1">
               <div className="flex items-center gap-3 text-[11px] text-slate-400">
-                <span>E-MAIL: <strong className="text-white">{PERSONAL_INFO.email}</strong></span>
+                <span>E-MAIL: <strong className="text-white">{personalInfo.email}</strong></span>
                 <span>•</span>
-                <span>TEL: <strong className="text-white">{PERSONAL_INFO.phone}</strong></span>
+                <span>TEL: <strong className="text-white">{personalInfo.phone}</strong></span>
               </div>
 
               <div className="flex flex-wrap items-center gap-2">
                 <a
-                  href={PERSONAL_INFO.whatsappUrl}
+                  href={personalInfo.whatsappUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="btn-sheen inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 hover:border-emerald-400 text-emerald-400 hover:text-emerald-300 text-[11px] font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(52,211,153,0.3)] active:translate-y-0 active:scale-95"
@@ -163,7 +159,7 @@ export default function Hero() {
                   <span>WHATSAPP</span>
                 </a>
                 <a
-                  href={PERSONAL_INFO.github}
+                  href={personalInfo.github}
                   target="_blank"
                   rel="noreferrer"
                   className="btn-sheen inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface border border-white/10 hover:border-brand-lime text-slate-300 hover:text-white text-[11px] font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(204,255,0,0.3)] active:translate-y-0 active:scale-95"
@@ -174,7 +170,7 @@ export default function Hero() {
                   <span>GITHUB</span>
                 </a>
                 <a
-                  href={PERSONAL_INFO.linkedin}
+                  href={personalInfo.linkedin}
                   target="_blank"
                   rel="noreferrer"
                   className="btn-sheen inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface border border-white/10 hover:border-brand-cyan text-slate-300 hover:text-white text-[11px] font-bold transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] active:translate-y-0 active:scale-95"
@@ -199,7 +195,7 @@ export default function Hero() {
           className="group flex flex-col items-center gap-2 text-xs font-mono text-slate-400 hover:text-brand-lime transition-all"
         >
           <div className="flex items-center gap-2 px-3 py-1 rounded bg-surface border border-white/10 group-hover:border-brand-lime/50 text-[10px] uppercase tracking-widest text-slate-300 group-hover:text-brand-lime transition-all">
-            <span>ROLE A PÁGINA PARA FORMAR OS SISTEMAS</span>
+            <span>{isPt ? "ROLE A PÁGINA PARA EXPLORAR OS SISTEMAS" : "SCROLL TO EXPLORE SYSTEMS"}</span>
           </div>
           <div className="text-brand-lime font-bold text-sm animate-bounce">
             ▼
