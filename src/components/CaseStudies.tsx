@@ -16,7 +16,7 @@ const PROJECT_META: Record<
   "caixa-wol": {
     shortTitle: "Gerenciamento WOL",
     subtitle: "Wake-On-LAN & Sockets UDP",
-    badge: "Redes / Linux",
+    badge: "Caixa / Linux",
   },
   "agenda-fiscais": {
     shortTitle: "Agenda Fiscais",

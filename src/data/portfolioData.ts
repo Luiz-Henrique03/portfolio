@@ -141,27 +141,27 @@ public async Task DespacharFrameAsync(byte[] buffer) {
     id: "caixa-wol",
     title: "Gerenciamento Remoto de Máquinas (Wake-On-LAN)",
     category: "Sistemas Distribuídos & Redes",
-    context: "Redes Corporativas / Linux",
+    context: "Caixa Econômica Federal / Linux",
     period: "2023 - 2024",
     role: "Desenvolvedor Full-Stack Júnior",
     summary:
-      "Desenvolvimento de backend em Python com sockets UDP para acionamento remoto de computadores via pacotes mágicos Wake-On-LAN (WOL), listagem remota de pacotes e controle de energia (desligamento/reboot) em ambiente Linux, com frontend dinâmico em JavaScript para gerenciamento de rede corporativa bancária.",
+      "Desenvolvimento de backend em Python com sockets UDP para acionamento remoto de computadores via pacotes mágicos Wake-On-LAN (WOL), listagem remota de pacotes e controle de energia (desligamento/reboot) em ambiente Linux, com frontend dinâmico em JavaScript desenvolvido para a Caixa Econômica Federal.",
     problem:
-      "Necessidade de ligar, desligar, reiniciar, consultar pacotes disponíveis para download e aplicar rotinas em centenas de computadores corporativos de rede bancária remotamente e sem deslocamento físico.",
+      "Necessidade de ligar, desligar, reiniciar, consultar pacotes disponíveis para download e aplicar rotinas em centenas de computadores corporativos da Caixa Econômica Federal remotamente e sem deslocamento físico de equipes de TI.",
     solution:
-      "Backend em Python capaz de emitir pacotes mágicos Wake-On-LAN via sockets UDP em rede, consultar pacotes remotamente e controlar o ciclo de energia das máquinas Linux, integrado a interface dinâmica em JavaScript para gerenciamento intuitivo.",
+      "Backend em Python desenvolvido para edital de governo da Caixa Econômica Federal, capaz de emitir pacotes mágicos Wake-On-LAN via sockets UDP em rede, consultar pacotes remotamente e controlar o ciclo de energia das máquinas Linux, integrado a interface dinâmica em JavaScript para gerenciamento intuitivo.",
     metrics: [
-      { label: "Protocolo", value: "UDP / WOL", detail: "Magic packets transmitidos em rede corporativa" },
+      { label: "Protocolo", value: "UDP / WOL", detail: "Magic packets transmitidos na rede da Caixa" },
       { label: "Ambiente", value: "Linux Server", detail: "Daemons seguros de gerenciamento remoto" },
       { label: "Stack", value: "Python / JS", detail: "Backend em Python e interface dinâmica em JS" },
     ],
     technicalHighlights: [
       "Montagem de pacotes binários mágicos (payload com 6 bytes 0xFF e 16 repetições do MAC address).",
-      "Transmissão via sockets UDP com controle de portas de broadcast em sub-redes.",
+      "Transmissão via sockets UDP com controle de portas de broadcast em sub-redes corporativas.",
       "Listagem remota de pacotes disponíveis para download e execução de comandos de energia.",
       "Frontend dinâmico e responsivo em JavaScript com operações em tempo real.",
     ],
-    tags: ["Python", "Linux", "Wake-On-LAN", "Sockets UDP", "Redes", "JavaScript"],
+    tags: ["Python", "Linux", "Wake-On-LAN", "Sockets UDP", "Redes", "JavaScript", "Caixa Econômica"],
   },
   {
     id: "agenda-fiscais",
