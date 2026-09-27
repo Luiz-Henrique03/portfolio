@@ -445,7 +445,7 @@ export const CAREER_JOURNEY = [
     period: "2023 — 2024",
     type: "Tempo Integral",
     description:
-      "Desenvolvimento de aplicações corporativas (TimeControl), APIs RESTful, modelagem de banco de dados relacional e criação de rotinas de automação interna. Atuação como desenvolvedor no sistema de gerenciamento remoto de máquinas via Wake-On-LAN (WOL) e sockets UDP em Linux e Python para edital governamental de banco público nacional, com interface dinâmica em JavaScript.",
+      "Desenvolvimento de aplicações corporativas (TimeControl), APIs RESTful, modelagem de banco de dados relacional e criação de rotinas de automação interna. Atuação direta no projeto da Caixa (edital de governo): desenvolvimento de backend em Python com sockets UDP para gerenciamento e acionamento remoto de computadores via Wake-On-LAN (WOL), listagem de pacotes e comandos de energia em Linux, com interface web dinâmica em JavaScript.",
     tags: ["Python", "Linux", "Wake-On-LAN", "Sockets UDP", "JavaScript", "PHP", "MariaDB", "APIs REST"],
   },
   {
