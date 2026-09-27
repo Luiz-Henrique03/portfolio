@@ -230,25 +230,6 @@ export default function MinitelaStickyShowcase() {
                   <p className="text-sm sm:text-base text-slate-200 font-sans leading-relaxed">
                     {current.description}
                   </p>
-
-                  {/* Technical Highlights / Engineering Details */}
-                  <div className="space-y-2 pt-2">
-                    <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                      // IMPLEMENTAÇÃO DE ENGENHARIA (C# / C++ / UWP / WIN32)
-                    </div>
-                    <div className="space-y-2">
-                      {current.technicalHighlights.map((highlight, idx) => (
-                        <div
-                          key={idx}
-                          className="p-3 rounded-lg bg-black/40 border border-white/10 text-xs text-slate-300 font-sans flex items-start gap-2.5"
-                        >
-                          <span className="font-mono text-brand-lime font-bold shrink-0">[OK]</span>
-                          <span className="leading-relaxed">{highlight}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
                 </motion.div>
               </AnimatePresence>
             </div>
