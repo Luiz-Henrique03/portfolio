@@ -105,11 +105,6 @@ export default function TechnicalDiscoveries() {
                         </p>
                       </div>
                     </div>
-
-                    {/* Lesson / Takeaway */}
-                    <div className="p-3.5 rounded bg-black/40 border-l-2 border-brand-lime text-xs sm:text-sm italic text-slate-300 font-mono">
-                      &ldquo;{item.takeaway}&rdquo;
-                    </div>
                   </div>
                 )}
               </motion.div>
