@@ -223,9 +223,9 @@ export async function executarEtlAnalitico(db: DrizzleClient) {
     problem:
       "APIs externas legadas com tempos de resposta instáveis (superiores a 120 segundos), concorrência descontrolada em calendários compartilhados e necessidade de regras de negócio complexas sem perda de integridade transacional.",
     solution:
-      "Construção de arquitetura modular resiliente, implementação de clientes HTTP com circuit breaker, migração de dados com advisory locks no boot e 714 testes automatizados em Postgres WASM real (PGlite).",
+      "Construção de arquitetura modular resiliente, implementação de clientes HTTP com circuit breakers e retentativas exponenciais, conciliação orçamentária automatizada com 96% de assertividade e sincronização de dados protegida por advisory locks no PostgreSQL.",
     metrics: [
-      { label: "Testes Automatizados", value: "714 Testes", detail: "Postgres WASM real (PGlite), zero mocks" },
+      { label: "Conciliação Orçamentária", value: "96% Assertividade", detail: "Automação algorítmica de insumos corporativos" },
       { label: "Otimização API", value: "120s → 2s", detail: "Redução de latência no espelho do ERP corporativo" },
       { label: "Parsing Binário", value: "250ms", detail: "Processamento de estruturas complexas em TypeScript nativo" },
       { label: "Arquitetura", value: "Modular", detail: "Isolamento de domínios e zero dependências circulares" },
@@ -254,7 +254,7 @@ export async function alocarRecurso(demanda: Demanda, pool: Recurso[]): Promise<
 }`,
       explanation: "Escalonamento com blindagem contra falhas silenciosas de rede em APIs externas.",
     },
-    tags: ["NestJS", "Bun", "PostgreSQL", "Drizzle ORM", "PGlite WASM", "TypeScript", "Axiom"],
+    tags: ["NestJS", "Bun", "PostgreSQL", "Drizzle ORM", "Circuit Breakers", "TypeScript", "Axiom"],
   },
   {
     id: "caixa-wol",
@@ -404,7 +404,7 @@ export const SKILL_GROUPS = [
     items: [
       { name: "PostgreSQL & Drizzle ORM", level: "Avançado", desc: "Modelagem relacional, migrations com advisory locks e schemas" },
       { name: "Star Schema (Data Warehouse)", level: "Avançado", desc: "Modelagem de dimensões, fatos, grãos e pipelines de ETL" },
-      { name: "PGlite (Postgres WASM)", level: "Avançado", desc: "Testes de integração reais sem mocks de banco de dados" },
+      { name: "Resiliência & Concorrência", level: "Avançado", desc: "Circuit breakers, advisory locks e mitigação de race conditions" },
       { name: "MariaDB / MySQL / SQL Server", level: "Avançado", desc: "Otimização de consultas, normalização e integridade referencial" },
     ],
   },
@@ -422,25 +422,25 @@ export const SKILL_GROUPS = [
 export const CAREER_JOURNEY = [
   {
     role: "Desenvolvedor de Software / Engenharia",
-    company: "LYX Engenharia",
+    company: "Empresa de Engenharia & Empreendimentos",
     period: "2026",
     type: "Contrato / Projeto Estratégico",
     description:
-      "Atuação no desenvolvimento de sistemas backend (NestJS, Bun, PostgreSQL/Drizzle) e engenharia de dados & BI (Next.js App Router, Star Schema, Vitest). Responsável pela entrega de módulos de missão crítica, pipelines de ETL e suíte com 714 testes automatizados em Postgres WASM real.",
+      "Atuação no desenvolvimento de sistemas backend (NestJS, Bun, PostgreSQL/Drizzle) e engenharia de dados & BI (Next.js App Router, Star Schema). Responsável pela entrega de módulos corporativos de missão crítica, pipelines de ETL resilientes com advisory locks, conciliação orçamentária automatizada com 96% de assertividade e circuit breakers contra falhas de rede.",
     tags: ["Next.js", "NestJS", "Bun", "PostgreSQL", "Star Schema", "ETL", "Drizzle ORM", "Axiom"],
   },
   {
     role: "Desenvolvedor Full-Stack Pleno",
-    company: "Policorp Tecnologia",
+    company: "Empresa de Tecnologia & Soluções Corporativas",
     period: "2024 — Atual",
     type: "Tempo Integral",
     description:
-      "Responsável pelo desenvolvimento da minitela embarcada para notebooks Positivo Vision R15M (C#, C++, Win32, UWP homologada na Microsoft Store), manutenção de pipelines no Jenkins, desenvolvimento de sistemas corporativos em .NET, PHP e MariaDB.",
+      "Responsável pelo desenvolvimento da camada de software da minitela embarcada para notebook OEM (C#, C++, Win32, UWP homologada na Microsoft Store), manutenção de pipelines no Jenkins, desenvolvimento de sistemas corporativos em .NET, PHP e MariaDB.",
     tags: [".NET", "C#", "C++", "Windows UWP", "Jenkins CI/CD", "Win32", "MariaDB"],
   },
   {
     role: "Desenvolvedor Full-Stack Júnior",
-    company: "Policorp Tecnologia",
+    company: "Empresa de Tecnologia & Soluções Corporativas",
     period: "2023 — 2024",
     type: "Tempo Integral",
     description:
@@ -449,16 +449,16 @@ export const CAREER_JOURNEY = [
   },
   {
     role: "Jovem Aprendiz de Pesquisa & Desenvolvimento (P&D)",
-    company: "FiscalTech",
+    company: "Empresa de Tecnologia & Tráfego Inteligente",
     period: "2022 — 2023",
     type: "P&D",
     description:
-      "Desenvolvimento de daemons Linux em Python com sockets UDP para acionamento remoto de computadores via Wake-On-LAN (WOL) para edital de governo da Caixa Econômica Federal.",
+      "Desenvolvimento de daemons Linux em Python com sockets UDP para acionamento remoto de computadores via Wake-On-LAN (WOL) para edital de governo em banco público nacional.",
     tags: ["Python", "Linux", "Wake-On-LAN", "Sockets UDP", "Redes"],
   },
   {
     role: "Jovem Aprendiz de Eletroeletrônica",
-    company: "Volkswagen",
+    company: "Montadora Automotiva Multinacional",
     period: "2019 — 2021",
     type: "Formação Técnica",
     description:

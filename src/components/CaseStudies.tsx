@@ -25,7 +25,7 @@ const PROJECT_META: Record<
   },
   "backend-monolito": {
     shortTitle: "Monólito Modular",
-    subtitle: "Alta Concorrência & 714 Testes",
+    subtitle: "Alta Concorrência & Resiliência",
     badge: "NestJS / Bun",
   },
   "caixa-wol": {

@@ -15,7 +15,7 @@ export default function Hero() {
     "",
     "• DESENVOLVIMENTO WEB & APLICAÇÕES MODERNAS: Construção de aplicações e interfaces modernas em Next.js, React e TypeScript, incluindo a página oficial de download de distribuição Linux corporativa e o desenvolvimento de portais operacionais, formulários dinâmicos e módulos web para sistemas corporativos de grande porte.",
     "",
-    "• BACKEND & MONÓLITOS MODULARES: Arquitetura de monólitos modulares de alta concorrência em NestJS, Bun e TypeScript para plataformas corporativas de missão crítica, com circuit breakers, resiliência contra falhas de rede e suíte com mais de 700 testes automatizados reais rodando sobre PostgreSQL WASM (PGlite).",
+    "• BACKEND & MONÓLITOS MODULARES: Arquitetura de monólitos modulares de alta concorrência em NestJS, Bun e TypeScript para plataformas corporativas de missão crítica, com circuit breakers contra falhas externas, conciliação orçamentária automatizada com 96% de assertividade, parsers binários de alta performance e sincronização resiliente via PostgreSQL advisory locks.",
     "",
     "• ENGENHARIA DE DADOS & BI: Modelagem dimensional Star Schema (dimensões e fatos), pipelines de ETL serializados por advisory locks no PostgreSQL e dashboards operacionais em tempo real com Next.js App Router e Server Actions."
   ].join("\n"), []);
