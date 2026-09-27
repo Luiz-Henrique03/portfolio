@@ -40,13 +40,6 @@ export default function Footer() {
           >
             [LINKEDIN]
           </a>
-          <a
-            href={PERSONAL_INFO.cvPath}
-            download
-            className="hover:text-white transition-colors"
-          >
-            [CURRÍCULO PDF]
-          </a>
         </div>
 
         {/* Right back to top */}

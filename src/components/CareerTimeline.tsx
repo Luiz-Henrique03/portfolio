@@ -21,14 +21,11 @@ export default function CareerTimeline() {
           className="space-y-3 mb-16"
         >
           <div className="text-xs font-bold tracking-widest text-brand-lime uppercase flex items-center gap-2">
-            <span>[TRAJETÓRIA PROFISSIONAL & ACADÊMICA] // REGISTRO TEMPORAL 1984_V2</span>
+            <span>[TRAJETÓRIA]</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-white uppercase tracking-tight">
-            DO CÓDIGO EMBARCADO AOS MONOLITOS DISTRIBUÍDOS
+            HISTÓRICO ACADÊMICO E PROFISSIONAL
           </h2>
-          <p className="text-sm sm:text-base text-slate-300 max-w-2xl font-sans">
-            Evolução técnica desde automação industrial até projetos OEM de hardware em escala comercial, arquitetura de sistemas distribuídos e engenharia de dados.
-          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
