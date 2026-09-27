@@ -323,6 +323,17 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
   },
   {
     id: 2,
+    title: "Blindagem Contra BOLA/IDOR com Escopo Estrito Injetado no Banco",
+    area: "Segurança de Software & OWASP",
+    context: "Autorização Multi-Tenant & RBAC (NestJS / Drizzle)",
+    problemFound:
+      "A permissão de acesso a recebimentos e notas fiscais era atribuída a nível da organização inteira, enquanto buscas por anexos e dados confidenciais consultavam apenas o ID do registro. Isso abria uma vulnerabilidade crítica de BOLA (Broken Object Level Authorization): usuários de um canteiro conseguiam acessar notas fiscais, valores financeiros, assinaturas digitais e coordenadas GPS de obras alheias apenas alterando parâmetros ou IDs na rota HTTP.",
+    engineeringSolution:
+      "Criação de serviço centralizado de autorização a nível de objeto (ObraAccessService) com injeção mandatória de escopo de obra diretamente nas queries SQL antes de qualquer filtro do cliente. Para impedir a enumeração de identificadores internos e vazamento de informações (Information Disclosure), tentativas de acesso fora do escopo respondem deliberadamente com HTTP 404 (Not Found) em vez de 403 (Forbidden).",
+    takeaway: "",
+  },
+  {
+    id: 3,
     title: "Erradicação de Gargalo N+1 no Cron de Agendamento via Resolução em Memória",
     area: "Performance & Concorrência de Banco",
     context: "Otimização de Banco de Dados (PostgreSQL / Drizzle)",
@@ -333,7 +344,7 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
     takeaway: "",
   },
   {
-    id: 3,
+    id: 4,
     title: "Desacoplamento de Webhooks de CRM Fora do Request Path HTTP",
     area: "Arquitetura Assíncrona & Webhooks",
     context: "Microsserviços & APIs (NestJS / Kommo CRM)",
@@ -344,7 +355,7 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
     takeaway: "",
   },
   {
-    id: 4,
+    id: 5,
     title: "Exportação em Streaming de 100 Mil Linhas de Insumos sem Estouro de Memória",
     area: "Sistemas de Alta Escala & Memória",
     context: "Relatórios Corporativos (Node.js / ExcelJS)",
@@ -355,7 +366,7 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
     takeaway: "",
   },
   {
-    id: 5,
+    id: 6,
     title: "Geofencing Anti-Fraude com Validação de Coordenadas em Vistorias de Obra",
     area: "Integridade de Dados & Auditoria",
     context: "Vistoria de Materiais & Mobile Web",
@@ -366,7 +377,7 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
     takeaway: "",
   },
   {
-    id: 6,
+    id: 7,
     title: "P/Invoke Win32 e Barramento Serial em Hardware OEM Integrado",
     area: "Hardware & Baixo Nível",
     context: "Notebook OEM (C# / C++ / Win32)",
@@ -377,7 +388,7 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
     takeaway: "",
   },
   {
-    id: 7,
+    id: 8,
     title: "Full Reload com Transação Única e Advisory Lock no ETL de BI",
     area: "Engenharia de Dados & Concorrência",
     context: "Data Warehouse & BI (PostgreSQL / Drizzle)",
