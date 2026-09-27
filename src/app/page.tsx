@@ -6,7 +6,6 @@ import PositivoVisionDeepDive from "@/components/PositivoVisionDeepDive";
 import BiDashboardsSection from "@/components/BiDashboardsSection";
 import StatsGrid from "@/components/StatsGrid";
 import CaseStudies from "@/components/CaseStudies";
-import ArchitecturePhilosophy from "@/components/ArchitecturePhilosophy";
 import TechnicalDiscoveries from "@/components/TechnicalDiscoveries";
 import SkillsRadar from "@/components/SkillsRadar";
 import CareerTimeline from "@/components/CareerTimeline";
@@ -31,7 +30,6 @@ export default function Home() {
         <BiDashboardsSection />
         <StatsGrid />
         <CaseStudies />
-        <ArchitecturePhilosophy />
         <TechnicalDiscoveries />
         <SkillsRadar />
         <CareerTimeline />
