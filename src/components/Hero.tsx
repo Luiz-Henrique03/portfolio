@@ -6,13 +6,15 @@ import { PERSONAL_INFO } from "@/data/portfolioData";
 
 export default function Hero() {
   const fullBioText = useMemo(() => [
-    "Bacharel em Ciência da Computação pela Universidade Positivo (Média Global 8.74, 3º lugar na Maratona de Programação) e certificado CS50x pela Harvard University, com proficiência em inglês C1 Advanced.",
+    "Bacharel em Ciência da Computação pela Universidade Positivo e certificado CS50x pela Harvard University, com proficiência em inglês C1 Advanced.",
     "",
-    "Atuação sólida na engenharia de software de ponta a ponta, unindo baixo nível, resiliência de sistemas e arquitetura de dados:",
+    "Atuação sólida na engenharia de software de ponta a ponta, unindo baixo nível, desenvolvimento web, resiliência de backend e arquitetura de dados:",
     "",
     "• HARDWARE OEM & BAIXO NÍVEL: Desenvolvimento em C#, C++ e chamadas Win32 nativas (P/Invoke) para controle de barramento serial e drivers da minitela embutida no notebook Positivo Vision R15M, com aplicação UWP homologada na Microsoft Store.",
     "",
-    "• BACKEND & MONÓLITOS MODULARES: Arquitetura de monólitos modulares de alta concorrência em NestJS, Bun e TypeScript, com circuit breakers, resiliência contra falhas de rede e suíte com mais de 700 testes automatizados reais rodando sobre PostgreSQL WASM (PGlite).",
+    "• DESENVOLVIMENTO WEB & APLICAÇÕES MODERNAS: Construção de aplicações e interfaces modernas em Next.js, React e TypeScript, incluindo a página oficial de download do sistema Policorp Linux e o desenvolvimento de portais operacionais, formulários dinâmicos e módulos web para os sistemas da LYX Engenharia.",
+    "",
+    "• BACKEND & MONÓLITOS MODULARES: Arquitetura de monólitos modulares de alta concorrência em NestJS, Bun e TypeScript em produção na LYX Engenharia, com circuit breakers, resiliência contra falhas de rede e suíte com mais de 700 testes automatizados reais rodando sobre PostgreSQL WASM (PGlite).",
     "",
     "• ENGENHARIA DE DADOS & BI: Modelagem dimensional Star Schema (dimensões e fatos), pipelines de ETL serializados por advisory locks no PostgreSQL e dashboards operacionais em tempo real com Next.js App Router e Server Actions."
   ].join("\n"), []);
