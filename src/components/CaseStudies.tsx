@@ -9,9 +9,9 @@ const PROJECT_META: Record<
   { shortTitle: string; subtitle: string; badge: string }
 > = {
   "positivo-vision": {
-    shortTitle: "Positivo Vision R15M",
+    shortTitle: "Vision R15M",
     subtitle: "Minitela Embarcada & Driver Win32",
-    badge: "Positivo",
+    badge: "Hardware OEM",
   },
   "agenda-fiscais": {
     shortTitle: "Agenda Fiscais",
@@ -31,12 +31,12 @@ const PROJECT_META: Record<
   "caixa-wol": {
     shortTitle: "Gerenciamento WOL",
     subtitle: "Wake-On-LAN & Sockets UDP",
-    badge: "FiscalTech",
+    badge: "Redes / Linux",
   },
   "timecontrol": {
     shortTitle: "TimeControl Corporativo",
     subtitle: "Gestão de Equipes & CI/CD",
-    badge: "Policorp",
+    badge: "Web / CI/CD",
   },
 };
 

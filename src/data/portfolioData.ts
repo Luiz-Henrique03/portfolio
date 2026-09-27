@@ -99,13 +99,13 @@ export const BI_DASHBOARDS = [
 export const PROJECTS: ProjectItem[] = [
   {
     id: "positivo-vision",
-    title: "Positivo Vision R15M: Minitela Embarcada",
+    title: "Vision R15M: Minitela Embarcada",
     category: "Software Embarcado & Desktop Windows",
-    context: "Positivo Tecnologia / Policorp",
+    context: "Hardware OEM / Desktop Windows",
     period: "2023 - 2024",
     role: "Desenvolvedor de Sistemas / Baixo Nível",
     summary:
-      "Desenvolvimento completo da camada de software e integração com a mini tela física integrada no chassi do notebook Positivo Vision R15M. Implementação de protocolos seriais, drivers, telemetria de hardware e aplicativo Windows UWP certificado na Microsoft Store.",
+      "Desenvolvimento completo da camada de software e integração com a mini tela física integrada no chassi do notebook OEM Vision R15M. Implementação de protocolos seriais, drivers, telemetria de hardware e aplicativo Windows UWP certificado na Microsoft Store.",
     problem:
       "Controlar uma tela secundária LCD com restrições extremas de consumo de bateria, latência reduzida e integração contínua com hardware através do Windows.",
     solution:
@@ -113,7 +113,7 @@ export const PROJECTS: ProjectItem[] = [
     metrics: [
       { label: "Plataforma", value: "Windows UWP", detail: "Publicado na Microsoft Store" },
       { label: "Linguagens", value: "C# / C++", detail: "Interoperabilidade Win32 e serial" },
-      { label: "Hardware", value: "Notebook OEM", detail: "Linha de fábrica Positivo Vision R15M" },
+      { label: "Hardware", value: "Notebook OEM", detail: "Linha de fábrica OEM Vision R15M" },
       { label: "Controle de Versão", value: "GitLab", detail: "Gerenciamento de releases de fábrica" },
     ],
     technicalHighlights: [
@@ -260,13 +260,13 @@ export async function alocarRecurso(demanda: Demanda, pool: Recurso[]): Promise<
     id: "caixa-wol",
     title: "Gerenciamento Remoto de Máquinas (Wake-On-LAN)",
     category: "Sistemas Distribuídos & Redes",
-    context: "FiscalTech / Caixa Econômica Federal",
+    context: "Parque Corporativo / Redes Linux",
     period: "2022 - 2023",
     role: "Desenvolvedor de Software (P&D)",
     summary:
       "Desenvolvimento de daemons Linux e serviços de backend em Python para gerenciamento e acionamento remoto de computadores através de pacotes mágicos Wake-On-LAN (WOL), além de painel web em JavaScript para controle de parques corporativos.",
     problem:
-      "Necessidade de ligar, desligar, reiniciar e aplicar atualizações em centenas de computadores bancários distribuídos geograficamente sem deslocamento físico de equipes de TI.",
+      "Necessidade de ligar, desligar, reiniciar e aplicar atualizações em centenas de computadores corporativos distribuídos geograficamente sem deslocamento físico de equipes de TI.",
     solution:
       "Backend em Python com sockets UDP para emissão de pacotes Wake-On-LAN através de sub-redes, API REST de gerenciamento e frontend dinâmico para controle em tempo real.",
     metrics: [
@@ -285,7 +285,7 @@ export async function alocarRecurso(demanda: Demanda, pool: Recurso[]): Promise<
     id: "timecontrol",
     title: "TimeControl: Gestão Corporativa de Equipes e Projetos",
     category: "Aplicações Web Corporativas",
-    context: "Policorp Tecnologia",
+    context: "Sistemas Web Corporativos",
     period: "2023 - 2024",
     role: "Desenvolvedor Full-Stack",
     summary:
