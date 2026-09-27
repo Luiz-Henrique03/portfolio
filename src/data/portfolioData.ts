@@ -323,17 +323,6 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
   },
   {
     id: 2,
-    title: "Prevenção de Inundação de 148 Agendamentos por Anomalia de Prefixos Legados",
-    area: "Algoritmos & Motores Autônomos",
-    context: "Motor de Agendamento (NestJS / Bun)",
-    problemFound:
-      "Quando a equipe desativava fichas de serviço com prefixos no sistema legado ('[Desativada] FVS...'), o parser de códigos por âncora inicial falhava, caía no fallback e gerou uma inundação em produção de 148 cards duplicados em 5 canteiros de obra para vistorias que já estavam 100% concluídas.",
-    engineeringSolution:
-      "Refatoração profunda no mapa canônico de descrições com regex estrito sobre catálogo de 5.760 fichas. O motor passou a filtrar fichas desativadas ou fora de escopo na fonte, blindando os 4 caminhos do escalonador contra falsas coberturas e garantindo idempotência estrita.",
-    takeaway: "",
-  },
-  {
-    id: 3,
     title: "Erradicação de Gargalo N+1 no Cron de Agendamento via Resolução em Memória",
     area: "Performance & Concorrência de Banco",
     context: "Otimização de Banco de Dados (PostgreSQL / Drizzle)",
@@ -344,7 +333,7 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
     takeaway: "",
   },
   {
-    id: 4,
+    id: 3,
     title: "Desacoplamento de Webhooks de CRM Fora do Request Path HTTP",
     area: "Arquitetura Assíncrona & Webhooks",
     context: "Microsserviços & APIs (NestJS / Kommo CRM)",
@@ -355,7 +344,7 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
     takeaway: "",
   },
   {
-    id: 5,
+    id: 4,
     title: "Exportação em Streaming de 100 Mil Linhas de Insumos sem Estouro de Memória",
     area: "Sistemas de Alta Escala & Memória",
     context: "Relatórios Corporativos (Node.js / ExcelJS)",
@@ -366,7 +355,7 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
     takeaway: "",
   },
   {
-    id: 6,
+    id: 5,
     title: "Geofencing Anti-Fraude com Validação de Coordenadas em Vistorias de Obra",
     area: "Integridade de Dados & Auditoria",
     context: "Vistoria de Materiais & Mobile Web",
@@ -377,7 +366,7 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
     takeaway: "",
   },
   {
-    id: 7,
+    id: 6,
     title: "P/Invoke Win32 e Barramento Serial em Hardware OEM Integrado",
     area: "Hardware & Baixo Nível",
     context: "Notebook OEM (C# / C++ / Win32)",
@@ -388,7 +377,7 @@ export const TECHNICAL_DISCOVERIES: TechnicalDiscovery[] = [
     takeaway: "",
   },
   {
-    id: 8,
+    id: 7,
     title: "Full Reload com Transação Única e Advisory Lock no ETL de BI",
     area: "Engenharia de Dados & Concorrência",
     context: "Data Warehouse & BI (PostgreSQL / Drizzle)",
