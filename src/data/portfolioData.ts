@@ -423,7 +423,7 @@ export const SKILL_GROUPS = [
 export const CAREER_JOURNEY = [
   {
     role: "Desenvolvedor de Software / Engenharia",
-    company: "Empresa de Engenharia & Empreendimentos",
+    company: "LYX Engenharia",
     period: "2026",
     type: "Contrato / Projeto Estratégico",
     description:
@@ -432,7 +432,7 @@ export const CAREER_JOURNEY = [
   },
   {
     role: "Desenvolvedor Full-Stack Pleno",
-    company: "Empresa de Tecnologia & Soluções Corporativas",
+    company: "Policorp Tecnologia",
     period: "2024 — Atual",
     type: "Tempo Integral",
     description:
@@ -441,7 +441,7 @@ export const CAREER_JOURNEY = [
   },
   {
     role: "Desenvolvedor Full-Stack Júnior",
-    company: "Empresa de Tecnologia & Soluções Corporativas",
+    company: "Policorp Tecnologia",
     period: "2023 — 2024",
     type: "Tempo Integral",
     description:
@@ -450,7 +450,7 @@ export const CAREER_JOURNEY = [
   },
   {
     role: "Jovem Aprendiz de Pesquisa & Desenvolvimento (P&D)",
-    company: "Empresa de Tecnologia & Tráfego Inteligente",
+    company: "FiscalTech",
     period: "2022 — 2023",
     type: "P&D",
     description:
@@ -459,7 +459,7 @@ export const CAREER_JOURNEY = [
   },
   {
     role: "Jovem Aprendiz de Eletroeletrônica",
-    company: "Montadora Automotiva Multinacional",
+    company: "Volkswagen",
     period: "2019 — 2021",
     type: "Formação Técnica",
     description:
