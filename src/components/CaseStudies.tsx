@@ -92,8 +92,8 @@ export default function CaseStudies() {
         </div>
       </div>
 
-      {/* Scrollytelling Runway: As you scroll down, projects cycle smoothly */}
-      <div ref={containerRef} className="relative min-h-[360vh] w-full">
+      {/* Scrollytelling Runway: As you scroll down, projects cycle smoothly with minimal scroll */}
+      <div ref={containerRef} className="relative min-h-[140vh] w-full">
         {/* Sticky viewport frame */}
         <div className="sticky top-20 sm:top-24 h-[calc(100vh-5.5rem)] sm:h-[calc(100vh-6.5rem)] flex items-center justify-center py-2 sm:py-4 z-20">
           <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
